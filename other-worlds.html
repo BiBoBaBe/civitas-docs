@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Three more worlds · Civitas</title>
-<meta name="description" content="Short sketches. A divided city, a village where the gossip is the game, and a succession crisis, each naming the one mechanic that carries it.">
+<title>Other settings · Civitas</title>
+<meta name="description" content="Four sketches on the same engine, none of them built, each naming the primitives that would carry it.">
 <meta name="color-scheme" content="light dark">
-<meta property="og:title" content="Three more worlds · Civitas">
-<meta property="og:description" content="Short sketches. A divided city, a village where the gossip is the game, and a succession crisis, each naming the one mechanic that carries it.">
+<meta property="og:title" content="Other settings · Civitas">
+<meta property="og:description" content="Four sketches on the same engine, none of them built, each naming the primitives that would carry it.">
 <meta property="og:type" content="article">
 <link rel="stylesheet" href="assets/styles.css">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%2318140f'/%3E%3Cpath%20d='M6%2024V14l10-6%2010%206v10'%20fill='none'%20stroke='%23d79a4e'%20stroke-width='2'%20stroke-linejoin='round'/%3E%3Crect%20x='13'%20y='17'%20width='6'%20height='7'%20fill='%23d79a4e'/%3E%3C/svg%3E">
@@ -20,15 +20,17 @@
   <details class="menu">
     <summary>Contents</summary>
     <nav class="nav" id="nav-mobile" aria-label="Documentation"><p class="nav-heading">Start here</p>
-<ul><li><a href="index.html">What Civitas is</a></li><li><a href="the-idea.html">The idea in five minutes</a></li><li><a href="why.html">Why it works this way</a></li></ul>
-<p class="nav-heading">How the world works</p>
-<ul><li><a href="people.html">People</a></li><li><a href="motives.html">Wants and motives</a></li><li><a href="time.html">Time</a></li><li><a href="places.html">Places, doors and walls</a></li><li><a href="records.html">What the world records</a></li><li><a href="gossip.html">Gossip</a></li><li><a href="plans.html">Plans, arrangements and trips</a></li><li><a href="terms.html">Terms and couples</a></li><li><a href="pictures.html">Pictures</a></li></ul>
+<ul><li><a href="index.html">What Civitas is</a></li><li><a href="how-a-turn-works.html">How a turn works</a></li><li><a href="principles.html">Principles</a></li></ul>
+<p class="nav-heading">The simulation</p>
+<ul><li><a href="time.html">Time and routines</a></li><li><a href="places.html">Places and doors</a></li><li><a href="people.html">People and feelings</a></li><li><a href="knowledge.html">What people know</a></li><li><a href="gossip.html">Rumour</a></li><li><a href="motives.html">Wants and situations</a></li><li><a href="plans.html">Plans, tasks and trips</a></li><li><a href="terms.html">Agreements and couples</a></li><li><a href="records.html">What gets written down</a></li></ul>
+<p class="nav-heading">Under the hood</p>
+<ul><li><a href="architecture.html">The engine</a></li><li><a href="bridge.html">The Marinara bridge</a></li></ul>
 <p class="nav-heading">Playing</p>
-<ul><li><a href="screens.html">The screens</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
-<p class="nav-heading">Example worlds</p>
-<ul><li><a href="tremont.html">Tremont</a></li><li><a href="tremont-phone.html">The phone and its apps</a></li><li><a href="isekai.html">Trapped in the game</a></li><li><a href="other-worlds.html" aria-current="page">Three more worlds</a></li></ul>
+<ul><li><a href="setup.html">Trying it</a></li><li><a href="screens.html">The World screen</a></li><li><a href="pictures.html">Pictures</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
+<p class="nav-heading">Worlds</p>
+<ul><li><a href="tremont.html">Tremont</a></li><li><a href="other-worlds.html" aria-current="page">Other settings</a></li></ul>
 <p class="nav-heading">Building your own</p>
-<ul><li><a href="your-own-world.html">Making your own world</a></li><li><a href="how-a-world-gets-built.html">How a world gets built</a></li><li><a href="limits.html">Honest limits</a></li></ul></nav>
+<ul><li><a href="your-own-world.html">Writing a world card</a></li><li><a href="extending.html">Extending the engine</a></li><li><a href="how-a-world-gets-built.html">The authoring pipeline</a></li><li><a href="limits.html">Limits</a></li></ul></nav>
   </details>
 </header>
 
@@ -36,106 +38,90 @@
   <aside class="sidebar">
     <a class="brand brand-desk" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Civitas<em>documentation</em></a>
     <nav class="nav" id="nav-desktop" aria-label="Documentation"><p class="nav-heading">Start here</p>
-<ul><li><a href="index.html">What Civitas is</a></li><li><a href="the-idea.html">The idea in five minutes</a></li><li><a href="why.html">Why it works this way</a></li></ul>
-<p class="nav-heading">How the world works</p>
-<ul><li><a href="people.html">People</a></li><li><a href="motives.html">Wants and motives</a></li><li><a href="time.html">Time</a></li><li><a href="places.html">Places, doors and walls</a></li><li><a href="records.html">What the world records</a></li><li><a href="gossip.html">Gossip</a></li><li><a href="plans.html">Plans, arrangements and trips</a></li><li><a href="terms.html">Terms and couples</a></li><li><a href="pictures.html">Pictures</a></li></ul>
+<ul><li><a href="index.html">What Civitas is</a></li><li><a href="how-a-turn-works.html">How a turn works</a></li><li><a href="principles.html">Principles</a></li></ul>
+<p class="nav-heading">The simulation</p>
+<ul><li><a href="time.html">Time and routines</a></li><li><a href="places.html">Places and doors</a></li><li><a href="people.html">People and feelings</a></li><li><a href="knowledge.html">What people know</a></li><li><a href="gossip.html">Rumour</a></li><li><a href="motives.html">Wants and situations</a></li><li><a href="plans.html">Plans, tasks and trips</a></li><li><a href="terms.html">Agreements and couples</a></li><li><a href="records.html">What gets written down</a></li></ul>
+<p class="nav-heading">Under the hood</p>
+<ul><li><a href="architecture.html">The engine</a></li><li><a href="bridge.html">The Marinara bridge</a></li></ul>
 <p class="nav-heading">Playing</p>
-<ul><li><a href="screens.html">The screens</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
-<p class="nav-heading">Example worlds</p>
-<ul><li><a href="tremont.html">Tremont</a></li><li><a href="tremont-phone.html">The phone and its apps</a></li><li><a href="isekai.html">Trapped in the game</a></li><li><a href="other-worlds.html" aria-current="page">Three more worlds</a></li></ul>
+<ul><li><a href="setup.html">Trying it</a></li><li><a href="screens.html">The World screen</a></li><li><a href="pictures.html">Pictures</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
+<p class="nav-heading">Worlds</p>
+<ul><li><a href="tremont.html">Tremont</a></li><li><a href="other-worlds.html" aria-current="page">Other settings</a></li></ul>
 <p class="nav-heading">Building your own</p>
-<ul><li><a href="your-own-world.html">Making your own world</a></li><li><a href="how-a-world-gets-built.html">How a world gets built</a></li><li><a href="limits.html">Honest limits</a></li></ul></nav>
+<ul><li><a href="your-own-world.html">Writing a world card</a></li><li><a href="extending.html">Extending the engine</a></li><li><a href="how-a-world-gets-built.html">The authoring pipeline</a></li><li><a href="limits.html">Limits</a></li></ul></nav>
   </aside>
 
   <main id="main" class="content">
     <article class="prose">
-      <h1>Three more worlds</h1>
-      <p class="lede">Three more, quickly. None of them is built. Each one names the single piece of
-machinery that would carry it.</p>
+      <h1>Other settings</h1>
+      <p class="lede">None of these worlds is built. Each is a sketch that names which of the engine's
+primitives would carry it, to make the point that the machinery has no opinion about genre.</p>
+
+<h2 id="trapped-in-the-game">Trapped in the game</h2>
+
+<p>Four thousand people logged into a game and the log-out button is gone. Nine weeks in, it has
+settled into a town with an economy, rents, debts and a guild that has a partial map of the boss
+room and has not shared it.</p>
+
+<table>
+  <thead><tr><th>In the fiction</th><th>In the engine</th></tr></thead>
+  <tbody>
+    <tr><td>Floors of the tower</td><td>Districts, with the road to the gate as a street with minutes on it</td></tr>
+    <tr><td>The inn and its back room</td><td>A building with rooms and doors; the guild's map is a fact one person holds</td></tr>
+    <tr><td>Coin and lives</td><td>Two declared quantities: coin conserved, lives with a floor of zero and no regeneration</td></tr>
+    <tr><td>The raid party's rules</td><td>A term with six clauses and a safeword; breaking one costs standing and becomes a fact that travels</td></tr>
+    <tr><td>The one scout who got out</td><td>A firsthand belief that never decays, while eleven secondhand versions drift, one of them lethally</td></tr>
+    <tr><td>The boss as a clock</td><td>A situation with a deadline, so every arrangement in town is measured against it and a three-day skip is lived</td></tr>
+  </tbody>
+</table>
 
 <h2 id="vetrograd-1961">Vetrograd, 1961</h2>
 
-<p>A city cut in half by a wall that went up eight years ago. You are a translator at a trade
-delegation, which is a job that requires you to sit in rooms with people who are being watched, and to
-remember which of them knows what. Everybody you deal with is running a second version of themselves
-and most of them are not very good at it.</p>
+<p>A city cut in half by a wall. You are a translator at a trade delegation, which means sitting
+in rooms with people who are being watched and remembering which of them knows what. A courier who
+was due did not arrive, and three people have told you three versions of why.</p>
 
-<p>Anneliese runs a bar two streets from the crossing and wants an exit visa for her brother. It costs
-her the only thing she has that anybody wants: she hears everything, and she has so far told nobody.
-Kovacs is your opposite number and wants a posting home before the winter, which costs him a report
-about you that he has been putting off for five weeks. Dr Lenz has a flat with a good lock and a spare
-room, and wants nothing at all, which is the most frightening thing about him.</p>
-
-<p>The safehouse is a first-floor flat above a stationer's with two doors and a landing you can hear
-from the stairwell. Something has already gone wrong. A courier who was meant to arrive on Tuesday did
-not, and three people have now told you three different versions of why, one of which has your name in
-it.</p>
-
-<p><strong>The mechanic: doors, and who can hear.</strong> A conversation at a table is between two
-people. The rest of the room gets a roll, and what they can win is that something was said, never the
-words. A shut door hides what happened and cannot hide that it shut. That is most of a genre.</p>
+<p><strong>The primitive:</strong> doors, earshot and volume. A conversation at a table is between
+two people; the rest of the room gets a roll, and what they can win is that something was said,
+never the words. A shut door hides what happened and cannot hide that it shut.</p>
 
 <h2 id="dunmerrow">Dunmerrow</h2>
 
-<p>Eleven hundred people, one high street, three pubs, and a body in the reservoir. You have come back
-after nineteen years because your aunt died and left you her house, and nobody here has quite decided
-whether you are local.</p>
+<p>Eleven hundred people, one high street, three pubs, and a body in the reservoir. You have come
+back after nineteen years. On your second evening you said something harmless in a pub, and by
+Friday it has been repeated four times, the figure in it has doubled, and it is attached to a
+different person.</p>
 
-<p>The publican wants the bypass to go through, because it would double his trade, and it costs him
-that he cannot say so out loud in a village that has been fighting it for a decade. The vicar's wife
-knows who was driving the car in 2009 and has never said, and it costs her that the person who was
-driving comes to church every Sunday and says good morning. The girl on the post office counter sees
-every parcel and every registered letter in the village, wants out, and can only see one way out, which
-is somebody buying her mother's house.</p>
-
-<p>The thing already going wrong is not the body. On your second evening you said something entirely
-harmless in a pub, and by Friday it has been repeated four times, the figure in it has doubled, and it
-is now attached to a different person. That person is the one who has to decide whether to talk to the
-police.</p>
-
-<p><strong>The mechanic: gossip distortion.</strong> Here the rumour system is not atmosphere, it is
-the plot. You do not solve the murder by finding a clue. You solve it by working out which of six
-versions of the same night is the firsthand one, and by reaching the person holding it before somebody
-who likes them less does.</p>
+<p><strong>The primitive:</strong> rumour distortion. You do not solve the murder by finding a
+clue. You solve it by working out which of six versions of the same night is the firsthand one,
+and reaching the person holding it before somebody who likes them less does.</p>
 
 <h2 id="the-regency-of-anselm">The Regency of Anselm</h2>
 
-<p>The old king has been dead nine days. His heir is eleven. Five houses have troops within a week of
-the capital and every one of them has signed something with at least two of the others.</p>
+<p>The old king is nine days dead and his heir is eleven. Five houses have troops within a week
+of the capital and every one has signed something with at least two of the others. The treaty was
+witnessed by four people, one of whom is now dead, so there are three living accounts of what was
+agreed and they do not match.</p>
 
-<p>Margravine Ysoria wants the regency and can count. It costs her that the treaty which would give it
-to her contains a clause she agreed to in a bad week and cannot now get out of without being the person
-who broke it. Lord Fenn wants his daughter married into the royal house and has promised the same
-daughter to two families, neither of which knows about the other yet. The boy's tutor wants nothing
-except for the boy to survive, which makes him the only person in the palace nobody can buy, and
-therefore the only one everybody is watching.</p>
+<p><strong>The primitives:</strong> signed terms, and couples as alliances. A treaty is clauses
+two parties put their names to, which cannot be quietly reworded afterwards. A house is a couple:
+one party with two halves that want different things, and a third party has to hear yes from all
+of them.</p>
 
-<p>The council chamber has one door and a gallery above it that three people have keys to. What has
-already gone wrong: the treaty was witnessed by four people and one of them is now dead, so there are
-three living accounts of what was actually agreed and they do not match.</p>
+<h2 id="what-they-have-in-common">What they have in common</h2>
 
-<p><strong>The mechanic: signed terms, and couples as alliances.</strong> A treaty is clauses two
-parties put their names to, which the world quotes back until they lapse, and which cannot be quietly
-reworded afterwards. Breaking a clause does not void the treaty. It is remembered, it costs you with
-everyone who signed, and it becomes a fact that travels. A house is a couple: one party with two halves
-that want different things, and a third party has to hear yes from all of them.</p>
-
-<h2 id="what-these-have-in-common">What these have in common</h2>
-
-<p>None of them needed a feature written for it. Every one is people with days, rooms with doors,
-things that are unfinished, and a record of who knows what, which turns out to be a reasonable
-description of most stories worth playing.</p>
-
-<p>If you want to build one, start at <a href="your-own-world.html">making your own world</a>.</p>
+<p>None of them needs a feature written for it. Each is people with days, rooms with doors, things
+that are unfinished, and a record of who knows what. If you want to build one, start at
+<a href="your-own-world.html">Writing a world card</a>.</p>
     </article>
-    <nav class="pager" aria-label="Neighbouring pages"><a class="pager-link pager-prev" href="isekai.html"><span>Previous</span><strong>Trapped in the game</strong></a><a class="pager-link pager-next" href="your-own-world.html"><span>Next</span><strong>Making your own world</strong></a></nav>
+    <nav class="pager" aria-label="Neighbouring pages"><a class="pager-link pager-prev" href="tremont.html"><span>Previous</span><strong>Tremont</strong></a><a class="pager-link pager-next" href="your-own-world.html"><span>Next</span><strong>Writing a world card</strong></a></nav>
     <footer class="foot">
       <p>Civitas is a personal project, documented as it actually behaves. The example world is
       fiction and every character in it is an adult.</p>
     </footer>
   </main>
 
-  <aside class="toc" aria-label="On this page"><p class="toc-heading">On this page</p><ul><li><a href="#vetrograd-1961">Vetrograd, 1961</a></li><li><a href="#dunmerrow">Dunmerrow</a></li><li><a href="#the-regency-of-anselm">The Regency of Anselm</a></li><li><a href="#what-these-have-in-common">What these have in common</a></li></ul></aside>
+  <aside class="toc" aria-label="On this page"><p class="toc-heading">On this page</p><ul><li><a href="#trapped-in-the-game">Trapped in the game</a></li><li><a href="#vetrograd-1961">Vetrograd, 1961</a></li><li><a href="#dunmerrow">Dunmerrow</a></li><li><a href="#the-regency-of-anselm">The Regency of Anselm</a></li><li><a href="#what-they-have-in-common">What they have in common</a></li></ul></aside>
 </div>
 </body>
 </html>

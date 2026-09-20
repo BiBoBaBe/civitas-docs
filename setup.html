@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trying it · Civitas</title>
+<meta name="description" content="What the private beta is, what you need to run Civitas with Marinara, what it costs, and what feedback is most useful.">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="Trying it · Civitas">
+<meta property="og:description" content="What the private beta is, what you need to run Civitas with Marinara, what it costs, and what feedback is most useful.">
+<meta property="og:type" content="article">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%2318140f'/%3E%3Cpath%20d='M6%2024V14l10-6%2010%206v10'%20fill='none'%20stroke='%23d79a4e'%20stroke-width='2'%20stroke-linejoin='round'/%3E%3Crect%20x='13'%20y='17'%20width='6'%20height='7'%20fill='%23d79a4e'/%3E%3C/svg%3E">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Civitas</a>
+  <details class="menu">
+    <summary>Contents</summary>
+    <nav class="nav" id="nav-mobile" aria-label="Documentation"><p class="nav-heading">Start here</p>
+<ul><li><a href="index.html">What Civitas is</a></li><li><a href="how-a-turn-works.html">How a turn works</a></li><li><a href="principles.html">Principles</a></li></ul>
+<p class="nav-heading">The simulation</p>
+<ul><li><a href="time.html">Time and routines</a></li><li><a href="places.html">Places and doors</a></li><li><a href="people.html">People and feelings</a></li><li><a href="knowledge.html">What people know</a></li><li><a href="gossip.html">Rumour</a></li><li><a href="motives.html">Wants and situations</a></li><li><a href="plans.html">Plans, tasks and trips</a></li><li><a href="terms.html">Agreements and couples</a></li><li><a href="records.html">What gets written down</a></li></ul>
+<p class="nav-heading">Under the hood</p>
+<ul><li><a href="architecture.html">The engine</a></li><li><a href="bridge.html">The Marinara bridge</a></li></ul>
+<p class="nav-heading">Playing</p>
+<ul><li><a href="setup.html" aria-current="page">Trying it</a></li><li><a href="screens.html">The World screen</a></li><li><a href="pictures.html">Pictures</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
+<p class="nav-heading">Worlds</p>
+<ul><li><a href="tremont.html">Tremont</a></li><li><a href="other-worlds.html">Other settings</a></li></ul>
+<p class="nav-heading">Building your own</p>
+<ul><li><a href="your-own-world.html">Writing a world card</a></li><li><a href="extending.html">Extending the engine</a></li><li><a href="how-a-world-gets-built.html">The authoring pipeline</a></li><li><a href="limits.html">Limits</a></li></ul></nav>
+  </details>
+</header>
+
+<div class="shell">
+  <aside class="sidebar">
+    <a class="brand brand-desk" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Civitas<em>documentation</em></a>
+    <nav class="nav" id="nav-desktop" aria-label="Documentation"><p class="nav-heading">Start here</p>
+<ul><li><a href="index.html">What Civitas is</a></li><li><a href="how-a-turn-works.html">How a turn works</a></li><li><a href="principles.html">Principles</a></li></ul>
+<p class="nav-heading">The simulation</p>
+<ul><li><a href="time.html">Time and routines</a></li><li><a href="places.html">Places and doors</a></li><li><a href="people.html">People and feelings</a></li><li><a href="knowledge.html">What people know</a></li><li><a href="gossip.html">Rumour</a></li><li><a href="motives.html">Wants and situations</a></li><li><a href="plans.html">Plans, tasks and trips</a></li><li><a href="terms.html">Agreements and couples</a></li><li><a href="records.html">What gets written down</a></li></ul>
+<p class="nav-heading">Under the hood</p>
+<ul><li><a href="architecture.html">The engine</a></li><li><a href="bridge.html">The Marinara bridge</a></li></ul>
+<p class="nav-heading">Playing</p>
+<ul><li><a href="setup.html" aria-current="page">Trying it</a></li><li><a href="screens.html">The World screen</a></li><li><a href="pictures.html">Pictures</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
+<p class="nav-heading">Worlds</p>
+<ul><li><a href="tremont.html">Tremont</a></li><li><a href="other-worlds.html">Other settings</a></li></ul>
+<p class="nav-heading">Building your own</p>
+<ul><li><a href="your-own-world.html">Writing a world card</a></li><li><a href="extending.html">Extending the engine</a></li><li><a href="how-a-world-gets-built.html">The authoring pipeline</a></li><li><a href="limits.html">Limits</a></li></ul></nav>
+  </aside>
+
+  <main id="main" class="content">
+    <article class="prose">
+      <h1>Trying it</h1>
+      <p class="lede">Civitas is in private testing with a few people from the Marinara community. This
+page says what you would be running, what setup involves, and what would help most.</p>
+
+<h2 id="what-you-are-trying">What you are trying</h2>
+
+<p>A working prototype: the Civitas service, the Marinara bridge, and Tremont as the playable
+world. Tremont has a cast of about forty with routines, relationships, rumours, plans, a phone,
+and a World screen you can inspect while playing. The other settings on this site are sketches,
+not beta-ready worlds.</p>
+
+<h2 id="what-you-need">What you need</h2>
+
+<ul>
+  <li><strong>Marinara</strong> with the Civitas bridge extension installed.</li>
+  <li><strong>The Civitas service</strong>, which runs separately on Bun 1.4 or later, with a
+  world attached to your chat.</li>
+  <li><strong>A text model connection</strong> for narration and for the scene-reading pass. The
+  reader needs a model that can follow a schema; a model that cannot should have the pass turned
+  off rather than left to guess.</li>
+  <li><strong>Optionally, image generation</strong>, which needs its own configured backend and a
+  graphics card. Without one, there are no pictures and nothing else changes.</li>
+</ul>
+
+<p>There is no one-click installer yet. Expect some hands-on setup, and expect to ask. Model calls
+and any GPU use cost whatever your providers charge; there is no fixed per-turn price to promise,
+though a turn's brief is a few hundred tokens and the scene reader is a second, smaller call.</p>
+
+<h2 id="how-to-get-in">How to get in</h2>
+
+<p>Reply to the Discord post where this link was shared. Say what you are running Marinara on and
+the sort of roleplay you enjoy, and we can work out the setup from there. This site does not
+collect sign-ups.</p>
+
+<h2 id="what-would-help-most">What would help most</h2>
+
+<ul>
+  <li><strong>Continuity.</strong> Did a promise, a payment or a change in a relationship get
+  recorded properly? Did it still hold three sessions later?</li>
+  <li><strong>Knowledge.</strong> Did somebody know something they could not have heard?</li>
+  <li><strong>Playing.</strong> Was it obvious what you could do and where to find things on the
+  World screen?</li>
+  <li><strong>Feel.</strong> Did the world give you interesting openings, or get in the way?</li>
+  <li><strong>Practical.</strong> Slow turns, confusing setup, phone layouts, broken pictures.</li>
+</ul>
+
+<p>For a bug, the useful parts are what you expected, what happened, and the steps that got you
+there. A screenshot or a short excerpt helps. Keep API keys and private conversations out of
+reports.</p>
+
+<h2 id="what-to-read-first">What to read first</h2>
+
+<p><a href="screens.html">The World screen</a> shows what you will be looking at.
+<a href="limits.html">Limits</a> is the honest list of what is unfinished, and it is worth reading
+before deciding.</p>
+    </article>
+    <nav class="pager" aria-label="Neighbouring pages"><a class="pager-link pager-prev" href="bridge.html"><span>Previous</span><strong>The Marinara bridge</strong></a><a class="pager-link pager-next" href="screens.html"><span>Next</span><strong>The World screen</strong></a></nav>
+    <footer class="foot">
+      <p>Civitas is a personal project, documented as it actually behaves. The example world is
+      fiction and every character in it is an adult.</p>
+    </footer>
+  </main>
+
+  <aside class="toc" aria-label="On this page"><p class="toc-heading">On this page</p><ul><li><a href="#what-you-are-trying">What you are trying</a></li><li><a href="#what-you-need">What you need</a></li><li><a href="#how-to-get-in">How to get in</a></li><li><a href="#what-would-help-most">What would help most</a></li><li><a href="#what-to-read-first">What to read first</a></li></ul></aside>
+</div>
+</body>
+</html>

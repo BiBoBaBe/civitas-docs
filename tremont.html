@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tremont · Civitas</title>
-<meta name="description" content="The example world: a man worth a fortune living undercover in a freezing flat, four districts, and a cast whose problems interlock.">
+<meta name="description" content="The example world: a modern city of four districts, a player whose wealth is a secret, four unfinished situations, and a phone with apps built on the engine's primitives.">
 <meta name="color-scheme" content="light dark">
 <meta property="og:title" content="Tremont · Civitas">
-<meta property="og:description" content="The example world: a man worth a fortune living undercover in a freezing flat, four districts, and a cast whose problems interlock.">
+<meta property="og:description" content="The example world: a modern city of four districts, a player whose wealth is a secret, four unfinished situations, and a phone with apps built on the engine's primitives.">
 <meta property="og:type" content="article">
 <link rel="stylesheet" href="assets/styles.css">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%2318140f'/%3E%3Cpath%20d='M6%2024V14l10-6%2010%206v10'%20fill='none'%20stroke='%23d79a4e'%20stroke-width='2'%20stroke-linejoin='round'/%3E%3Crect%20x='13'%20y='17'%20width='6'%20height='7'%20fill='%23d79a4e'/%3E%3C/svg%3E">
@@ -20,15 +20,17 @@
   <details class="menu">
     <summary>Contents</summary>
     <nav class="nav" id="nav-mobile" aria-label="Documentation"><p class="nav-heading">Start here</p>
-<ul><li><a href="index.html">What Civitas is</a></li><li><a href="the-idea.html">The idea in five minutes</a></li><li><a href="why.html">Why it works this way</a></li></ul>
-<p class="nav-heading">How the world works</p>
-<ul><li><a href="people.html">People</a></li><li><a href="motives.html">Wants and motives</a></li><li><a href="time.html">Time</a></li><li><a href="places.html">Places, doors and walls</a></li><li><a href="records.html">What the world records</a></li><li><a href="gossip.html">Gossip</a></li><li><a href="plans.html">Plans, arrangements and trips</a></li><li><a href="terms.html">Terms and couples</a></li><li><a href="pictures.html">Pictures</a></li></ul>
+<ul><li><a href="index.html">What Civitas is</a></li><li><a href="how-a-turn-works.html">How a turn works</a></li><li><a href="principles.html">Principles</a></li></ul>
+<p class="nav-heading">The simulation</p>
+<ul><li><a href="time.html">Time and routines</a></li><li><a href="places.html">Places and doors</a></li><li><a href="people.html">People and feelings</a></li><li><a href="knowledge.html">What people know</a></li><li><a href="gossip.html">Rumour</a></li><li><a href="motives.html">Wants and situations</a></li><li><a href="plans.html">Plans, tasks and trips</a></li><li><a href="terms.html">Agreements and couples</a></li><li><a href="records.html">What gets written down</a></li></ul>
+<p class="nav-heading">Under the hood</p>
+<ul><li><a href="architecture.html">The engine</a></li><li><a href="bridge.html">The Marinara bridge</a></li></ul>
 <p class="nav-heading">Playing</p>
-<ul><li><a href="screens.html">The screens</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
-<p class="nav-heading">Example worlds</p>
-<ul><li><a href="tremont.html" aria-current="page">Tremont</a></li><li><a href="tremont-phone.html">The phone and its apps</a></li><li><a href="isekai.html">Trapped in the game</a></li><li><a href="other-worlds.html">Three more worlds</a></li></ul>
+<ul><li><a href="setup.html">Trying it</a></li><li><a href="screens.html">The World screen</a></li><li><a href="pictures.html">Pictures</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
+<p class="nav-heading">Worlds</p>
+<ul><li><a href="tremont.html" aria-current="page">Tremont</a></li><li><a href="other-worlds.html">Other settings</a></li></ul>
 <p class="nav-heading">Building your own</p>
-<ul><li><a href="your-own-world.html">Making your own world</a></li><li><a href="how-a-world-gets-built.html">How a world gets built</a></li><li><a href="limits.html">Honest limits</a></li></ul></nav>
+<ul><li><a href="your-own-world.html">Writing a world card</a></li><li><a href="extending.html">Extending the engine</a></li><li><a href="how-a-world-gets-built.html">The authoring pipeline</a></li><li><a href="limits.html">Limits</a></li></ul></nav>
   </details>
 </header>
 
@@ -36,208 +38,169 @@
   <aside class="sidebar">
     <a class="brand brand-desk" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Civitas<em>documentation</em></a>
     <nav class="nav" id="nav-desktop" aria-label="Documentation"><p class="nav-heading">Start here</p>
-<ul><li><a href="index.html">What Civitas is</a></li><li><a href="the-idea.html">The idea in five minutes</a></li><li><a href="why.html">Why it works this way</a></li></ul>
-<p class="nav-heading">How the world works</p>
-<ul><li><a href="people.html">People</a></li><li><a href="motives.html">Wants and motives</a></li><li><a href="time.html">Time</a></li><li><a href="places.html">Places, doors and walls</a></li><li><a href="records.html">What the world records</a></li><li><a href="gossip.html">Gossip</a></li><li><a href="plans.html">Plans, arrangements and trips</a></li><li><a href="terms.html">Terms and couples</a></li><li><a href="pictures.html">Pictures</a></li></ul>
+<ul><li><a href="index.html">What Civitas is</a></li><li><a href="how-a-turn-works.html">How a turn works</a></li><li><a href="principles.html">Principles</a></li></ul>
+<p class="nav-heading">The simulation</p>
+<ul><li><a href="time.html">Time and routines</a></li><li><a href="places.html">Places and doors</a></li><li><a href="people.html">People and feelings</a></li><li><a href="knowledge.html">What people know</a></li><li><a href="gossip.html">Rumour</a></li><li><a href="motives.html">Wants and situations</a></li><li><a href="plans.html">Plans, tasks and trips</a></li><li><a href="terms.html">Agreements and couples</a></li><li><a href="records.html">What gets written down</a></li></ul>
+<p class="nav-heading">Under the hood</p>
+<ul><li><a href="architecture.html">The engine</a></li><li><a href="bridge.html">The Marinara bridge</a></li></ul>
 <p class="nav-heading">Playing</p>
-<ul><li><a href="screens.html">The screens</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
-<p class="nav-heading">Example worlds</p>
-<ul><li><a href="tremont.html" aria-current="page">Tremont</a></li><li><a href="tremont-phone.html">The phone and its apps</a></li><li><a href="isekai.html">Trapped in the game</a></li><li><a href="other-worlds.html">Three more worlds</a></li></ul>
+<ul><li><a href="setup.html">Trying it</a></li><li><a href="screens.html">The World screen</a></li><li><a href="pictures.html">Pictures</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
+<p class="nav-heading">Worlds</p>
+<ul><li><a href="tremont.html" aria-current="page">Tremont</a></li><li><a href="other-worlds.html">Other settings</a></li></ul>
 <p class="nav-heading">Building your own</p>
-<ul><li><a href="your-own-world.html">Making your own world</a></li><li><a href="how-a-world-gets-built.html">How a world gets built</a></li><li><a href="limits.html">Honest limits</a></li></ul></nav>
+<ul><li><a href="your-own-world.html">Writing a world card</a></li><li><a href="extending.html">Extending the engine</a></li><li><a href="how-a-world-gets-built.html">The authoring pipeline</a></li><li><a href="limits.html">Limits</a></li></ul></nav>
   </aside>
 
   <main id="main" class="content">
     <article class="prose">
       <h1>Tremont</h1>
-      <p class="lede">Money is not the scarce resource. Not-being-known is.</p>
+      <p class="lede">Tremont is the world that ships with the engine and the one the beta plays. It is
+a modern city with a cast of about forty across four districts, written in code rather than as a
+card. This page shows how the primitives on the rest of the site are used in one world.</p>
 
-<figure class="hero">
-  <img src="assets/img/kessler-row.jpg" alt="An isometric view of a stone-and-glass street corner at dusk: a classical building with lit windows, a tall glass tower with brass mullions, palm trees and a black car at the kerb." width="1400" height="930" loading="lazy">
-  <figcaption>Kessler Row. Eighteen minutes and an entire life away from the street he lives on.</figcaption>
+<figure>
+  <img src="assets/img/holloway-street.jpg" alt="Isometric cutaway of a four-storey brick walk-up, a corner bar and a gym on one street" loading="lazy">
+  <figcaption>Holloway, the street the player lives on: one walk-up, a corner bar, a gym, and a
+  hospital fifteen minutes away.</figcaption>
 </figure>
 
 <h2 id="the-premise">The premise</h2>
 
-<p>The player character is worth a hundred million and nobody on his street knows it. He signed for flat 3B at
-214 Holloway a week ago. The building has four floors of brick, a buzzer panel with three names taped
-over, and a dead boiler. His bathroom has new fittings and no hot water. It is a wet autumn.</p>
+<p>The player is worth a hundred million and nobody on his street knows it. He signed for a flat
+in a walk-up with a dead boiler a week ago, and he also has a penthouse across the river that
+nobody knows about either. It is a wet autumn. The world opens on a Tuesday evening at the bar on
+the corner.</p>
 
-<p>He also has a penthouse across the river, which is one button in a lift and too much quiet. Nobody
-on Holloway knows that either.</p>
+<p>The design goal is that money is not the scarce resource. Not being known is. Every situation
+can be solved with a cheque, and every cheque spends the one thing he cannot get back.</p>
 
-<p>The world opens on a Tuesday evening at the bar on the corner:</p>
+<h2 id="how-the-world-is-declared">How the world is declared</h2>
 
-<blockquote>
-  <p>The Seven has the door propped open and the bar is three deep in regulars who all know each
-  other. Nobody here knows a thing about you, which is the only part of this you own.</p>
-</blockquote>
+<p>Tremont is registered as a built-in world with these settings:</p>
 
-<h2 id="how-a-secret-behaves-when-it-is-not-a-stat">How a secret behaves when it is not a stat</h2>
+<pre><code>export const TREMONT: BuiltInWorld = {
+  id: "tremont",
+  name: "Tremont",
+  opening: "The Seven has the door propped open and the bar is three deep in regulars...",
+  seed: seedCity,
+  player: WESS,
+  tick: { ladder: [...], disclosure: [...] },
+  voice: TREMONT_VOICE,
+  residents: [...],              // whose knowing counts as "the street knowing"
+  secret: THE_MONEY,
+  calendar: { firstDay: 8, firstWeekday: 1 },
+  beatMinutes: 3,
+  climate: { dayC: 11, nightC: 5, wet: 0.55 },
+  tells: [ /\bsold (my|a|the) (company|start-?up|business|app)\b/i, ... ],
+};</code></pre>
 
-<p>His worth is a fact in the world, true from the first minute, and it is worth nothing at all until
-somebody holds a belief about it. Exposure is not a number anybody maintains. It is a count of who
-believes it, measured against the people whose knowing would count as the street knowing.</p>
+<p>Each line maps to a page on this site. The calendar is on <a href="time.html">Time and
+routines</a>. The ladder and disclosure rules are on <a href="motives.html">Wants and
+situations</a> and <a href="knowledge.html">What people know</a>. The voice is on
+<a href="extending.html">Extending the engine</a>.</p>
 
-<p>At the start, exactly one person in the world holds it: his driver, and he holds it in
-confidence.</p>
+<h2 id="the-secret-as-data">The secret as data</h2>
 
-<p>Three things give it away, and none of them is telling somebody.</p>
+<p>The player's wealth is a fact from the first minute, held by one person in confidence: his
+driver. Exposure is not a number anybody maintains. It is a count of who holds the fact, measured
+against the residents list. Three disclosure rules give it away without anybody saying a word:</p>
 
-<p><strong>A place.</strong> Anybody who has ever stood in the penthouse knows. Not while they are in
-it, but ever, because you do not unsee a penthouse by walking out of it. The tower's lobby is
-deliberately not on that list, since a courier at the front desk learns nothing.</p>
+<ul>
+  <li>Anybody who has ever stood in the penthouse. The tower's lobby is deliberately excluded, so
+  a courier at the front desk learns nothing.</li>
+  <li>Anybody in the room for a single payment over five thousand.</li>
+  <li>Anybody on Holloway who sees him next to the man who drives him. This one produces a guess
+  rather than a certainty, and a guess travels and can be wrong.</li>
+</ul>
 
-<p><strong>An amount.</strong> A single payment over five thousand, seen by anybody in the room. Rent
-on Holloway is four figures. Five in one movement, in front of people, is an answer to a question
-nobody asked.</p>
+<p>The <code>tells</code> list is a set of phrases the player might type that give it away in
+part.</p>
 
-<p><strong>Company.</strong> Standing on Holloway next to a man who drives him and calls him sir, on a
-street where nobody has a driver. That one is vaguer. They see the money, not the number, so they hold
-it as a guess, and a guess travels and can be wrong.</p>
+<h2 id="four-situations-each-with-an-ending-condition">Four situations, each with an ending condition</h2>
 
-<p>There is a fourth, which is you. The world keeps a short list of the kinds of thing you might type
-that give it away in part: I sold my company, money is not a problem, I could just pay for the whole
-building.</p>
-
-<p>Telling somebody deliberately is a separate act, and it can be asked to stay quiet, which holds or
-does not depending on how they feel about you. See <a href="gossip.html">Gossip</a>.</p>
-
-<h2 id="the-four-situations-and-why-the-cheap-route-is-the-expensive-one">The four situations, and why the cheap route is the expensive one</h2>
-
-<p>Holloway opens with four unfinished things. Each has two routes: write a cheque, or work it through
-other people. Every cheque spends the only thing he cannot get back.</p>
-
-<div class="table-wrap">
 <table>
-  <thead><tr><th>The situation</th><th>What would count as it being over</th></tr></thead>
+  <thead><tr><th>Situation</th><th>What would count as it being over</th></tr></thead>
   <tbody>
-    <tr><td><strong>The boiler.</strong> The quote is more than the building earns in a season, and the landlady has not said no to a developer.</td><td>She has the money, or somebody has put a boiler in the basement.</td></tr>
-    <tr><td><strong>The bar's quarter.</strong> The owners are one bad quarter from losing it. She knows. He knows more than he has told her.</td><td>There is enough behind the bar to see the quarter out, in either of their pockets. It is the bar that is short, not a particular pocket.</td></tr>
-    <tr><td><strong>The rota.</strong> A nurse has worked nights for two years. The rota is set by a scheduler at the hospital and she has stopped asking.</td><td>Her own day stops putting her at the hospital at nine in the evening. By a word, a bribe, or quitting. The condition does not care which.</td></tr>
-    <tr><td><strong>The studio.</strong> A trainer shoots in the corner of her bedroom with the bed pushed out of frame.</td><td>She works somewhere that is neither her bedroom nor the gym she already coaches at.</td></tr>
+    <tr><td>The boiler. The quote is more than the building earns in a season, and the landlady has a developer's offer.</td><td>She has the money, or a boiler is in the basement.</td></tr>
+    <tr><td>The bar's quarter. The owners are one bad quarter from losing it.</td><td>There is enough behind the bar to see the quarter out, in either owner's pocket.</td></tr>
+    <tr><td>The rota. A nurse has worked nights for two years.</td><td>Her own day stops putting her at the hospital at nine in the evening, by any route.</td></tr>
+    <tr><td>The studio. A trainer shoots content in her bedroom.</td><td>She works somewhere that is neither her bedroom nor the gym she already coaches at.</td></tr>
   </tbody>
 </table>
-</div>
 
-<p>Nothing anywhere enumerates the solutions. Rent her the basement, hand over the bar's back room,
-have a word with the scheduler, or do something nobody thought of, and the same check notices.
-Enumerating routes is what makes a world feel like a menu.</p>
+<p>Nothing enumerates the solutions. The condition is the only thing the engine checks. One
+authoring lesson is worth recording: the first version of the studio condition said only "not
+her bedroom", and it was satisfied before the world finished loading, because a trainer works at
+a gym. A condition that is true at the start is a situation that never existed.</p>
 
-<p>One of those conditions has a lesson attached. The first version of the studio one said only "not
-her bedroom", and it was satisfied before the world had finished loading, because a trainer works at a
-gym. A condition that is true at the start is a situation that never existed.</p>
+<h2 id="the-cast-is-a-wiring-diagram">The cast is a wiring diagram</h2>
 
-<h2 id="the-cast-which-is-really-a-wiring-diagram">The cast, which is really a wiring diagram</h2>
-
-<p>Every person in the four districts is keeping exactly one thing, and the things are wired to each
-other. Here are three, all of them about money or work.</p>
-
-<div class="case">
-  <p class="case-title">The bartender who has not been paid</p>
-  <p>She has not cashed her last three pay cheques from the bar, because she closes the till every
-  night and knows they would bounce. Which means she knew the bar was in trouble before its owner did.
-  It is also why the books look slightly better than they are, since three weeks of her wages are still
-  in them. Her stance on the bar's situation is recorded, literally, as covering.</p>
-</div>
-
-<div class="case">
-  <p class="case-title">The offer on the building, which is four people long</p>
-  <p>The landlady has had a developer's offer for 214 and has not said no. A realtor forty minutes out
-  carried that offer to her, and holds it in confidence because it is a client's business, which holds
-  exactly as long as she goes on thinking well of the landlady. That realtor's commission on it is what
-  would pay for her husband's church roof, which is fifteen thousand short, and he has been letting his
-  congregation believe the fund is their giving rather than her envelopes. The developer behind it is
-  backed by a financier in the same cul-de-sac whose promotion depends on the block being assembled
-  before the year is out. And the law firm acting for that developer employs a litigator who is not yet
-  a partner, whose buy-in the firm would waive for whoever lands a big enough client.</p>
-  <p>So the fastest way to keep a building standing is to fill a church roof fund forty minutes away,
-  and nobody on Holloway would ever learn why the pressure eased. That is not a scripted branch. It is
-  four separate people's conditions happening to have the same answer.</p>
-</div>
-
-<div class="case">
-  <p class="case-title">A loan between cousins, blocking an introduction</p>
-  <p>A chef lent her cousin six thousand to keep a gym's doors open and has not asked for it back.
-  Across town, a streamer needs one collaboration with somebody bigger, and the only social chain to
-  that person runs through the chef and the cousin. The chef will not ask for a favour while the loan
-  sits between them. Meanwhile the person she wants to reach has her own next want, which is satisfied
-  by meeting anybody new at all. Two people want the same thing from opposite ends and neither can see
-  the other.</p>
-</div>
-
-<p>Not one of those has anything to do with romance. The machinery underneath is about obligations,
-information and who is standing where, and the cast is written so that pulling any thread the hard way
-pulls two others with it.</p>
+<p>Every person is keeping one thing, and the things are wired to each other through facts,
+beliefs and situations rather than through prose. One chain: the landlady's developer's offer was
+carried by a realtor whose commission would pay for her husband's church roof, which is fifteen
+thousand short, while the developer's backer needs the block assembled by year end. So the
+fastest way to keep the building standing is to fill a church roof fund forty minutes away, and
+nobody on Holloway would learn why the pressure eased. That is not a scripted branch. It is four
+people's conditions with the same answer.</p>
 
 <h2 id="the-four-districts">The four districts</h2>
 
+<p>Holloway is the player's street, with problems in four figures. Kessler is across the bridge,
+eighteen minutes: glass, a courthouse, a members' club, and the tower. Wyneshire is the university
+quarter. Maplewood is a cul-de-sac forty minutes out by car. Ten more people live elsewhere and
+can only be reached by phone; they carry on whether or not he opens it.</p>
+
+<p>Two pieces of map design use topology instead of special cases. The fastest route between
+Holloway and Kessler never passes through the tower lobby, so nobody is walked past the secret by
+their timetable; a test checks both that exactly one person holds the secret after four days and
+that no route crosses the lobby. And since news moves only between people who share a room, the
+world supplies the bodies that cross districts on purpose: two professionals who drink on
+Holloway because nobody knows their name, a commuting couple who compare notes every evening, and
+a courier who is in more rooms in a day than anybody.</p>
+
 <figure>
-  <img src="assets/img/maplewood.jpg" alt="An isometric view of a suburban cul-de-sac in daylight: five white clapboard houses with grey roofs around a wide circular turning area, lawns, sprinklers and maple trees." width="1400" height="930" loading="lazy">
-  <figcaption>The cul-de-sac, forty minutes out, where a stranger who pays for a boiler is a story for
-  a week.</figcaption>
+  <img src="assets/img/kessler-row.jpg" alt="Isometric cutaway of a glass and stone street with a tower" loading="lazy">
+  <figcaption>Kessler Row. Eighteen minutes from Holloway and an entire life away from it.</figcaption>
 </figure>
 
-<p><strong>Holloway</strong> is the street he lives on. One walk-up, a corner bar, a gym, and a
-hospital fifteen minutes away. Nine residents. Its problems are four figures.</p>
+<h2 id="the-phone">The phone</h2>
 
-<p><strong>Kessler</strong> is across the bridge, eighteen minutes. Glass and stone, a courthouse, a
-members' club behind an unmarked door, a law firm, and the tower his penthouse is in. Its problems are
-six figures, and a cheque here is not a kindness somebody notices, it is a transaction somebody's
-lawyer notices.</p>
+<p>Tremont's phone apps are content, built on the engine's app model. Each one writes ordinary
+records rather than running a mini-game.</p>
 
-<p><strong>Wyneshire</strong> is the university quarter, twelve minutes up the line. A campus, a coffee
-shop, a tattoo parlour, the cheapest bar in the city and a creaky share house. Almost everybody here is
-also keeping up an act, so a cheque solves the situation and leaves the act standing.</p>
+<dl class="terms">
+  <dt>Texts</dt>
+  <dd>Recorded word for word. How long somebody takes to answer is a function of their evening:
+  working a shift triples it, company adds to it, and asleep is a silence rather than a delay,
+  with the answer arriving when the world wakes them. A message to somebody in the room with you
+  is not a text at all; it becomes your next turn.</dd>
+  <dt>Hush</dt>
+  <dd>An anonymous meeting app. Distance shown is real walking time. Who is online is computed
+  from the world once per person per day: on the app at all, an hour that suits their day, and the
+  nerve for it. Asking to meet is a real decision, and a yes is a plan the world keeps.</dd>
+  <dt>Collar</dt>
+  <dd>The tasks app, covered on <a href="plans.html">Plans, tasks and trips</a>.</dd>
+  <dt>The cam platform</dt>
+  <dd>Watching is an event with a witness list of one, the performer. Tipping moves real coin, and
+  whether she learns who tipped is your choice. Booking a private session is an ordinary
+  arrangement with a price held in escrow. Asking to appear with her opens a situation, because
+  what she makes of it is a scene.</dd>
+  <dt>The neighbourhood feed</dt>
+  <dd>The rumour mill made readable, with names half filed off. See <a href="gossip.html">Rumour</a>.</dd>
+</dl>
 
-<p><strong>Maplewood</strong> is forty minutes out by car. A cul-de-sac, a residents' association, a
-church with a bad roof and a country club with a wedding booked. Holloway is short of money and says
-so. Maplewood is short of money and would rather die.</p>
-
-<h2 id="geography-as-a-security-measure">Geography as a security measure</h2>
-
-<p>One piece of map design is worth pointing at, because it solves a problem with topology instead of a
-special case.</p>
-
-<p>Standing in the tower gives the secret away, and the tower is on Kessler Row. So the Row is two
-minutes from the tower and eighteen minutes from Holloway, while Holloway to the tower is twenty. The
-fastest route between the two districts therefore never passes through the tower lobby. The doorman
-stands under the canopy on the Row rather than inside. Nobody is ever scheduled in there. A test checks
-both halves: that exactly one person still holds the secret after four days, and that no route between
-the districts goes through the lobby.</p>
-
-<h2 id="gossip-crosses-only-through-a-named-person">Gossip crosses only through a named person</h2>
-
-<p>News moves between people who share a room, so it can only cross a district if a body does. The
-world supplies those bodies deliberately.</p>
-
-<p>Two Kessler professionals drink at the Holloway bar because nobody there knows their name, carefully
-on different nights, because each would recognise the other in a second. A couple commute in and out
-through Holloway every working day and have a drink while they wait for each other, and her timetable
-entry for that hour reads "telling him everything she heard today". A courier is in more rooms in a day
-than anybody in either district; her round drops an envelope at the tower's front desk and stops at the
-kerb, which is also pinned by a test.</p>
-
-<h2 id="and-elsewhere">And elsewhere</h2>
-
-<p>Ten more people exist who cannot walk to him. A bar owner in Palma, a night-shift radiologist two
-hours away, a gym owner in Berlin, cabin crew whose honest answer to "where are you" is a hotel in a
-city she cannot remember the name of. He reaches them through his phone, and they carry on whether or
-not he opens it. A woman asleep in Palma at four in the afternoon is asleep in Palma at four in the
-afternoon.</p>
-
-<p>Two of the ten are not far away at all, which is deliberate. One has had a bakery four doors from
-his own building for eleven years, and their sleeping hours mean they have never once been awake at the
-same time. The app did not find him a stranger. It found him a neighbour.</p>
+<p>Behind every handle there is exactly one person. Tells are written down at the moment a handle
+is created, one per day in a listing photograph, so the narrator has something to plant from the
+first message and something to pay off at the reveal.</p>
     </article>
-    <nav class="pager" aria-label="Neighbouring pages"><a class="pager-link pager-prev" href="adult-play.html"><span>Previous</span><strong>Adult play</strong></a><a class="pager-link pager-next" href="tremont-phone.html"><span>Next</span><strong>The phone and its apps</strong></a></nav>
+    <nav class="pager" aria-label="Neighbouring pages"><a class="pager-link pager-prev" href="adult-play.html"><span>Previous</span><strong>Adult play</strong></a><a class="pager-link pager-next" href="other-worlds.html"><span>Next</span><strong>Other settings</strong></a></nav>
     <footer class="foot">
       <p>Civitas is a personal project, documented as it actually behaves. The example world is
       fiction and every character in it is an adult.</p>
     </footer>
   </main>
 
-  <aside class="toc" aria-label="On this page"><p class="toc-heading">On this page</p><ul><li><a href="#the-premise">The premise</a></li><li><a href="#how-a-secret-behaves-when-it-is-not-a-stat">How a secret behaves when it is not a stat</a></li><li><a href="#the-four-situations-and-why-the-cheap-route-is-the-expensive-one">The four situations, and why the cheap route is the expensive one</a></li><li><a href="#the-cast-which-is-really-a-wiring-diagram">The cast, which is really a wiring diagram</a></li><li><a href="#the-four-districts">The four districts</a></li><li><a href="#geography-as-a-security-measure">Geography as a security measure</a></li><li><a href="#gossip-crosses-only-through-a-named-person">Gossip crosses only through a named person</a></li><li><a href="#and-elsewhere">And elsewhere</a></li></ul></aside>
+  <aside class="toc" aria-label="On this page"><p class="toc-heading">On this page</p><ul><li><a href="#the-premise">The premise</a></li><li><a href="#how-the-world-is-declared">How the world is declared</a></li><li><a href="#the-secret-as-data">The secret as data</a></li><li><a href="#four-situations-each-with-an-ending-condition">Four situations, each with an ending condition</a></li><li><a href="#the-cast-is-a-wiring-diagram">The cast is a wiring diagram</a></li><li><a href="#the-four-districts">The four districts</a></li><li><a href="#the-phone">The phone</a></li></ul></aside>
 </div>
 </body>
 </html>

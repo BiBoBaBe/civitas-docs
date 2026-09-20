@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Civitas: a world that remembers</title>
-<meta name="description" content="Civitas is a simulated city that a language model narrates. The world remembers; the model writes the room.">
+<title>Civitas: a world simulation for roleplay</title>
+<meta name="description" content="A persistent world simulation that sits beside a roleplay chat, keeps track of what is true, and briefs the model each turn.">
 <meta name="color-scheme" content="light dark">
 <meta property="og:title" content="What Civitas is · Civitas">
-<meta property="og:description" content="Civitas is a simulated city that a language model narrates. The world remembers; the model writes the room.">
+<meta property="og:description" content="A persistent world simulation that sits beside a roleplay chat, keeps track of what is true, and briefs the model each turn.">
 <meta property="og:type" content="article">
 <link rel="stylesheet" href="assets/styles.css">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%2318140f'/%3E%3Cpath%20d='M6%2024V14l10-6%2010%206v10'%20fill='none'%20stroke='%23d79a4e'%20stroke-width='2'%20stroke-linejoin='round'/%3E%3Crect%20x='13'%20y='17'%20width='6'%20height='7'%20fill='%23d79a4e'/%3E%3C/svg%3E">
@@ -20,15 +20,17 @@
   <details class="menu">
     <summary>Contents</summary>
     <nav class="nav" id="nav-mobile" aria-label="Documentation"><p class="nav-heading">Start here</p>
-<ul><li><a href="index.html" aria-current="page">What Civitas is</a></li><li><a href="the-idea.html">The idea in five minutes</a></li><li><a href="why.html">Why it works this way</a></li></ul>
-<p class="nav-heading">How the world works</p>
-<ul><li><a href="people.html">People</a></li><li><a href="motives.html">Wants and motives</a></li><li><a href="time.html">Time</a></li><li><a href="places.html">Places, doors and walls</a></li><li><a href="records.html">What the world records</a></li><li><a href="gossip.html">Gossip</a></li><li><a href="plans.html">Plans, arrangements and trips</a></li><li><a href="terms.html">Terms and couples</a></li><li><a href="pictures.html">Pictures</a></li></ul>
+<ul><li><a href="index.html" aria-current="page">What Civitas is</a></li><li><a href="how-a-turn-works.html">How a turn works</a></li><li><a href="principles.html">Principles</a></li></ul>
+<p class="nav-heading">The simulation</p>
+<ul><li><a href="time.html">Time and routines</a></li><li><a href="places.html">Places and doors</a></li><li><a href="people.html">People and feelings</a></li><li><a href="knowledge.html">What people know</a></li><li><a href="gossip.html">Rumour</a></li><li><a href="motives.html">Wants and situations</a></li><li><a href="plans.html">Plans, tasks and trips</a></li><li><a href="terms.html">Agreements and couples</a></li><li><a href="records.html">What gets written down</a></li></ul>
+<p class="nav-heading">Under the hood</p>
+<ul><li><a href="architecture.html">The engine</a></li><li><a href="bridge.html">The Marinara bridge</a></li></ul>
 <p class="nav-heading">Playing</p>
-<ul><li><a href="screens.html">The screens</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
-<p class="nav-heading">Example worlds</p>
-<ul><li><a href="tremont.html">Tremont</a></li><li><a href="tremont-phone.html">The phone and its apps</a></li><li><a href="isekai.html">Trapped in the game</a></li><li><a href="other-worlds.html">Three more worlds</a></li></ul>
+<ul><li><a href="setup.html">Trying it</a></li><li><a href="screens.html">The World screen</a></li><li><a href="pictures.html">Pictures</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
+<p class="nav-heading">Worlds</p>
+<ul><li><a href="tremont.html">Tremont</a></li><li><a href="other-worlds.html">Other settings</a></li></ul>
 <p class="nav-heading">Building your own</p>
-<ul><li><a href="your-own-world.html">Making your own world</a></li><li><a href="how-a-world-gets-built.html">How a world gets built</a></li><li><a href="limits.html">Honest limits</a></li></ul></nav>
+<ul><li><a href="your-own-world.html">Writing a world card</a></li><li><a href="extending.html">Extending the engine</a></li><li><a href="how-a-world-gets-built.html">The authoring pipeline</a></li><li><a href="limits.html">Limits</a></li></ul></nav>
   </details>
 </header>
 
@@ -36,116 +38,133 @@
   <aside class="sidebar">
     <a class="brand brand-desk" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Civitas<em>documentation</em></a>
     <nav class="nav" id="nav-desktop" aria-label="Documentation"><p class="nav-heading">Start here</p>
-<ul><li><a href="index.html" aria-current="page">What Civitas is</a></li><li><a href="the-idea.html">The idea in five minutes</a></li><li><a href="why.html">Why it works this way</a></li></ul>
-<p class="nav-heading">How the world works</p>
-<ul><li><a href="people.html">People</a></li><li><a href="motives.html">Wants and motives</a></li><li><a href="time.html">Time</a></li><li><a href="places.html">Places, doors and walls</a></li><li><a href="records.html">What the world records</a></li><li><a href="gossip.html">Gossip</a></li><li><a href="plans.html">Plans, arrangements and trips</a></li><li><a href="terms.html">Terms and couples</a></li><li><a href="pictures.html">Pictures</a></li></ul>
+<ul><li><a href="index.html" aria-current="page">What Civitas is</a></li><li><a href="how-a-turn-works.html">How a turn works</a></li><li><a href="principles.html">Principles</a></li></ul>
+<p class="nav-heading">The simulation</p>
+<ul><li><a href="time.html">Time and routines</a></li><li><a href="places.html">Places and doors</a></li><li><a href="people.html">People and feelings</a></li><li><a href="knowledge.html">What people know</a></li><li><a href="gossip.html">Rumour</a></li><li><a href="motives.html">Wants and situations</a></li><li><a href="plans.html">Plans, tasks and trips</a></li><li><a href="terms.html">Agreements and couples</a></li><li><a href="records.html">What gets written down</a></li></ul>
+<p class="nav-heading">Under the hood</p>
+<ul><li><a href="architecture.html">The engine</a></li><li><a href="bridge.html">The Marinara bridge</a></li></ul>
 <p class="nav-heading">Playing</p>
-<ul><li><a href="screens.html">The screens</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
-<p class="nav-heading">Example worlds</p>
-<ul><li><a href="tremont.html">Tremont</a></li><li><a href="tremont-phone.html">The phone and its apps</a></li><li><a href="isekai.html">Trapped in the game</a></li><li><a href="other-worlds.html">Three more worlds</a></li></ul>
+<ul><li><a href="setup.html">Trying it</a></li><li><a href="screens.html">The World screen</a></li><li><a href="pictures.html">Pictures</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
+<p class="nav-heading">Worlds</p>
+<ul><li><a href="tremont.html">Tremont</a></li><li><a href="other-worlds.html">Other settings</a></li></ul>
 <p class="nav-heading">Building your own</p>
-<ul><li><a href="your-own-world.html">Making your own world</a></li><li><a href="how-a-world-gets-built.html">How a world gets built</a></li><li><a href="limits.html">Honest limits</a></li></ul></nav>
+<ul><li><a href="your-own-world.html">Writing a world card</a></li><li><a href="extending.html">Extending the engine</a></li><li><a href="how-a-world-gets-built.html">The authoring pipeline</a></li><li><a href="limits.html">Limits</a></li></ul></nav>
   </aside>
 
   <main id="main" class="content">
     <article class="prose">
       <h1>Civitas</h1>
-      <p class="lede">A roleplay chat forgets. A world does not.</p>
+      <p class="lede">Civitas is a world simulation that runs next to a roleplay chat. It keeps track of
+who is where, who knows what, who owes whom, and what was agreed, and it hands the language model a
+short brief every turn so the model writes from facts instead of from memory.</p>
 
-<figure class="hero">
-  <img src="assets/img/holloway-street.jpg" alt="An isometric view of a wet city street at dusk: four brick walk-ups with fire escapes, a lit corner shop, two street lamps and a bare tree." width="1400" height="930" loading="eager">
-  <figcaption>Holloway Street, in the example world. Four buildings, a bar on the corner, and
-  everybody in them on their own timetable.</figcaption>
-</figure>
+<p>Long roleplay with a language model drifts. The model is the only thing remembering, and it is
+remembering out of a transcript that gets summarised, trimmed and paraphrased. Money that was owed
+is forgotten. Somebody who stormed out is back in the room. Two characters give two versions of the
+same night because nothing ever decided what happened.</p>
 
-<p>When you play out a long story with a language model, the model is the thing doing the
-remembering, and it is remembering out of a transcript. For twenty turns that works beautifully.
-Then the money she owed you quietly evaporates. The man who swore he would never speak to you again
-greets you warmly. Two people give different accounts of the same night, not because either is
-lying, but because nothing ever decided what happened.</p>
+<p>Civitas takes the remembering away from the model. The world lives in a small simulation with
+its own clock, its own map and its own record of events. Each turn it writes a brief of about half
+a page and gives that to the model, which writes the scene. The model's reply is then read back
+into the world, checked, and recorded. Nothing is true because a model remembered it. Things are
+true because they are written down.</p>
 
-<p>Civitas moves the remembering somewhere that can do it. A small simulated city holds who is
-where, who knows what, who owes whom, who is asleep, and what is behind which door. Every turn it
-writes a short brief, about half a page, and hands that to the model, which does the one thing it is
-extraordinary at. It writes the room and voices the people in it. Then the prose is read back in,
-and whatever happened becomes part of the world.</p>
+<h2 id="what-a-turn-looks-like">What a turn looks like</h2>
 
-<p>Nothing is remembered because a model happened to remember it.</p>
+<p>This is the brief the model receives for the smallest world that ships with the engine, a bar
+with eight people in it and one unpaid debt. It is the whole of what the model is told about the
+world on that turn.</p>
 
-<h2 id="what-that-buys-you">What that buys you</h2>
+<pre><code>TIME: day 0, 19:00
+PLACE: The Anchor, the Docks
+  A low bar with long benches and a scarred counter.
+YOU: Sam Vale
+PRESENT:
+  Anna Reed (mechanic)
+    doing: keeping to the day
+  the cook, works here
+    doing: keeping to the day
+  the broker
+    doing: nothing in particular to do
+  the welder
+    doing: keeping to the day
+    believes: Anna Reed owes the clerk 200
+  the clerk
+    doing: keeping to the day
+    believes: Anna Reed owes the clerk 40
+OPEN:
+  [debt/escalating] Anna owes the clerk forty coins for the delivery job;
+    he has stopped being patient. (29 days left)
+  [secret/open] the welder has the wrong idea about Anna Reed, and believes
+    it firmly enough to repeat it.
 
-<p>The difference does not show up in a feature list. It shows up in the small things you notice on
-a Tuesday.</p>
+— 171/400 tokens (pinned floor 92)</code></pre>
 
-<div class="case">
-  <p class="case-title">A shut door</p>
-  <p>Two people go into the private studio at the back of the gym and lock it. A woman racking
-  plates fifteen feet away does not see a thing that happens in there, and the world knows she does
-  not. Nothing from inside reaches her. But she knows perfectly well that two people went in
-  together and shut the door, because that part happened in front of her. What she learns afterwards
-  is whatever one of them decides to tell her.</p>
-</div>
+<p>Three details show what the simulation is doing. Anna is named and the clerk is not, because
+you have been introduced to one and not the other. The welder thinks the debt is two hundred and the
+clerk, who is owed it, knows it is forty. And the brief is rebuilt from scratch every turn against
+a token budget, so it cannot slowly corrupt the way a carried-forward summary does.</p>
 
-<p>That is one rule about rooms, and a week of consequences comes out of it. The boiler is
-another.</p>
+<p><a href="how-a-turn-works.html">How a turn works</a> follows one reply through the whole loop.</p>
 
-<div class="case">
-  <p class="case-title">A cold flat</p>
-  <p>The boiler at 214 Holloway is dead. The quote to replace it is more than the building earns in
-  a season, and the landlady has not said no to a developer who wants to buy the place. It is a wet
-  autumn. Everybody in that building is cold, every day, and it is one of the few things they all
-  have to talk about. You can write a cheque and it is over by lunchtime, except that writing a
-  cheque that size in front of people tells them something about you that you cannot take back.</p>
-</div>
+<h2 id="what-the-simulation-tracks">What the simulation tracks</h2>
 
-<p>Some of it is one line of world data and still does the work. A bartender has not cashed her last
-three pay cheques, because she closes the till every night and knows they would bounce. A figure
-grows as a story is retold: forty becomes two hundred becomes three hundred and fifty, and nobody in
-that chain is lying. Somebody two drinks in tells you a thing they would not have told you sober,
-and the world records that it came out early and why. An anonymous handle on an app shows a lime
-under a thumbnail, which is the same lime that was in a bowl on her table.</p>
-
-<h2 id="it-does-not-have-to-be-innocent-and-it-does-not-have-to-be-porn">It does not have to be innocent, and it does not have to be porn</h2>
-
-<p>An engine that tracks who knows what, who owes whom, and who is standing behind which door is as
-useful for a conspiracy as for a romance. A scheme. A debt. A favour called in. A secret that would
-cost somebody their job. A rumour that reaches the wrong person a day too early. Same machinery,
-different nouns.</p>
-
-<p>The example world is a modern city with adult material in it. The engine has no
-opinion about genre at all, and I have sketched out
-<a href="isekai.html">a game nobody can log out of</a> and
-<a href="other-worlds.html">three more worlds</a> to make that concrete, because I would rather
-somebody built the thing I have not thought of.</p>
-
-<p>Civitas also supports adult play, for adults, and it is off until you turn it on. How that works,
-including consent as an object you can point at and a safeword that always ends it, is on
-<a href="adult-play.html">its own page</a>. Nothing on this site is explicit.</p>
-
-<h2 id="where-to-go-next">Where to go next</h2>
-
-<ul class="cards">
-  <li><a href="the-idea.html"><strong>The idea in five minutes</strong><span>How a world becomes a
-  prompt, and how prose becomes world again.</span></a></li>
-  <li><a href="people.html"><strong>People</strong><span>What somebody is: their day, their job,
-  what they want, what they are keeping.</span></a></li>
-  <li><a href="places.html"><strong>Places, doors and walls</strong><span>Who can see, who can only
-  hear, and who merely notices.</span></a></li>
-  <li><a href="tremont.html"><strong>The example world</strong><span>Tremont: four districts, a
-  cold flat, and a man who cannot afford to be known.</span></a></li>
+<ul>
+  <li><strong>Time.</strong> A fictional clock that only moves when the story moves it. Everybody
+  has a timetable and follows it while you are not looking. See <a href="time.html">Time and
+  routines</a>.</li>
+  <li><strong>Places.</strong> Rooms inside buildings inside streets, with doors. Who saw a thing
+  is worked out from who was in the room. See <a href="places.html">Places and doors</a>.</li>
+  <li><strong>People.</strong> Five separate feelings towards each person they know, things they
+  keep to themselves, and a small set of wants. See <a href="people.html">People and
+  feelings</a>.</li>
+  <li><strong>Knowledge.</strong> What each person believes, how they came to believe it, and how
+  their version differs from the truth. See <a href="knowledge.html">What people know</a> and
+  <a href="gossip.html">Rumour</a>.</li>
+  <li><strong>Commitments.</strong> Plans people made out loud, tasks they took on, and agreements
+  they signed. See <a href="plans.html">Plans, tasks and trips</a> and
+  <a href="terms.html">Agreements and couples</a>.</li>
 </ul>
 
-<p>Civitas is the engine. It plugs into <a href="screens.html">a chat app</a> that puts a World
-screen next to the conversation, but the world itself is what these pages are about.</p>
+<h2 id="what-the-model-does-and-does-not-do">What the model does and does not do</h2>
+
+<p>The model writes the prose and voices the characters. That is the whole of its job. It cannot
+move you, spend your money, decide what you feel, or decide what you believe. When it tries, the
+simulation refuses the change and asks for a corrected reply. The simulation, for its part, never
+writes a sentence of story. It records, refuses, and moves the people who are not you.</p>
+
+<p>This split is the foundation everything else is built on. <a href="principles.html">Principles</a>
+lists the rules that follow from it, and <a href="architecture.html">The engine</a> explains how they
+are enforced.</p>
+
+<h2 id="how-you-use-it">How you use it</h2>
+
+<p>Civitas has no chat interface of its own. It runs as a small service next to Marinara, which
+sends each reply to it and shows a World screen beside the conversation. The screen is a window
+onto the simulation: you can see who is where, what people intend to do next, and how they feel,
+without being told anything your character could not know. See
+<a href="setup.html">Trying it</a> and <a href="screens.html">The World screen</a>.</p>
+
+<p>The example world, Tremont, is a modern city with a cast of about forty. It is one world among
+the ones the engine can run, and the engine has no opinion about genre. The same machinery that
+tracks a debt tracks an oath, a treaty or a spell. See <a href="tremont.html">Tremont</a> and
+<a href="your-own-world.html">Writing a world card</a>.</p>
+
+<div class="note">
+  <p class="note-title">Status</p>
+  <p>Civitas is a working prototype in private testing. Playing works through Marinara. Writing a
+  new world is a file and a command rather than a screen. <a href="limits.html">Limits</a> lists
+  what is unfinished, and every page on this site says plainly when something is not built.</p>
+</div>
     </article>
-    <nav class="pager" aria-label="Neighbouring pages"><span class="pager-link pager-empty"></span><a class="pager-link pager-next" href="the-idea.html"><span>Next</span><strong>The idea in five minutes</strong></a></nav>
+    <nav class="pager" aria-label="Neighbouring pages"><span class="pager-link pager-empty"></span><a class="pager-link pager-next" href="how-a-turn-works.html"><span>Next</span><strong>How a turn works</strong></a></nav>
     <footer class="foot">
       <p>Civitas is a personal project, documented as it actually behaves. The example world is
       fiction and every character in it is an adult.</p>
     </footer>
   </main>
 
-  <aside class="toc" aria-label="On this page"><p class="toc-heading">On this page</p><ul><li><a href="#what-that-buys-you">What that buys you</a></li><li><a href="#it-does-not-have-to-be-innocent-and-it-does-not-have-to-be-porn">It does not have to be innocent, and it does not have to be porn</a></li><li><a href="#where-to-go-next">Where to go next</a></li></ul></aside>
+  <aside class="toc" aria-label="On this page"><p class="toc-heading">On this page</p><ul><li><a href="#what-a-turn-looks-like">What a turn looks like</a></li><li><a href="#what-the-simulation-tracks">What the simulation tracks</a></li><li><a href="#what-the-model-does-and-does-not-do">What the model does and does not do</a></li><li><a href="#how-you-use-it">How you use it</a></li></ul></aside>
 </div>
 </body>
 </html>

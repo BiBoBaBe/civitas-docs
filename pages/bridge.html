@@ -1,0 +1,113 @@
+<!-- meta
+title: The Marinara bridge
+description: How Civitas runs beside Marinara: the service, what the bridge can and cannot ask for, how character cards bind to people, and how phone apps fit.
+-->
+
+<p class="lede">Civitas has no chat interface of its own. It runs as a small HTTP service, and
+Marinara talks to it through a bridge extension. The bridge can ask for a brief, hand back a
+reply, and perform the player's own actions. It cannot fetch the world.</p>
+
+<h2>The shape of it</h2>
+
+<p>Two processes. Marinara owns the conversation, the model connection and the screen. Civitas
+owns the world. Each turn, the bridge asks Civitas for a brief, puts it into the prompt, sends the
+model's reply back, and shows what Civitas made of it.</p>
+
+<pre><code>Marinara                              Civitas
+  |-- GET  /sessions/:id/brief ------->|   assemble the brief
+  |<-- text + structure ---------------|
+  |   (model writes the reply)          |
+  |-- POST /sessions/:id/turn -------->|   parse, adjudicate, commit, tick
+  |<-- accepted, rejected, events -----|
+  |-- GET  /sessions/:id/view -------->|   everything the World screen needs
+  |<-- view ---------------------------|</code></pre>
+
+<p>Every route except the health check requires a service key. There is no unauthenticated
+mode.</p>
+
+<h2>What the bridge can ask for</h2>
+
+<table>
+  <thead><tr><th>Route</th><th>What it does</th></tr></thead>
+  <tbody>
+    <tr><td><code>POST /sessions</code></td><td>Open a world, built-in or from a card, and bind character cards by name.</td></tr>
+    <tr><td><code>GET .../brief</code></td><td>The scene brief, rendered and structured, with an optional budget.</td></tr>
+    <tr><td><code>GET .../verbs</code></td><td>The tag table as prompt lines.</td></tr>
+    <tr><td><code>GET .../vocabulary</code></td><td>The names a constrained model may use, for a JSON schema.</td></tr>
+    <tr><td><code>POST .../turn</code></td><td>A reply in; adjudication and committed events out.</td></tr>
+    <tr><td><code>POST .../reroll</code></td><td>A swipe: fork before that reply and stand on the fork.</td></tr>
+    <tr><td><code>GET .../view</code>, <code>.../state</code>, <code>.../apps</code></td><td>Read-only projections for the World screen and the phone.</td></tr>
+    <tr><td><code>POST .../walk</code>, <code>.../wait</code>, <code>.../skip</code>, <code>.../pay</code>, <code>.../text</code>, <code>.../plan</code></td><td>The player's own actions, taken from the player's own screen.</td></tr>
+    <tr><td><code>POST .../app</code></td><td>Everything the phone's apps do, one sub-route each.</td></tr>
+    <tr><td><code>GET .../text-brief</code>, <code>.../app-brief</code></td><td>What a model is told when writing as somebody by text or under a handle.</td></tr>
+  </tbody>
+</table>
+
+<p>The player's actions have their own routes, separate from narration, because the narrator may
+not take them. Walking, paying and texting from the World screen are your acts, and the screen is
+the warrant.</p>
+
+<h2>What it cannot ask for</h2>
+
+<p>There is no route that returns the graph. The comment at the top of the server says why:</p>
+
+<blockquote><p>A bridge that can reach into the world is a bridge that eventually will, and then
+two processes own the truth instead of one.</p></blockquote>
+
+<p>Everything the screen shows comes through views that are computed on the Civitas side and
+already filtered to what you could know. The bridge never walks the graph, and a bug in the
+bridge cannot corrupt the world.</p>
+
+<h2>Views</h2>
+
+<p>Two read-only projections serve the screen. The <strong>world view</strong> answers who knows
+what about you, how each person regards you, and which situations are open. The <strong>game
+view</strong> serves the phone, the apps, tasks, plans, the journal, the purse and the garage.
+Both are computed from the log on request, and both respect what you have and have not learned:
+a person you have not been introduced to appears as a role, and a secret appears as a count of
+locks, never as its contents.</p>
+
+<h2>Character cards</h2>
+
+<p>People in a world are voiced by ordinary character cards, matched by name. Matching ignores
+case and punctuation and nothing else. A card nobody answers to is reported rather than attached
+to whoever was closest, and a person with no card is voiced from the world's own description.</p>
+
+<p>The card says who somebody is and how they talk. The world says where they are and what is
+happening. Where they disagree, the world wins, because the card may have been written for
+another story.</p>
+
+<p>A card can carry an optional block under <code>extensions.civitas</code>. Ordinary apps ignore
+it. It holds pronouns, a pinned look for pictures, secrets with trust gates, and an ordered list
+given up one item at a time. Binding the same card twice is a no-op, which matters because a host
+reopening a chat will do exactly that.</p>
+
+<h2>Phone apps</h2>
+
+<p>Apps are engine-level, and a world chooses which to use. The engine ships four: a phone for
+texts, an anonymous meeting app, a cam platform and a tasks app. The list is explicitly not
+closed; a world may add others.</p>
+
+<p>One rule governs all of them: <em>events point at people, views point at handles</em>. There
+is only ever one person behind a handle, with all their feelings, shifts and rumours attached. The
+handle is a mask on your screen. Nothing the bridge can read, including listings, threads and the
+feed, carries the name or identifier behind a handle, because one shared identifier would undo the
+anonymity in a single step.</p>
+
+<p>Two facts are tracked separately: whether they know who you are, and whether you know who they
+are. The first is often true first. The second only ever comes from your own message, because
+recognising somebody is a thing you do. A wrong guess costs nothing and leaves no trace.</p>
+
+<h2>Where the pieces live</h2>
+
+<table>
+  <thead><tr><th>Piece</th><th>Where</th></tr></thead>
+  <tbody>
+    <tr><td>The simulation and the service</td><td>The Civitas repository, run with <code>bun run serve</code></td></tr>
+    <tr><td>The bridge extension and the World screen</td><td>Installed into Marinara</td></tr>
+    <tr><td>The narrator model and the scene reader</td><td>Whatever text model Marinara is connected to</td></tr>
+    <tr><td>Picture generation</td><td>A separate image backend, optional</td></tr>
+  </tbody>
+</table>
+
+<p><a href="setup.html">Trying it</a> says what each of these needs.</p>

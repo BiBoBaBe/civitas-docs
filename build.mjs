@@ -20,46 +20,54 @@ const SECTIONS = [
     title: "Start here",
     pages: [
       ["index", "What Civitas is"],
-      ["the-idea", "The idea in five minutes"],
-      ["why", "Why it works this way"],
+      ["how-a-turn-works", "How a turn works"],
+      ["principles", "Principles"],
     ],
   },
   {
-    title: "How the world works",
+    title: "The simulation",
     pages: [
-      ["people", "People"],
-      ["motives", "Wants and motives"],
-      ["time", "Time"],
-      ["places", "Places, doors and walls"],
-      ["records", "What the world records"],
-      ["gossip", "Gossip"],
-      ["plans", "Plans, arrangements and trips"],
-      ["terms", "Terms and couples"],
-      ["pictures", "Pictures"],
+      ["time", "Time and routines"],
+      ["places", "Places and doors"],
+      ["people", "People and feelings"],
+      ["knowledge", "What people know"],
+      ["gossip", "Rumour"],
+      ["motives", "Wants and situations"],
+      ["plans", "Plans, tasks and trips"],
+      ["terms", "Agreements and couples"],
+      ["records", "What gets written down"],
+    ],
+  },
+  {
+    title: "Under the hood",
+    pages: [
+      ["architecture", "The engine"],
+      ["bridge", "The Marinara bridge"],
     ],
   },
   {
     title: "Playing",
     pages: [
-      ["screens", "The screens"],
+      ["setup", "Trying it"],
+      ["screens", "The World screen"],
+      ["pictures", "Pictures"],
       ["adult-play", "Adult play"],
     ],
   },
   {
-    title: "Example worlds",
+    title: "Worlds",
     pages: [
       ["tremont", "Tremont"],
-      ["tremont-phone", "The phone and its apps"],
-      ["isekai", "Trapped in the game"],
-      ["other-worlds", "Three more worlds"],
+      ["other-worlds", "Other settings"],
     ],
   },
   {
     title: "Building your own",
     pages: [
-      ["your-own-world", "Making your own world"],
-      ["how-a-world-gets-built", "How a world gets built"],
-      ["limits", "Honest limits"],
+      ["your-own-world", "Writing a world card"],
+      ["extending", "Extending the engine"],
+      ["how-a-world-gets-built", "The authoring pipeline"],
+      ["limits", "Limits"],
     ],
   },
 ];
@@ -137,7 +145,7 @@ function shell({ slug, title, description, body, headings, isError }) {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${slug === "index" ? "Civitas: a world that remembers" : `${title} · Civitas`}</title>
+<title>${slug === "index" ? "Civitas: a world simulation for roleplay" : `${title} · Civitas`}</title>
 <meta name="description" content="${description}">
 <meta name="color-scheme" content="light dark">
 <meta property="og:title" content="${title} · Civitas">

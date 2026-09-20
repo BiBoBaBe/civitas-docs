@@ -1,0 +1,114 @@
+<!-- meta
+title: What people know
+description: Facts, beliefs and provenance: how the world separates what is true from what each person thinks is true, and why firsthand knowledge never fades.
+-->
+
+<p class="lede">The world keeps what is true and what each person believes as two different
+things. A fact is a record. A belief is a link from a person to that fact, carrying their version
+of it and how they came by it.</p>
+
+<h2>Facts and beliefs</h2>
+
+<p>A <strong>fact</strong> is something that happened or something that is the case: she owes him
+forty, he tipped the bartender a hundred, two people went into the back room and shut the door.
+Facts are written once and never edited.</p>
+
+<p>A <strong>belief</strong> is what one person holds about a fact. It carries four things:</p>
+
+<pre><code>interface Belief {
+  confidence: number;      // 0..1, decays per rumour hop
+  distortion: number;      // 0..1, how mangled this person's version is
+  heldValue: number | string | null;   // what they think is true, which may differ from the fact
+  inConfidence?: boolean;  // they were asked to keep this to themselves
+}</code></pre>
+
+<p>Two people can hold the same fact and say different things with nobody lying. The clerk who is
+owed forty holds it at forty. The welder heard it at a bar and holds it at two hundred. Ask them in
+the same room and the brief gives the narrator both numbers.</p>
+
+<p>Pay the debt and the fact changes. The beliefs do not. Everybody who was not there still
+believes you owe it, in good faith, until the news reaches them separately. Nothing had to
+remember to be inconsistent, because two different things are being recorded.</p>
+
+<h2>Provenance: how they came to know</h2>
+
+<p>Every belief records how it was acquired. This is the single most important property a belief
+has, because it decides everything that happens to it afterwards.</p>
+
+<pre><code>type Provenance =
+  | { kind: "authored" }
+  | { kind: "witnessed"; event: EventId }
+  | { kind: "told"; by: PersonId; at: WorldTime; early?: string }
+  | { kind: "inferred"; from: FactId[] };</code></pre>
+
+<dl class="terms">
+  <dt>Authored</dt>
+  <dd>Written into the world by whoever built it. The clerk knows about the debt because the world
+  said so.</dd>
+  <dt>Witnessed</dt>
+  <dd>They were in the room when it happened. Full confidence, no distortion, and it never fades.</dd>
+  <dt>Told</dt>
+  <dd>Somebody told them. The record says who and when. If it was said before trust would have
+  allowed it, the reason is recorded too, such as "drunk".</dd>
+  <dt>Inferred</dt>
+  <dd>They worked it out from other facts they hold. A person who has stood in the penthouse
+  knows about the money without anybody having said a word.</dd>
+</dl>
+
+<h2>Firsthand knowledge never fades</h2>
+
+<p>A thing you saw is a thing you know for good. A thing you were told at a bar three weeks ago,
+by somebody who heard it from somebody, is not knowledge in the same way. If nothing happens to
+remind anybody, it stops being repeated and then stops being believed.</p>
+
+<table>
+  <thead><tr><th>Setting</th><th>Default</th><th>Meaning</th></tr></thead>
+  <tbody>
+    <tr><td>Secondhand half-life</td><td>3 days</td><td>Confidence halves every three days of world time</td></tr>
+    <tr><td>Floor</td><td>0.15</td><td>Below this the belief is no longer held</td></tr>
+    <tr><td>Firsthand decay</td><td>None</td><td>Witnessed beliefs keep their confidence forever</td></tr>
+  </tbody>
+</table>
+
+<p>This is what makes going quiet a real move. The street's sense that there is money around you
+fades over a fortnight. The four people who actually saw it never stop knowing.</p>
+
+<p>Decay is not written back. Nothing emits an event every hour to lower a number. Current
+confidence is a function of the belief and the clock, so it costs nothing and cannot drift.</p>
+
+<h2>Who witnessed what</h2>
+
+<p>Witnessing is worked out from location. If you were in the same room at the minute a thing
+happened, you witnessed it, and a belief is created for you with witnessed provenance. Nothing
+stores a list of witnesses on the fact, because the list is answerable from the history at any
+time. See <a href="places.html">Places and doors</a> for how rooms, doors and volume narrow that
+down.</p>
+
+<h2>The player is not a database entry</h2>
+
+<p>The world never decides what you believe. No belief is written for you by the simulation, you
+receive no rumours, and the narrator is refused when it tries to tell the world what you now know.
+You learn things by being told, in the fiction, like a person. The one exception is your own
+message: things you say and do are recorded as yours because you wrote them.</p>
+
+<h2>Names and introductions</h2>
+
+<p>What you call somebody is itself a belief. Until you have been introduced, the brief calls a
+person by their role: "the cook, works here". Once you know their name, it uses the name. The
+journal is rendered with the names you had at the time, so a recap of last week does not use a
+name you only learned yesterday.</p>
+
+<h2>Secrets that give themselves away</h2>
+
+<p>A world can declare <strong>disclosure rules</strong>: conditions under which somebody comes to
+hold a fact without being told. Standing in a particular place. Seeing a single payment over a
+threshold. Being in a room with a particular person. The belief created this way is inferred, not
+witnessed, so it can be a guess rather than a certainty: they saw the money, not the number.</p>
+
+<div class="case">
+  <p class="case-title">In Tremont</p>
+  <p>The player's wealth is a fact from the first minute, held by one person in confidence. Three
+  disclosure rules give it away: anybody who has ever stood in the penthouse, anybody who sees a
+  single payment over five thousand, and anybody who sees the player on his own street next to
+  the man who drives him. A short list of phrases the player might type gives it away in part.</p>
+</div>

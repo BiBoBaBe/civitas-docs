@@ -1,0 +1,139 @@
+<!-- meta
+title: Extending the engine
+description: Worlds written in code, and the five things a world can declare without touching the engine: quantities, kinds of situation, verbs, voice, and place markers.
+-->
+
+<p class="lede">A world can declare what it counts, what kinds of situation it has, what verbs it
+adds, how its narrator writes, and which places have special properties. The engine never learns
+what any of it means. This page shows each declaration as it is actually written.</p>
+
+<h2>A world in code</h2>
+
+<p>A code world is a TypeScript file that seeds the same things a card does, with more room:
+places that nest, schedules with weekday masks and priorities, secrets with trust gates,
+disclosure rules, ladders of wants, a calendar, a climate, and a voice. Then one line registers
+it, and the command line and the service open it the same way.</p>
+
+<pre><code>export interface BuiltInWorld {
+  id: string;
+  name: string;
+  opening: string;                 // what the player reads before anybody has spoken
+  seed(store: EventStore, branch: BranchId): void;
+  player: PersonId;
+  opensAt: WorldTime;              // the hour the world is worth walking into
+  tick: Omit&lt;TickOptions, "minutes" | "player"&gt;;   // ladders, disclosure, the scanner
+  voice: VoiceContract;
+  residents: readonly PersonId[];  // whose opinions count as "the street"
+  secret?: FactId;                 // the thing the world turns on, if it turns on one
+  calendar?: Calendar;
+  climate?: Climate;
+  tells?: readonly RegExp[];       // what the player might say that gives the secret away
+  beatMinutes?: number;            // minutes an exchange costs when the narrator does not say
+}</code></pre>
+
+<p>The registry exists so that the command line and the service open a world identically. A
+world that only one of them knows how to start is a world that behaves differently depending on
+who asked.</p>
+
+<h2>Quantities</h2>
+
+<p>Money was the first quantity and for a while the only one. Health, stamina, standing and mana
+are the same shape: a number per person, moved only by events, sometimes conserved, sometimes
+capped, sometimes coming back on its own. So a world declares what it counts:</p>
+
+<pre><code>declareResource(COIN,    { conserved: true, min: 0 });
+declareResource(STAMINA, { conserved: false, min: 0, max: 100, regenPerHour: 6 });
+declareResource(MANA,    { min: 0, max: 50, regenPerHour: 3 });</code></pre>
+
+<p>The defaults are the unremarkable ones: floors at zero, no ceiling, no regeneration, not
+conserved. Conserved is a strong claim, so a world has to make it out loud, and the invariant
+harness then proves every turn that nothing was minted. Three events move a quantity:
+<code>granted</code> adds to the world, <code>spent</code> takes away, <code>transferred</code>
+never changes the total.</p>
+
+<h2>Kinds of situation</h2>
+
+<p>Seven kinds ship: debt, promise, grudge, attraction, contract, secret, rivalry. They are
+ordinary declarations, and a world's own kinds stack on top of them. Nothing in the engine knows
+what a debt is; it knows a debt has a creditor because the declaration said which stance that
+is.</p>
+
+<pre><code>export const CASTING_KIND = declareThreadKind("casting", {
+  aggrievedStances: ["channelling"],   // who is owed something when one breaks
+  stakes: 0.7,                          // when a verb opens one without saying
+  holdsInPlace: ["channelling"],        // stances that keep somebody where they are
+  onBroken: { kind: "grudge", wrongedStance: "aggrieved", atFaultStance: "at fault" },
+});</code></pre>
+
+<p><code>holdsInPlace</code> is worth noticing. Most situations do not keep you anywhere; you can
+owe a man money from anywhere. Some are a thing you are in the middle of doing, and the tick
+should not walk you off to the bar halfway through. A world names those stances and the routine
+stops moving them.</p>
+
+<h2>Verbs</h2>
+
+<p>A verb is what a tag does: its arguments, its preconditions, and the events it produces. Most
+new verbs are data, a requirement the graph can already answer and an effect it already knows how
+to apply. When a mechanic needs logic, the verb is an ordinary function that returns events, and
+by the time the adjudicator has it there is nothing to tell it apart from a built-in one.</p>
+
+<p>This is the start of a spell-casting verb from the magic system that ships as a worked example,
+written entirely as world content with nothing patched in the engine:</p>
+
+<pre><code>{
+  name: "begin_cast",
+  args: { person: "person", spell: "text", cost: "number" },
+  help: `&lt;&lt;begin_cast person="NAME" spell="what they are working" cost="NUMBER"&gt;&gt; — somebody starts holding a spell. It does nothing until released.`,
+  check({ world, at, player, args }) {
+    if (args.person === player) return no("that is the player's to decide", "let him decide it himself");
+    if (balanceIn(world, MANA, args.person) &lt; args.number.cost) return no(`they only have ${held} mana`, `cast for at most ${held}`);
+    if (heldSpell(world, args.person, at)) return no("they are already holding one", "release or drop it first");
+    return ok;
+  },
+  effects(context) {
+    return [
+      eventInput("spent", at, { resource: MANA, person: caster, amount: cost }, { witnesses: seen }),
+      eventInput("node_added", at, { node: makeThread(id, summary, { threadKind: "casting", ... }) }),
+      eventInput("edge_added", at, { edge: { type: "INVOLVED_IN", from: caster, to: id, stance: "channelling", ... } }),
+    ];
+  },
+}</code></pre>
+
+<p>Three things to notice. The same authority rule every verb has: the narrator does not decide
+what the player does with his own hands. The mana is spent up front, so an interruption costs
+something. And the spell is a situation like any other, so the brief shows it to the narrator
+without anybody writing a renderer for spells.</p>
+
+<h2>Voice</h2>
+
+<p>Everything about how the story reads is supplied by the world. Nothing about what is true
+is:</p>
+
+<pre><code>export interface VoiceContract {
+  name: string;
+  rules: string;          // rules for the narrator, tuned independently of the brief
+  targetWords?: number;   // roughly how long a reply should be
+}</code></pre>
+
+<p>The adult switch lives here too, as a rule in the contract rather than a flag in the engine.</p>
+
+<h2>Place markers</h2>
+
+<p>A place can carry three optional markers, all covered on
+<a href="places.html">Places and doors</a>:</p>
+
+<table>
+  <thead><tr><th>Field</th><th>Meaning</th></tr></thead>
+  <tbody>
+    <tr><td><code>ownDoor</code></td><td>The place is its own premises for earshot: a flat rather than a room in a gym.</td></tr>
+    <tr><td><code>vehicle</code></td><td>A place you ride inside, with an optional driver who is present and hears everything, and a seat count.</td></tr>
+    <tr><td><code>conspicuous</code></td><td>0 to 1, how much it draws eyes. Separate from whether it gets you anywhere.</td></tr>
+  </tbody>
+</table>
+
+<h2>What stays closed</h2>
+
+<p>Event sourcing, temporal links, the fold, branching, rumour diffusion, brief assembly and the
+invariant harness are the engine. A world does not reach into them. Everything on this page is a
+declaration the engine reads, which is what keeps a world tradeable and keeps the tests
+meaningful for every world at once.</p>

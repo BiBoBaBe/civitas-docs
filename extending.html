@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Extending the engine · Civitas</title>
+<meta name="description" content="Worlds written in code, and the five things a world can declare without touching the engine: quantities, kinds of situation, verbs, voice, and place markers.">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="Extending the engine · Civitas">
+<meta property="og:description" content="Worlds written in code, and the five things a world can declare without touching the engine: quantities, kinds of situation, verbs, voice, and place markers.">
+<meta property="og:type" content="article">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%2318140f'/%3E%3Cpath%20d='M6%2024V14l10-6%2010%206v10'%20fill='none'%20stroke='%23d79a4e'%20stroke-width='2'%20stroke-linejoin='round'/%3E%3Crect%20x='13'%20y='17'%20width='6'%20height='7'%20fill='%23d79a4e'/%3E%3C/svg%3E">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Civitas</a>
+  <details class="menu">
+    <summary>Contents</summary>
+    <nav class="nav" id="nav-mobile" aria-label="Documentation"><p class="nav-heading">Start here</p>
+<ul><li><a href="index.html">What Civitas is</a></li><li><a href="how-a-turn-works.html">How a turn works</a></li><li><a href="principles.html">Principles</a></li></ul>
+<p class="nav-heading">The simulation</p>
+<ul><li><a href="time.html">Time and routines</a></li><li><a href="places.html">Places and doors</a></li><li><a href="people.html">People and feelings</a></li><li><a href="knowledge.html">What people know</a></li><li><a href="gossip.html">Rumour</a></li><li><a href="motives.html">Wants and situations</a></li><li><a href="plans.html">Plans, tasks and trips</a></li><li><a href="terms.html">Agreements and couples</a></li><li><a href="records.html">What gets written down</a></li></ul>
+<p class="nav-heading">Under the hood</p>
+<ul><li><a href="architecture.html">The engine</a></li><li><a href="bridge.html">The Marinara bridge</a></li></ul>
+<p class="nav-heading">Playing</p>
+<ul><li><a href="setup.html">Trying it</a></li><li><a href="screens.html">The World screen</a></li><li><a href="pictures.html">Pictures</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
+<p class="nav-heading">Worlds</p>
+<ul><li><a href="tremont.html">Tremont</a></li><li><a href="other-worlds.html">Other settings</a></li></ul>
+<p class="nav-heading">Building your own</p>
+<ul><li><a href="your-own-world.html">Writing a world card</a></li><li><a href="extending.html" aria-current="page">Extending the engine</a></li><li><a href="how-a-world-gets-built.html">The authoring pipeline</a></li><li><a href="limits.html">Limits</a></li></ul></nav>
+  </details>
+</header>
+
+<div class="shell">
+  <aside class="sidebar">
+    <a class="brand brand-desk" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Civitas<em>documentation</em></a>
+    <nav class="nav" id="nav-desktop" aria-label="Documentation"><p class="nav-heading">Start here</p>
+<ul><li><a href="index.html">What Civitas is</a></li><li><a href="how-a-turn-works.html">How a turn works</a></li><li><a href="principles.html">Principles</a></li></ul>
+<p class="nav-heading">The simulation</p>
+<ul><li><a href="time.html">Time and routines</a></li><li><a href="places.html">Places and doors</a></li><li><a href="people.html">People and feelings</a></li><li><a href="knowledge.html">What people know</a></li><li><a href="gossip.html">Rumour</a></li><li><a href="motives.html">Wants and situations</a></li><li><a href="plans.html">Plans, tasks and trips</a></li><li><a href="terms.html">Agreements and couples</a></li><li><a href="records.html">What gets written down</a></li></ul>
+<p class="nav-heading">Under the hood</p>
+<ul><li><a href="architecture.html">The engine</a></li><li><a href="bridge.html">The Marinara bridge</a></li></ul>
+<p class="nav-heading">Playing</p>
+<ul><li><a href="setup.html">Trying it</a></li><li><a href="screens.html">The World screen</a></li><li><a href="pictures.html">Pictures</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
+<p class="nav-heading">Worlds</p>
+<ul><li><a href="tremont.html">Tremont</a></li><li><a href="other-worlds.html">Other settings</a></li></ul>
+<p class="nav-heading">Building your own</p>
+<ul><li><a href="your-own-world.html">Writing a world card</a></li><li><a href="extending.html" aria-current="page">Extending the engine</a></li><li><a href="how-a-world-gets-built.html">The authoring pipeline</a></li><li><a href="limits.html">Limits</a></li></ul></nav>
+  </aside>
+
+  <main id="main" class="content">
+    <article class="prose">
+      <h1>Extending the engine</h1>
+      <p class="lede">A world can declare what it counts, what kinds of situation it has, what verbs it
+adds, how its narrator writes, and which places have special properties. The engine never learns
+what any of it means. This page shows each declaration as it is actually written.</p>
+
+<h2 id="a-world-in-code">A world in code</h2>
+
+<p>A code world is a TypeScript file that seeds the same things a card does, with more room:
+places that nest, schedules with weekday masks and priorities, secrets with trust gates,
+disclosure rules, ladders of wants, a calendar, a climate, and a voice. Then one line registers
+it, and the command line and the service open it the same way.</p>
+
+<pre><code>export interface BuiltInWorld {
+  id: string;
+  name: string;
+  opening: string;                 // what the player reads before anybody has spoken
+  seed(store: EventStore, branch: BranchId): void;
+  player: PersonId;
+  opensAt: WorldTime;              // the hour the world is worth walking into
+  tick: Omit&lt;TickOptions, "minutes" | "player"&gt;;   // ladders, disclosure, the scanner
+  voice: VoiceContract;
+  residents: readonly PersonId[];  // whose opinions count as "the street"
+  secret?: FactId;                 // the thing the world turns on, if it turns on one
+  calendar?: Calendar;
+  climate?: Climate;
+  tells?: readonly RegExp[];       // what the player might say that gives the secret away
+  beatMinutes?: number;            // minutes an exchange costs when the narrator does not say
+}</code></pre>
+
+<p>The registry exists so that the command line and the service open a world identically. A
+world that only one of them knows how to start is a world that behaves differently depending on
+who asked.</p>
+
+<h2 id="quantities">Quantities</h2>
+
+<p>Money was the first quantity and for a while the only one. Health, stamina, standing and mana
+are the same shape: a number per person, moved only by events, sometimes conserved, sometimes
+capped, sometimes coming back on its own. So a world declares what it counts:</p>
+
+<pre><code>declareResource(COIN,    { conserved: true, min: 0 });
+declareResource(STAMINA, { conserved: false, min: 0, max: 100, regenPerHour: 6 });
+declareResource(MANA,    { min: 0, max: 50, regenPerHour: 3 });</code></pre>
+
+<p>The defaults are the unremarkable ones: floors at zero, no ceiling, no regeneration, not
+conserved. Conserved is a strong claim, so a world has to make it out loud, and the invariant
+harness then proves every turn that nothing was minted. Three events move a quantity:
+<code>granted</code> adds to the world, <code>spent</code> takes away, <code>transferred</code>
+never changes the total.</p>
+
+<h2 id="kinds-of-situation">Kinds of situation</h2>
+
+<p>Seven kinds ship: debt, promise, grudge, attraction, contract, secret, rivalry. They are
+ordinary declarations, and a world's own kinds stack on top of them. Nothing in the engine knows
+what a debt is; it knows a debt has a creditor because the declaration said which stance that
+is.</p>
+
+<pre><code>export const CASTING_KIND = declareThreadKind("casting", {
+  aggrievedStances: ["channelling"],   // who is owed something when one breaks
+  stakes: 0.7,                          // when a verb opens one without saying
+  holdsInPlace: ["channelling"],        // stances that keep somebody where they are
+  onBroken: { kind: "grudge", wrongedStance: "aggrieved", atFaultStance: "at fault" },
+});</code></pre>
+
+<p><code>holdsInPlace</code> is worth noticing. Most situations do not keep you anywhere; you can
+owe a man money from anywhere. Some are a thing you are in the middle of doing, and the tick
+should not walk you off to the bar halfway through. A world names those stances and the routine
+stops moving them.</p>
+
+<h2 id="verbs">Verbs</h2>
+
+<p>A verb is what a tag does: its arguments, its preconditions, and the events it produces. Most
+new verbs are data, a requirement the graph can already answer and an effect it already knows how
+to apply. When a mechanic needs logic, the verb is an ordinary function that returns events, and
+by the time the adjudicator has it there is nothing to tell it apart from a built-in one.</p>
+
+<p>This is the start of a spell-casting verb from the magic system that ships as a worked example,
+written entirely as world content with nothing patched in the engine:</p>
+
+<pre><code>{
+  name: "begin_cast",
+  args: { person: "person", spell: "text", cost: "number" },
+  help: `&lt;&lt;begin_cast person="NAME" spell="what they are working" cost="NUMBER"&gt;&gt; — somebody starts holding a spell. It does nothing until released.`,
+  check({ world, at, player, args }) {
+    if (args.person === player) return no("that is the player's to decide", "let him decide it himself");
+    if (balanceIn(world, MANA, args.person) &lt; args.number.cost) return no(`they only have ${held} mana`, `cast for at most ${held}`);
+    if (heldSpell(world, args.person, at)) return no("they are already holding one", "release or drop it first");
+    return ok;
+  },
+  effects(context) {
+    return [
+      eventInput("spent", at, { resource: MANA, person: caster, amount: cost }, { witnesses: seen }),
+      eventInput("node_added", at, { node: makeThread(id, summary, { threadKind: "casting", ... }) }),
+      eventInput("edge_added", at, { edge: { type: "INVOLVED_IN", from: caster, to: id, stance: "channelling", ... } }),
+    ];
+  },
+}</code></pre>
+
+<p>Three things to notice. The same authority rule every verb has: the narrator does not decide
+what the player does with his own hands. The mana is spent up front, so an interruption costs
+something. And the spell is a situation like any other, so the brief shows it to the narrator
+without anybody writing a renderer for spells.</p>
+
+<h2 id="voice">Voice</h2>
+
+<p>Everything about how the story reads is supplied by the world. Nothing about what is true
+is:</p>
+
+<pre><code>export interface VoiceContract {
+  name: string;
+  rules: string;          // rules for the narrator, tuned independently of the brief
+  targetWords?: number;   // roughly how long a reply should be
+}</code></pre>
+
+<p>The adult switch lives here too, as a rule in the contract rather than a flag in the engine.</p>
+
+<h2 id="place-markers">Place markers</h2>
+
+<p>A place can carry three optional markers, all covered on
+<a href="places.html">Places and doors</a>:</p>
+
+<table>
+  <thead><tr><th>Field</th><th>Meaning</th></tr></thead>
+  <tbody>
+    <tr><td><code>ownDoor</code></td><td>The place is its own premises for earshot: a flat rather than a room in a gym.</td></tr>
+    <tr><td><code>vehicle</code></td><td>A place you ride inside, with an optional driver who is present and hears everything, and a seat count.</td></tr>
+    <tr><td><code>conspicuous</code></td><td>0 to 1, how much it draws eyes. Separate from whether it gets you anywhere.</td></tr>
+  </tbody>
+</table>
+
+<h2 id="what-stays-closed">What stays closed</h2>
+
+<p>Event sourcing, temporal links, the fold, branching, rumour diffusion, brief assembly and the
+invariant harness are the engine. A world does not reach into them. Everything on this page is a
+declaration the engine reads, which is what keeps a world tradeable and keeps the tests
+meaningful for every world at once.</p>
+    </article>
+    <nav class="pager" aria-label="Neighbouring pages"><a class="pager-link pager-prev" href="your-own-world.html"><span>Previous</span><strong>Writing a world card</strong></a><a class="pager-link pager-next" href="how-a-world-gets-built.html"><span>Next</span><strong>The authoring pipeline</strong></a></nav>
+    <footer class="foot">
+      <p>Civitas is a personal project, documented as it actually behaves. The example world is
+      fiction and every character in it is an adult.</p>
+    </footer>
+  </main>
+
+  <aside class="toc" aria-label="On this page"><p class="toc-heading">On this page</p><ul><li><a href="#a-world-in-code">A world in code</a></li><li><a href="#quantities">Quantities</a></li><li><a href="#kinds-of-situation">Kinds of situation</a></li><li><a href="#verbs">Verbs</a></li><li><a href="#voice">Voice</a></li><li><a href="#place-markers">Place markers</a></li><li><a href="#what-stays-closed">What stays closed</a></li></ul></aside>
+</div>
+</body>
+</html>

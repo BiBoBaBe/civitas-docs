@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>People · Civitas</title>
-<meta name="description" content="What a person is in Civitas: their day, their job, what they want, how they feel, what they believe, and what they are keeping.">
+<title>People and feelings · Civitas</title>
+<meta name="description" content="What a person is made of: a timetable, five feelings towards everybody they know, things they keep, and the rate at which any of it can change.">
 <meta name="color-scheme" content="light dark">
-<meta property="og:title" content="People · Civitas">
-<meta property="og:description" content="What a person is in Civitas: their day, their job, what they want, how they feel, what they believe, and what they are keeping.">
+<meta property="og:title" content="People and feelings · Civitas">
+<meta property="og:description" content="What a person is made of: a timetable, five feelings towards everybody they know, things they keep, and the rate at which any of it can change.">
 <meta property="og:type" content="article">
 <link rel="stylesheet" href="assets/styles.css">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%2318140f'/%3E%3Cpath%20d='M6%2024V14l10-6%2010%206v10'%20fill='none'%20stroke='%23d79a4e'%20stroke-width='2'%20stroke-linejoin='round'/%3E%3Crect%20x='13'%20y='17'%20width='6'%20height='7'%20fill='%23d79a4e'/%3E%3C/svg%3E">
@@ -20,15 +20,17 @@
   <details class="menu">
     <summary>Contents</summary>
     <nav class="nav" id="nav-mobile" aria-label="Documentation"><p class="nav-heading">Start here</p>
-<ul><li><a href="index.html">What Civitas is</a></li><li><a href="the-idea.html">The idea in five minutes</a></li><li><a href="why.html">Why it works this way</a></li></ul>
-<p class="nav-heading">How the world works</p>
-<ul><li><a href="people.html" aria-current="page">People</a></li><li><a href="motives.html">Wants and motives</a></li><li><a href="time.html">Time</a></li><li><a href="places.html">Places, doors and walls</a></li><li><a href="records.html">What the world records</a></li><li><a href="gossip.html">Gossip</a></li><li><a href="plans.html">Plans, arrangements and trips</a></li><li><a href="terms.html">Terms and couples</a></li><li><a href="pictures.html">Pictures</a></li></ul>
+<ul><li><a href="index.html">What Civitas is</a></li><li><a href="how-a-turn-works.html">How a turn works</a></li><li><a href="principles.html">Principles</a></li></ul>
+<p class="nav-heading">The simulation</p>
+<ul><li><a href="time.html">Time and routines</a></li><li><a href="places.html">Places and doors</a></li><li><a href="people.html" aria-current="page">People and feelings</a></li><li><a href="knowledge.html">What people know</a></li><li><a href="gossip.html">Rumour</a></li><li><a href="motives.html">Wants and situations</a></li><li><a href="plans.html">Plans, tasks and trips</a></li><li><a href="terms.html">Agreements and couples</a></li><li><a href="records.html">What gets written down</a></li></ul>
+<p class="nav-heading">Under the hood</p>
+<ul><li><a href="architecture.html">The engine</a></li><li><a href="bridge.html">The Marinara bridge</a></li></ul>
 <p class="nav-heading">Playing</p>
-<ul><li><a href="screens.html">The screens</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
-<p class="nav-heading">Example worlds</p>
-<ul><li><a href="tremont.html">Tremont</a></li><li><a href="tremont-phone.html">The phone and its apps</a></li><li><a href="isekai.html">Trapped in the game</a></li><li><a href="other-worlds.html">Three more worlds</a></li></ul>
+<ul><li><a href="setup.html">Trying it</a></li><li><a href="screens.html">The World screen</a></li><li><a href="pictures.html">Pictures</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
+<p class="nav-heading">Worlds</p>
+<ul><li><a href="tremont.html">Tremont</a></li><li><a href="other-worlds.html">Other settings</a></li></ul>
 <p class="nav-heading">Building your own</p>
-<ul><li><a href="your-own-world.html">Making your own world</a></li><li><a href="how-a-world-gets-built.html">How a world gets built</a></li><li><a href="limits.html">Honest limits</a></li></ul></nav>
+<ul><li><a href="your-own-world.html">Writing a world card</a></li><li><a href="extending.html">Extending the engine</a></li><li><a href="how-a-world-gets-built.html">The authoring pipeline</a></li><li><a href="limits.html">Limits</a></li></ul></nav>
   </details>
 </header>
 
@@ -36,199 +38,176 @@
   <aside class="sidebar">
     <a class="brand brand-desk" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Civitas<em>documentation</em></a>
     <nav class="nav" id="nav-desktop" aria-label="Documentation"><p class="nav-heading">Start here</p>
-<ul><li><a href="index.html">What Civitas is</a></li><li><a href="the-idea.html">The idea in five minutes</a></li><li><a href="why.html">Why it works this way</a></li></ul>
-<p class="nav-heading">How the world works</p>
-<ul><li><a href="people.html" aria-current="page">People</a></li><li><a href="motives.html">Wants and motives</a></li><li><a href="time.html">Time</a></li><li><a href="places.html">Places, doors and walls</a></li><li><a href="records.html">What the world records</a></li><li><a href="gossip.html">Gossip</a></li><li><a href="plans.html">Plans, arrangements and trips</a></li><li><a href="terms.html">Terms and couples</a></li><li><a href="pictures.html">Pictures</a></li></ul>
+<ul><li><a href="index.html">What Civitas is</a></li><li><a href="how-a-turn-works.html">How a turn works</a></li><li><a href="principles.html">Principles</a></li></ul>
+<p class="nav-heading">The simulation</p>
+<ul><li><a href="time.html">Time and routines</a></li><li><a href="places.html">Places and doors</a></li><li><a href="people.html" aria-current="page">People and feelings</a></li><li><a href="knowledge.html">What people know</a></li><li><a href="gossip.html">Rumour</a></li><li><a href="motives.html">Wants and situations</a></li><li><a href="plans.html">Plans, tasks and trips</a></li><li><a href="terms.html">Agreements and couples</a></li><li><a href="records.html">What gets written down</a></li></ul>
+<p class="nav-heading">Under the hood</p>
+<ul><li><a href="architecture.html">The engine</a></li><li><a href="bridge.html">The Marinara bridge</a></li></ul>
 <p class="nav-heading">Playing</p>
-<ul><li><a href="screens.html">The screens</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
-<p class="nav-heading">Example worlds</p>
-<ul><li><a href="tremont.html">Tremont</a></li><li><a href="tremont-phone.html">The phone and its apps</a></li><li><a href="isekai.html">Trapped in the game</a></li><li><a href="other-worlds.html">Three more worlds</a></li></ul>
+<ul><li><a href="setup.html">Trying it</a></li><li><a href="screens.html">The World screen</a></li><li><a href="pictures.html">Pictures</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
+<p class="nav-heading">Worlds</p>
+<ul><li><a href="tremont.html">Tremont</a></li><li><a href="other-worlds.html">Other settings</a></li></ul>
 <p class="nav-heading">Building your own</p>
-<ul><li><a href="your-own-world.html">Making your own world</a></li><li><a href="how-a-world-gets-built.html">How a world gets built</a></li><li><a href="limits.html">Honest limits</a></li></ul></nav>
+<ul><li><a href="your-own-world.html">Writing a world card</a></li><li><a href="extending.html">Extending the engine</a></li><li><a href="how-a-world-gets-built.html">The authoring pipeline</a></li><li><a href="limits.html">Limits</a></li></ul></nav>
   </aside>
 
   <main id="main" class="content">
     <article class="prose">
-      <h1>People</h1>
-      <p class="lede">A person is a day, a set of wants, five feelings about everybody they know, and a
-list of things they have not said yet.</p>
-
-<p>Start with the smallest worked example in the engine. A creditor is owed forty coins. His
-timetable says he should be at the gate until six. At about eight he walks into the bar where the
-woman who owes him is drinking, and sits down.</p>
-
-<p>Nothing scripted that. His pressure to settle unfinished business rose as the deadline came
-closer, until it outweighed his own working day, and the bar is simply where she is. Everything on
-this page is in service of that sentence.</p>
+      <h1>People and feelings</h1>
+      <p class="lede">A person is a timetable, a set of feelings towards each person they know, a list of
+things they keep to themselves, and a few wants. All of it is data the world holds, none of it is
+prose, and most of it can only change at a rate the world sets.</p>
 
 <h2 id="their-day">Their day</h2>
 
-<p>Everyone has a timetable: where they are meant to be, between which hours, on which days, and
-what they are doing there. Working the taps. On the building all day: repairs, tenants, the boiler.
-A night shift running from eleven to six belongs to the night it started on, so nobody teleports
-home at midnight.</p>
+<p>Everybody has a <strong>schedule</strong>: where they are meant to be, between which hours, on
+which days, and what they are doing there. This is what a schedule looks like in a world written
+in code, for a nurse on nights:</p>
 
-<p>The timetable is the floor, not the law. It is what somebody does when nothing more interesting
-is pulling at them.</p>
+<pre><code>schedule: [
+  scheduleEntry(ST_JUDES, hm(18, 30), hm(7, 30), { activity: "on a night shift in the ER" }),
+  scheduleEntry(FLAT_2B,  hm(7, 30),  hm(18, 30), { activity: "sleeping off a night shift, badly" }),
+],</code></pre>
 
-<h2 id="what-they-want">What they want</h2>
+<p>An entry that crosses midnight belongs to the day it started on, so nobody teleports home at
+twelve. The activity is a few words the narrator sees; without one, the brief says only that
+somebody is "keeping to the day", which is true of everybody and describes nobody.</p>
 
-<p>Four pressures are worked out fresh from the world rather than stored: rest, money, duty and
-company. Each comes with the sentence that explains it, which is the point of computing them. "He
-wants money because forty coins are outstanding" is a reason, and a reason is what makes somebody
-turning up feel caused rather than rolled.</p>
+<p>In a world card you can skip the schedule entirely. Say where somebody lives and where they
+work, and the importer derives an ordinary day: asleep from 23:00, at work from 07:30, an evening
+at the nearest public room. It prints everything it derived, so a person in the wrong place is
+never a mystery.</p>
 
-<p>Rest only overrides a working day once exhaustion is genuinely bad. Wanting a thing is not a
-reason to walk out of a shift; it is a reason to drift towards it when the day is slack. Somebody
-halfway through doing something does not weigh their options at all, because a person who wanders
-off mid-task has not made a decision, they have been walked away by a scheduler that did not know
-any better.</p>
-
-<p>Above that sits a ladder. When somebody gets the thing they wanted, the next thing becomes live,
-and it is usually the thing the first one was in the way of.</p>
-
-<div class="case">
-  <p class="case-title">Jade's studio</p>
-  <p>Jade shoots in the corner of her bedroom with the bed pushed out of frame. Solve that, by any
-  route at all, and what she wants next is an audience, because a room was only ever the easy half
-  of the problem. Two rungs later she wants to not need you, which is the honest end of being helped
-  by somebody with money.</p>
-  <p>Nothing opens until the rung below it closes, and a rung only opens on a situation that
-  resolved. Somebody whose bar closed is not now worrying about its licence.</p>
-</div>
+<p>The schedule is the floor, not the law. It is what somebody does when nothing more interesting
+is pulling at them. What pulls is on <a href="motives.html">Wants and situations</a>.</p>
 
 <h2 id="feelings-on-five-axes">Feelings, on five axes</h2>
 
-<p>How one person feels about another is warmth, respect, trust, desire and fear, each from minus
-one to one. Five rather than one, so that "hates him but respects him" is something the world can
-hold.</p>
+<p>How one person feels about another is five numbers, each from -1 to 1:</p>
 
-<p>Each feeling points one way. How she feels about him and how he feels about her are separate
+<pre><code>interface FeelAxes {
+  warmth: number;
+  respect: number;
+  trust: number;
+  desire: number;
+  fear: number;
+}</code></pre>
+
+<p>Five rather than one so that "hates him but respects him" is something the world can hold.
+Each feeling points one way. How she feels about him and how he feels about her are separate
 records, and nothing keeps them in step.</p>
 
-<p>Feelings do not fade. What they have instead is a speed limit, and only on the way up. Towards
-you, per day of world time, trust may rise at most 0.15, warmth 0.2, desire 0.15, respect 0.25. Fear
-has no ceiling.</p>
+<p>Feelings do not fade on their own. What they have instead is a ceiling on how fast they can
+rise, per day of world time:</p>
 
-<p>Nothing limits how fast a feeling falls. That asymmetry is deliberate. One betrayal undoing a
-fortnight is exactly right, and a narrator that enjoys a scene will add a flicker of warmth every
-reply. Twelve replies is one conversation, and without a ceiling she would be devoted by closing
-time. A slow burn is a rate, so the rate belongs to the world.</p>
+<table>
+  <thead><tr><th>Axis</th><th>Maximum rise per day</th></tr></thead>
+  <tbody>
+    <tr><td>Trust</td><td>0.15</td></tr>
+    <tr><td>Warmth</td><td>0.20</td></tr>
+    <tr><td>Desire</td><td>0.15</td></tr>
+    <tr><td>Respect</td><td>0.25</td></tr>
+    <tr><td>Fear</td><td>No ceiling</td></tr>
+  </tbody>
+</table>
 
-<h2 id="what-they-believe">What they believe</h2>
+<p>Nothing limits how fast a feeling falls. The asymmetry is deliberate. A narrator that enjoys a
+scene adds a little warmth every reply, and twelve replies is one conversation. Without a ceiling
+somebody you met at eight would be devoted by closing time. A slow burn is a rate, so the rate
+belongs to the world, not the model. Fear is left uncapped because a held-back fright is not a
+fright.</p>
 
-<p>Knowing something is not a flag. It is a link from a person to a fact, and it carries their
-version of it: how confident they are, how mangled it has got, and what number or name they think it
-was.</p>
+<p>These are engine constants, in the pacing module, and a world does not change them.</p>
 
-<p>Two people can hold the same fact and say different things with nobody lying. The clerk who is
-owed forty knows it is forty. The welder heard about it at a bar and says two hundred. Ask them in
-the same room and you get both numbers.</p>
+<h2 id="what-they-keep">What they keep</h2>
 
-<p>How somebody came to believe a thing is recorded too, and it matters more than anything else
-about the belief.</p>
+<p>A <strong>secret</strong> is a fact somebody keeps about themselves, with a number attached: how
+much they have to trust you before they will say it. The gate is their trust in you, and trust
+rises at most 0.15 a day, so a secret pitched at 0.45 is three evenings of work at minimum. There is
+no phrasing that opens it early.</p>
 
-<blockquote>
-  <p>A thing you saw is a thing you know for good. A thing you were told at a bar three weeks ago, by
-  somebody who heard it from somebody, is not knowledge in the same way, and if nothing happens to
-  remind anybody, it stops being repeated and then stops being believed.</p>
-</blockquote>
+<p>Secrets ride on the character card, in a block ordinary apps ignore:</p>
 
-<p>Firsthand belief never decays. Secondhand belief halves every three days and below a floor is no
-longer held at all. That is what makes going quiet a real move. The street's sense that there is
-money around you fades. The four people who actually saw it never stop knowing.</p>
+<pre><code>"extensions": {
+  "civitas": {
+    "version": 1,
+    "pronouns": "she/her",
+    "secrets": [
+      { "id": "left-the-city", "text": "why she really left", "trust": 0.45 }
+    ]
+  }
+}</code></pre>
 
-<h2 id="secrets-and-what-it-takes-to-hear-one">Secrets, and what it takes to hear one</h2>
+<p>A confidence is told once, and slowly: one a day per person, face to face. When the narrator
+tries to have somebody hand over something unearned, the tag is refused and the note reads like
+advice to a writer:</p>
 
-<p>A secret is a fact somebody keeps about themselves, with a number attached: how much they have to
-trust you before they will say it. Some people carry an ordered list, given up one item at a time, so
-the world can say how far along it you are instead of asking a model to keep count over a thousand
-turns.</p>
+<pre><code>they do not trust him enough to tell him that yet (0.12 of 0.45).
+let them keep it for now; it comes out when something between them has earned it</code></pre>
 
-<p>The gate is their trust in you, and trust rises at most 0.15 a day. A secret pitched at 0.45 is
-three evenings of work, minimum. There is no phrasing that opens it.</p>
+<h2 id="a-list-given-up-one-item-at-a-time">A list given up one item at a time</h2>
 
-<p>A confidence is told once, and slowly. One a day each, because a secret is a scene and not a
-paragraph. Face to face. In order. If the narrator tries to have somebody hand over something
-unearned, it is refused, and the refusal reads like a note to a writer:</p>
+<p>A secret can also be one item of an ordered list, a <strong>progression</strong>. Each item
+asks slightly more trust than the last, and the world releases them in order, one at a time,
+refusing to skip ahead. It keeps count so that a model does not have to over a thousand turns.</p>
 
-<blockquote>
-  <p>They do not trust him enough to tell him that yet. Let them keep it for now; it comes out when
-  something between them has earned it.</p>
-</blockquote>
+<pre><code>"progression": {
+  "name": "the folder",
+  "trust": 0.3,
+  "step": 0.03,
+  "items": [
+    { "title": "one", "text": "..." },
+    { "title": "two", "text": "..." },
+    { "title": "twenty", "text": "", "unwritten": true }
+  ]
+}</code></pre>
 
-<h2 id="a-list-given-up-one-item-at-a-time">A list, given up one item at a time</h2>
+<p>At the defaults the twentieth item needs trust of 0.87, which is a lot of evenings. An item
+marked unwritten has a gate and no words: the words get written in play when the gate opens, so
+the end of a long list is not something an author had to decide in advance.</p>
 
-<p>A secret can stand on its own. It can also be item four of twenty.</p>
+<p>The shape is general. A witness giving up what she saw one piece at a time, a defector with a
+sequence of names, an apprentice being taught a craft in order: each is an ordered set with a gate
+per item.</p>
 
-<p>A confidence carries three things: the trust it takes to hear it, which series it belongs to, and
-where it sits in that series. Set those and you have an ordered list that comes out in order, one
-piece at a time, with each piece asking slightly more than the last.</p>
+<h2 id="when-somebody-s-guard-is-down">When somebody's guard is down</h2>
+
+<p>Somebody two drinks into an evening says things they would not say sober, and a world that
+refuses them the words is lying about the scene. So the world tracks whether a person's guard is
+down, on a short clock, and lowers the trust gate by a small capped amount.</p>
+
+<table>
+  <thead><tr><th>State</th><th>Lasts</th><th>Effect</th></tr></thead>
+  <tbody>
+    <tr><td>Tipsy</td><td>About 2 hours</td><td>Lowers the gate a little</td></tr>
+    <tr><td>Drunk</td><td>About 4 hours</td><td>Lowers it more</td></tr>
+    <tr><td>High</td><td>Between the two</td><td>Between the two</td></tr>
+    <tr><td>Opened up by the moment</td><td>Briefly</td><td>A small non-chemical version</td></tr>
+    <tr><td>Everything stacked</td><td></td><td>Capped at 0.3 in total</td></tr>
+  </tbody>
+</table>
+
+<p>Drunk is not a skeleton key. It is the next item or two coming within reach. The narrator is
+shown what sits just past the lowered gate, marked as something the person cannot quite say, so a
+pushed confession has something true to come out as. When something does come out early, the
+world records that it did and why. The belief carries the reason, such as "drunk" or "he asked
+her to close her eyes", which is what makes the morning after possible.</p>
 
 <div class="case">
-  <p class="case-title">The Folder</p>
-  <p>One character in the example world carries twenty of them under a single series name. They are things she has
-  written about for years and never once done. As a set they are a list of fantasies, and no more
-  needs saying about their contents than that.</p>
-  <p>What matters is the shape. She does not hand anybody a list. She does not mention that there
-  are twenty. Item four arrives when item four has been earned, which at the default spacing is a
-  good deal further along than item one, and the world is the thing keeping count rather than a
-  model being asked to remember across a thousand turns. It would not remember reliably. Nothing
-  would.</p>
-  <p>The twentieth line is marked as unwritten. The slot exists and the gate exists; the words do
-  not. She writes it when the moment comes.</p>
+  <p class="case-title">In Tremont</p>
+  <p>One character carries twenty items under a single progression, things she has written about
+  for years and never done. She never hands anybody a list and never says there are twenty. Item
+  four arrives when item four has been earned. The last line is marked unwritten.</p>
 </div>
-
-<p>That last detail is the one worth stealing. The world holds the slot and the gate, not the
-sentence, so the ending of a long list is not something an author had to decide in advance.</p>
-
-<p>None of this is about wants in particular. Anything ordered and withheld has the same shape:</p>
-
-<ul>
-  <li>A witness who gives up what she saw one piece at a time, because each piece costs her
-  more.</li>
-  <li>A defector with a sequence of names, in the order that keeps him useful longest.</li>
-  <li>A dying man's confession, which has a first part and a last part and they are not
-  interchangeable.</li>
-  <li>An apprentice being taught a craft in the order the craft has to be learned.</li>
-</ul>
-
-<p>In each case the engine is doing the same thing: holding an ordered set, releasing one item when
-its gate is met, and refusing to skip ahead.</p>
-
-<div class="note">
-  <p class="note-title">Optional depth</p>
-  <p>You do not need any of this to play. A world runs on people, places and time. Secrets and
-  ordered lists are what you add when you want somebody to have a reason to keep talking to you for
-  a month.</p>
-</div>
-
-<h2 id="when-somebody-has-had-a-drink">When somebody has had a drink</h2>
-
-<p>Trust is slow on purpose. But somebody two drinks into an evening says things they would not say
-sober at a bar, and a world that refuses them the words is lying about the scene.</p>
-
-<p>So the world tracks whether somebody's guard is down. Tipsy lowers the gate a little for two
-hours. Drunk lowers it more, for four. High sits between them. There is also a short window for the
-ordinary non-chemical version, just after, in the dark, because you asked. Each fades gradually.
-Sobering up ends all of them at once.</p>
-
-<p>The numbers are small and they are capped. Everything stacked together lowers a gate by no more
-than 0.3. Drunk and high is not a skeleton key. It is the next item or two coming within reach.</p>
-
-<p>The narrator is also shown what sits just past the lowered gate, marked as something she cannot
-quite say, so a pushed confession has something true to come out as instead of being invented. And
-when something does come out early, the world records that it did, and why. Story wins, and the world
-remembers that it won.</p>
     </article>
-    <nav class="pager" aria-label="Neighbouring pages"><a class="pager-link pager-prev" href="why.html"><span>Previous</span><strong>Why it works this way</strong></a><a class="pager-link pager-next" href="motives.html"><span>Next</span><strong>Wants and motives</strong></a></nav>
+    <nav class="pager" aria-label="Neighbouring pages"><a class="pager-link pager-prev" href="places.html"><span>Previous</span><strong>Places and doors</strong></a><a class="pager-link pager-next" href="knowledge.html"><span>Next</span><strong>What people know</strong></a></nav>
     <footer class="foot">
       <p>Civitas is a personal project, documented as it actually behaves. The example world is
       fiction and every character in it is an adult.</p>
     </footer>
   </main>
 
-  <aside class="toc" aria-label="On this page"><p class="toc-heading">On this page</p><ul><li><a href="#their-day">Their day</a></li><li><a href="#what-they-want">What they want</a></li><li><a href="#feelings-on-five-axes">Feelings, on five axes</a></li><li><a href="#what-they-believe">What they believe</a></li><li><a href="#secrets-and-what-it-takes-to-hear-one">Secrets, and what it takes to hear one</a></li><li><a href="#a-list-given-up-one-item-at-a-time">A list, given up one item at a time</a></li><li><a href="#when-somebody-has-had-a-drink">When somebody has had a drink</a></li></ul></aside>
+  <aside class="toc" aria-label="On this page"><p class="toc-heading">On this page</p><ul><li><a href="#their-day">Their day</a></li><li><a href="#feelings-on-five-axes">Feelings, on five axes</a></li><li><a href="#what-they-keep">What they keep</a></li><li><a href="#a-list-given-up-one-item-at-a-time">A list given up one item at a time</a></li><li><a href="#when-somebody-s-guard-is-down">When somebody's guard is down</a></li></ul></aside>
 </div>
 </body>
 </html>

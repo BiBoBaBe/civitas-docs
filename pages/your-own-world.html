@@ -1,126 +1,169 @@
 <!-- meta
-title: Making your own world
-description: What a world file contains in plain terms (people, places, routines, secrets, situations) and the honest limits of writing one.
+title: Writing a world card
+description: The world card format: a JSON file of places, people and situations that anybody can write and trade, what the importer derives, and what a card cannot yet say.
 -->
 
-<p class="lede">A world is a list of places, a list of people, and a few things that are
-unfinished.</p>
+<p class="lede">A world card is a JSON file that describes a world: places, people, and a few
+things that are unfinished. It needs no code, and it can be traded like a character card. The
+importer derives everything routine and shows its work.</p>
 
-<p>The engine has no opinions about setting. It knows that people are somewhere, that they go
-somewhere else, that they believe things, that they want things, and that some of those things are
-unresolved. Whether the unresolved thing is a dead boiler, a blackmail letter, a blood feud or a floor
-boss makes no difference to any of the machinery.</p>
+<h2>A complete card</h2>
 
-<p>The smallest world that ships with the engine is eight people, six rooms and one debt, and there is
-enough in it to watch for an hour.</p>
+<p>This is one of the two cards that ship with the engine, unabridged. Seven people, seven
+places, one debt, and one person who has heard the wrong number.</p>
 
-<h2>Two ways to write one</h2>
+<pre><code>{
+  "name": "End of the Line",
+  "description": "a rain-soaked bus depot at the end of the line, run by people who have all worked there too long",
+  "opensAt": "19:00",
+  "opening": "Rain comes off the depot roof in a sheet and the last bus in is still ticking as it cools. The canteen smells of tea and wet coats. Somebody has left a mug on the counter with a note under it, and the cook is pretending she has not seen it.",
+  "places": {
+    "The Canteen":  { "public": true, "description": "steamy staff canteen smelling of tea, wet coats and yesterday's stew", "open": "05:00-23:00" },
+    "the garage":   { "description": "oil-stained pit where the last buses come to leak and die" },
+    "Dispatch":     { "description": "glass box of radios, rota boards and cold coffee" },
+    "the platforms": { "public": true, "description": "rain-lashed concrete islands where the timetable ends" },
+    "Night Office": { "description": "windowless cubby with a camp bed and a kettle that never boils" },
+    "the terrace":  { "description": "leaking row of company houses behind the depot fence" },
+    "Depot Yard": {
+      "public": true,
+      "connects": ["The Canteen", "the garage", "Dispatch", "the platforms", "Night Office", "the terrace"],
+      "minutes": 4
+    }
+  },
+  "gathersAt": "The Canteen",
+  "people": {
+    "Maeve Quinn":   { "role": "dispatcher",   "lives": "the terrace", "works": "Dispatch",      "knows": { "Declan Rowe": 0.8, "Bridie Nolan": 0.7 } },
+    "Declan Rowe":   { "role": "mechanic",     "lives": "the terrace", "works": "the garage",    "knows": { "Maeve Quinn": 0.8, "Padraig Flynn": 0.7 } },
+    "Bridie Nolan":  { "role": "canteen cook", "lives": "the terrace", "works": "The Canteen",   "knows": { "Maeve Quinn": 0.7, "Siobhan Daly": 0.5 } },
+    "Eamon Lynch":   { "role": "driver",       "lives": "the terrace", "works": "the platforms", "knows": { "Declan Rowe": 0.5, "Niall Keane": 0.4 } },
+    "Niall Keane":   { "role": "night clerk",  "lives": "Night Office", "works": "Dispatch",     "knows": { "Maeve Quinn": 0.6 } },
+    "Siobhan Daly":  { "role": "ticket clerk", "lives": "the terrace", "works": "the platforms", "knows": { "Bridie Nolan": 0.5 } },
+    "Padraig Flynn": { "role": "cleaner",      "lives": "the terrace", "works": "the garage",    "knows": { "Declan Rowe": 0.7 } }
+  },
+  "situations": [
+    {
+      "kind": "debt",
+      "between": ["Declan Rowe", "Bridie Nolan"],
+      "amount": 85,
+      "summary": "Declan still owes Bridie for the parts he charged to her card last winter",
+      "stakes": 0.65,
+      "deadline": "18 days",
+      "misheard": { "Maeve Quinn": 250 }
+    }
+  ],
+  "player": { "name": "the relief driver", "at": "The Canteen" }
+}</code></pre>
 
-<p>There is a world card, which is a file of plain data anybody can write and trade. And there is a
-world written in code, which is what Tremont is. They are not equivalent, and the difference is worth
-knowing before you start.</p>
+<p>Load it with:</p>
 
-<h2>What a world card contains</h2>
+<pre><code>bun run world content/depot.world.json</code></pre>
 
-<p><strong>A name and an opening.</strong> The opening is the first thing a player reads before
-anybody has spoken. Without one, the first turn is spent working out where you are, which wastes the
-one moment the world has somebody's full attention.</p>
+<h2>The fields</h2>
 
-<p><strong>Places.</strong> Each with a description, whether it is public, its opening hours, which
-other places it connects to, how many minutes away those are, and a capacity. Connections are two-way,
-so you write a street once.</p>
+<h3>The world</h3>
 
-<p><strong>People.</strong> A role, where they live, where they work, or an explicit day hour by hour.
-Who they know and how well. What they hold. What they want. What they belong to. And how they feel
-about specific other people, on each of the five axes.</p>
+<table>
+  <thead><tr><th>Field</th><th>Meaning</th></tr></thead>
+  <tbody>
+    <tr><td><code>name</code></td><td>Required.</td></tr>
+    <tr><td><code>opening</code></td><td>The first thing the player reads. Without one, the first turn is spent working out where you are.</td></tr>
+    <tr><td><code>opensAt</code></td><td>The clock the world opens at, "HH:MM". Defaults to 19:00.</td></tr>
+    <tr><td><code>gathersAt</code></td><td>Where people spend an evening. Worked out from the public rooms when omitted.</td></tr>
+    <tr><td><code>player</code></td><td>Your own person: a name, and where you start.</td></tr>
+    <tr><td><code>resources</code>, <code>factions</code>, <code>items</code></td><td>What the world counts, bodies people belong to, and objects that can change hands.</td></tr>
+  </tbody>
+</table>
 
-<p><strong>Situations.</strong> What is unfinished: a kind, who is on each side, a one-line summary,
-the stakes, a deadline, an amount.</p>
+<h3>A place</h3>
 
-<p><strong>What has been misheard.</strong> One line that gives a named person the wrong version of a
-situation. This is the most characteristic thing a card can carry, and it would otherwise be several
-objects assembled by hand. One line, and the debt she is owed forty for is two hundred as far as the
-welder is concerned.</p>
+<table>
+  <thead><tr><th>Field</th><th>Meaning</th></tr></thead>
+  <tbody>
+    <tr><td><code>public</code></td><td>Anybody may walk in. A private room needs a reason to be there.</td></tr>
+    <tr><td><code>open</code></td><td>Opening hours, "16:00-02:00". Absent means always open.</td></tr>
+    <tr><td><code>connects</code></td><td>Places this one leads to. Two-way, so write a street once.</td></tr>
+    <tr><td><code>minutes</code></td><td>Walking time to anything it connects to. Defaults to 5.</td></tr>
+    <tr><td><code>capacity</code></td><td>How many people fit.</td></tr>
+  </tbody>
+</table>
 
-<p><strong>Resources, factions and items.</strong> What the world counts, what bodies people belong
-to, and objects that can be owned and handed over.</p>
+<h3>A person</h3>
 
-<p>Leave out somebody's day and the importer works one out: sleep, work, an evening at the first
-public room. It then tells you in plain English every single thing it worked out for you. That is
-deliberate. A schedule you did not write is a convenience right up until somebody is in the wrong place
-and you cannot tell whether that was you or the tool.</p>
+<table>
+  <thead><tr><th>Field</th><th>Meaning</th></tr></thead>
+  <tbody>
+    <tr><td><code>lives</code>, <code>works</code></td><td>Where they sleep and where they spend a working day. Together these derive an ordinary day.</td></tr>
+    <tr><td><code>day</code></td><td>An explicit timetable, for somebody whose life is not shaped like a job.</td></tr>
+    <tr><td><code>knows</code></td><td>Who they know and how well, 0 to 1.</td></tr>
+    <tr><td><code>feels</code></td><td>How they already feel about somebody, on any of the five axes, -1 to 1. Independent of how well they know them.</td></tr>
+    <tr><td><code>wants</code></td><td>What they are after and how badly, named by person, place, item or faction.</td></tr>
+    <tr><td><code>holds</code></td><td>What they are carrying, by resource name.</td></tr>
+    <tr><td><code>memberOf</code></td><td>Bodies they belong to, and their rank.</td></tr>
+  </tbody>
+</table>
+
+<h3>A situation</h3>
+
+<table>
+  <thead><tr><th>Field</th><th>Meaning</th></tr></thead>
+  <tbody>
+    <tr><td><code>kind</code></td><td>One of the seven built in: debt, promise, grudge, attraction, contract, secret, rivalry.</td></tr>
+    <tr><td><code>between</code></td><td>Two people, the first of whom is the one under the obligation.</td></tr>
+    <tr><td><code>stakes</code>, <code>deadline</code>, <code>amount</code></td><td>How much it matters, how long until it comes to a head, and the figure for a debt.</td></tr>
+    <tr><td><code>misheard</code></td><td>People who have heard a different number to the true one. One line gives a named person a distorted belief that would otherwise take several records assembled by hand.</td></tr>
+  </tbody>
+</table>
+
+<h2>What the importer derives</h2>
+
+<p>Leave out somebody's day and the importer works one out: asleep from 23:00 to 07:00, at work
+from 07:30 to 18:00, an evening from 18:30 at the gathering place. It then prints every single
+thing it worked out for you. A schedule you did not write is a convenience right up until
+somebody is in the wrong place and you cannot tell whether that was you or the tool.</p>
 
 <h2>It refuses rather than half-loading</h2>
 
-<p>A card is checked before anything is built, and you get every problem at once rather than the first
-one. If anything is fatal it will not load.</p>
+<p>A card is checked before anything is built, and you get every problem at once. If anything
+is fatal, it will not load. A card that half-loads is worse than one that refuses: a person whose
+work names a room that does not exist would simply never go to work, and you would spend an
+evening wondering why.</p>
 
-<blockquote>
-  <p>A card that half-loads is worse than one that refuses: a person whose work names a room that does
-  not exist would simply never go to work, and you would spend an evening wondering why.</p>
-</blockquote>
-
-<p>Two problems are advice rather than refusal. Somebody with no home, no work and no day will never
-go anywhere, and a world where nowhere is public gives nobody anywhere to spend an evening.</p>
+<p>Two problems are advice rather than refusal: somebody with no home, no work and no day will
+never go anywhere, and a world where nowhere is public gives nobody anywhere to spend an
+evening.</p>
 
 <h2>The smallest world that works</h2>
 
-<p>A name. At least one place, with one of them public and connected to the others, or nobody can walk
-anywhere. Everybody needs somewhere they live, somewhere they work, or a day, otherwise they stand
-still forever. And a player, if you want one.</p>
+<p>A name. At least one place, public and connected to the others. Everybody needs somewhere
+they live, somewhere they work, or a day. And a player, if you want one. Six to ten people, four
+to eight places, and one or two unfinished situations is a good first world.</p>
 
-<p>Six to ten people, four to eight places, one or two unfinished situations is a good first world.</p>
+<h2>A card a model drafts</h2>
 
-<h2>What a card cannot do yet</h2>
+<p>You can describe a world in a sentence and have a card generated:</p>
 
-<p>Being honest about this matters more than the feature list. A card world is a street with people and
-debts on it. Tremont is a city with a machine underneath it, and most of that machine is not yet
-expressible in a card. No secrets with trust thresholds. No ladders of wants. No rules for what gives a
-secret away. No conditions for what would count as a situation being over, since a card's situation is
-debt-shaped. No rooms inside buildings, and therefore no doors and no earshot. No weekday patterns in a
-schedule. No calendar, climate or voice. No phone apps, couples or signed terms.</p>
+<pre><code>bun run imagine "a rain-soaked bus depot at the end of the line"</code></pre>
 
-<p>Anyone whose Tuesday differs from their Sunday currently needs the code route. The gap is being
-closed deliberately rather than pretended away.</p>
+<p>The result is checked rather than trusted, exactly like a narrator's tags. A card naming a room
+that does not exist is handed back with that sentence and the model tries again, three times,
+then gives up and prints what is still wrong. One call, about a penny. Treat it as a first draft
+that is guaranteed to start, not as an author. It gives you a roster and a map; it does not give
+you the people.</p>
 
-<h2>Writing one in code</h2>
+<h2>What a card cannot say yet</h2>
 
-<p>The larger route is a file that declares the same things with more room: places that nest, schedules
-with priorities and weekday masks, secrets with the trust it takes to hear them, rules for what gives a
-thing away, ladders of wants, a calendar, a climate, and the voice the narrator writes in. Then one
-line to register it, and the command line and the app both open it the same way.</p>
+<p>A card world is a street with people and debts on it. Most of what makes Tremont a city is not
+yet expressible in a card: no secrets with trust gates, no ladders of wants, no disclosure rules,
+no ending conditions for situations, no rooms inside buildings and therefore no doors, no weekday
+patterns, no calendar, climate or voice, no apps, couples or terms. Anyone whose Tuesday differs
+from their Sunday currently needs the code route, on <a href="extending.html">Extending the
+engine</a>. The gap is being closed deliberately rather than pretended away.</p>
 
-<p>Three things are worth knowing about extending the engine itself.</p>
+<p>Re-importing a card makes a new world; it does not migrate an old one. Once a card has run, it
+has no further say.</p>
 
-<p>You can declare your own kinds of situation. Seven ship, including debt, promise, grudge and
-rivalry, and they are ordinary declarations rather than privileged ones. A world with oaths, curses or
-apprenticeships declares those instead, and says which side counts as the wronged one when one breaks.
-The engine never learns what any of them mean.</p>
-
-<p>You can declare what your world counts. Coin is one declared quantity among however many you want. A
-world that wants mana writes two declarations and no engine code, saying whether it is conserved, its
-floor, its ceiling, and whether it comes back on its own. Saying it is conserved is a strong claim, and
-the world then proves every turn that nobody minted any.</p>
-
-<p>You can add verbs, mostly as data: what a verb requires and what it does. A whole magic system
-exists as a worked example, written entirely in world content with nothing patched in the engine, and
-by the time it reaches adjudication nothing can tell it apart from a built-in one.</p>
-
-<h2>A world a model wrote</h2>
-
-<p>You can describe a world in a sentence and have one generated, such as "a rain-soaked bus depot at
-the end of the line". The result is checked rather than trusted, the same way a narrator's tags are. A
-card naming a room that does not exist is handed back with that exact sentence and it tries again,
-three times, then gives up and prints what is still wrong instead of handing you a world that does not
-run. One call, about a penny.</p>
-
-<p>Treat it as a first draft that is guaranteed to start, not as an author.</p>
-
-<h2>Where to go from here</h2>
-
-<ul class="cards">
-  <li><a href="how-a-world-gets-built.html"><strong>How a world gets built</strong><span>The whole
-  pipeline as it actually is today, scripts and all.</span></a></li>
-  <li><a href="isekai.html"><strong>Trapped in the game</strong><span>A fantasy world on the same
-  machinery, sketched out properly.</span></a></li>
-</ul>
+<div class="note">
+  <p class="note-title">Cards inside pictures</p>
+  <p>A world card can be carried inside a PNG, the way character cards are, in a text chunk under
+  the keyword <code>civitas</code>. The engine reads either form.</p>
+</div>

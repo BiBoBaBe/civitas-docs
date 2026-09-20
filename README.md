@@ -77,5 +77,10 @@ under Settings → Pages. Nothing in the site needs changing, because no link is
 - No explicit text and no explicit images, anywhere. The site describes adult mechanics in neutral
   terms on one page and shows nothing.
 - No real names, no personal data, no screenshots containing anybody's likeness.
-- Concrete examples from the fictional world rather than abstract claims.
+- Written for roleplayers first and engineers second. Lead with what a thing is and the rule that
+  governs it, then show a real artefact (a brief, a tag, a refusal, a card) rather than describing
+  one. Numbers go in a table with their default and where they are set.
+- Tremont is the worked example, not the subject. At most one short "In Tremont" box per page,
+  after the rule it illustrates, never as the opener.
+- No maxims as openers, no war stories, no anecdotes standing in for a definition.
 - Say plainly when something is not built.

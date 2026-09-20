@@ -1,158 +1,120 @@
 <!-- meta
-title: Places, doors and walls
-description: Districts, buildings and rooms; how travel works; and exactly who sees a thing, who only hears it, and who merely notices it happened.
+title: Places and doors
+description: How places nest, how routing works, and how the world decides who saw, who heard, and who only noticed.
 -->
 
-<p class="lede">The most useful thing this engine models is a shut door.</p>
-
-<div class="case">
-  <p class="case-title">The night the gym had no rooms</p>
-  <p>Two people were in the private studio at the back of the gym with the door locked, and the prose
-  said so over and over. But the gym was one place in the world, with no rooms in it, so everybody in
-  the building was in the room with them. A woman working out on the floor witnessed all of it. She
-  came away believing things that had never happened in front of her, and she could tell the
-  street.</p>
-</div>
-
-<p>Rooms exist because of that evening. Everything below is the machinery that came out of it.</p>
-
-<figure>
-  <img src="assets/img/lucky-seven.jpg" alt="An isometric cutaway of a small bar: a wooden counter with bottles behind it, stools, leather booths, a jukebox, a dartboard and a pool table." width="1400" height="930" loading="lazy">
-  <figcaption>The bar on the corner. Its back room is somewhere else entirely, which is the
-  difference between being overheard and not.</figcaption>
-</figure>
+<p class="lede">A place is a room, a flat, a building, a street or a district, and places nest.
+The room is the unit of sight. Who witnessed a thing is worked out from who was standing in the
+same room when it happened, and it is never stored.</p>
 
 <h2>The shape of a place</h2>
 
-<p>Places nest. A room is inside a flat, the flat is inside a building, the building is on a street,
-the street is in a district. Streets connect with a number of minutes on them, and getting somewhere
-is the fastest route by time rather than the fewest turnings.</p>
+<p>Every place has a parent. A room is inside a flat, the flat inside a building, the building on a
+street, the street in a district. Streets connect to each other with a number of minutes on the
+connection, and getting somewhere is the fastest route by time.</p>
 
-<p>A place can have opening hours and a capacity. A shut place refuses you as a destination and also
-as a shortcut through. The router is the only thing standing between a timetable and somebody walking
-into a locked building at four in the morning. But closing time only stops people coming in. Nobody
-is thrown out at closing, because otherwise the bar is a cell.</p>
+<p>A place can have opening hours and a capacity. A shut place refuses you as a destination and as
+a shortcut through it. Closing time only stops people coming in. Nobody is thrown out at closing,
+because otherwise a bar is a cell.</p>
 
-<p>While somebody is walking they are genuinely nowhere. The old room ended when they left, the new
-one begins when they arrive, and "on the road, arriving at 18:20" is a real answer rather than a gap
-to paper over. Somebody in transit sees nothing at all.</p>
+<p>While somebody is walking they are nowhere. Their old location ended when they left and the new
+one starts when they arrive. "On the road, arriving at 18:20" is a real answer, and somebody in
+transit sees nothing.</p>
+
+<figure>
+  <img src="assets/img/lucky-seven.jpg" alt="Isometric cutaway of a corner bar with a separate back room" loading="lazy">
+  <figcaption>A bar with a back room. The back room is a separate place with its own door, which
+  is the difference between being overheard and not.</figcaption>
+</figure>
 
 <h2>Who can see</h2>
 
-<p>A room is the unit of sight. You witnessed something if you were standing in the same room at the
-minute it happened. Nothing else counts, and nothing is stored: it is a question asked of the history
-each time, so it can never fall out of step with the history.</p>
+<p>You witnessed something if you were in the same room at the minute it happened. That is the
+whole rule. It is a question asked of the history each time rather than a flag written down, so it
+can never fall out of step with the history.</p>
 
 <h2>Who can only hear</h2>
 
-<p>Being in the same building but a different room is its own state. Within earshot, out of sight.
-The narrator gets those people in a separate block with the rule spelled out: they hear a raised
-voice and he hears them, but nobody sees through a door.</p>
+<p>Being in the same building but a different room is its own state: within earshot, out of
+sight. The brief lists those people in a separate block with the rule spelled out. They hear a
+raised voice and you hear them, but nobody sees through a door.</p>
 
-<p>What you get depends on the door. Open, and you know which room they are in and what they are
-doing. Shut or locked, and you get only that somebody is in there. A door works both ways, so your
-own being shut hides them from you exactly as theirs hides you from them.</p>
+<p>What you learn about them depends on the door. Open, and you know which room they are in and
+what they are doing. Shut or locked, and you know only that somebody is in there. A door works
+both ways.</p>
 
-<p>Whether a building is one earshot or several has to be declared, because nothing about the map can
-work it out.</p>
+<p>Whether a building is one earshot or several has to be declared, because nothing about the map
+can work it out. A flat is its own premises: what happens in 4A has nothing to do with 1A. A gym
+with four rooms is one premises, and somebody on the floor knows who went into the studio even
+with the door shut.</p>
 
-<blockquote>
-  <p>A flat is its own premises. What happens in 4A is nothing to do with 1A, however thin the floor.
-  A gym is not four premises because it has four rooms: the private studio, the locker room, the
-  office and the floor are one gym, and the woman racking plates outside the door knows perfectly
-  well who went in, even with the door shut.</p>
-</blockquote>
-
-<p>A door is open unless somebody shut it in the prose, and open again the moment the room is empty,
-because a shut door in a room nobody is in is just a door. Locking one is the only thing in the
-engine that stops a timetable walking somebody in on a scene.</p>
+<p>A door is open unless the prose shut it, and it is open again the moment the room is empty.
+Locking a door is the only thing that stops a timetable walking somebody in on a scene.</p>
 
 <h2>Who merely notices</h2>
 
-<p>Then the third case, which is where this page started. Two people go into a back room together and
-close it. Everybody left outside learns exactly one sentence: who went in, where, and whether the
-door shut. It is a bigger deal in a public building than in somebody's own flat, where the flatmate
-knows and the street does not care.</p>
+<p>When two people go into a room together and shut the door, everybody left outside learns
+exactly one thing: who went in, where, and that the door shut. What happened inside is not theirs.
+That two people wanted a shut door is, and they are free to repeat it. It is a bigger deal in a
+public building than in somebody's own flat.</p>
 
-<p>So the woman on the gym floor is left holding something true, interesting and incomplete, which
-she is free to repeat. What happened in there is not hers. That two people wanted a locked door
-is.</p>
+<h2>Volume: in the same room and still not heard</h2>
 
-<h2>Volume: in the same room, and still not heard</h2>
+<p>Standing in a room is not the same as hearing what was said in it. Anything said out loud has
+an audience, and the default audience is the person being spoken to.</p>
 
-<p>Standing in a room is not the same as hearing what was said in it. Anything said out loud has an
-audience, and the default audience is the person being spoken to.</p>
+<p>There are two settings and no third. A thing is said to one person, or it is said to the room.
+Said to the room, everybody present holds it. Said to one person, only that person holds it, plus
+anybody the prose shows catching the words.</p>
 
-<blockquote>
-  <p>The world had no such idea: anything anybody said out loud was heard, in full, by everybody
-  standing in the room, which is true of a toast and of a row at the bar and of nothing else people
-  do.</p>
-</blockquote>
-
-<p>There are two settings and no third. A thing is between you two, or it is not. Said to the room,
-everybody present holds it. Said to one person, only that person holds it, plus anybody the prose
-actually shows catching the words.</p>
-
-<p>Everybody else in the room gets a roll, and what they can win is not a fuzzy version of the
-secret. It is a different, true statement: <em>she told him something she does not tell people</em>.
-It carries no subject, so nothing about her leaks through it. The words leak only when the prose says
+<p>Everybody else in the room gets a roll. What they can win is not a fuzzy version of what was
+said. It is a different, true statement: <em>she told him something she does not tell people</em>.
+It carries no subject, so nothing leaks through it. The words leak only when the prose says
 somebody heard them.</p>
 
-<p>The chance of noticing at all is generous, around seven in ten, because being seen leaning in is
-the ordinary case. It falls with every extra head in the room. A packed bar is cover. A gym floor
-with one other person on it is not.</p>
+<table>
+  <thead><tr><th>Setting</th><th>Default</th><th>Meaning</th></tr></thead>
+  <tbody>
+    <tr><td>Chance a bystander notices</td><td>0.7</td><td>Falls with every extra person in the room. A packed bar is cover.</td></tr>
+    <tr><td>Small group</td><td>4</td><td>Told to this many or fewer is told to them, not announced.</td></tr>
+  </tbody>
+</table>
 
-<p>One more thing falls out of this. Anything said to one person is said in confidence by default,
-which switches on the machinery that decides whether the listener passes it on. That is
-<a href="gossip.html">Gossip</a>.</p>
-
-<h2>How far you can take this: a moving room</h2>
-
-<p>None of what follows is required. A world runs perfectly well with streets and rooms and nothing
-else. This is what it looks like when you decide one particular detail is worth the trouble, and it
-is worth reading even if you never want a vehicle, because every part of it generalises.</p>
-
-<p>A place can be marked as one you ride inside. That marker is the whole of the feature. The place
-itself is an ordinary room with its own door, so everything already on this page applies to it
-unchanged, and the engine has no special case for vehicles anywhere.</p>
-
-<p><strong>A moving room is still a room.</strong> While you are in it you genuinely have a
-location, and the location is the vehicle. Getting out is arriving. What is said inside is heard by
-the people inside and by nobody on the pavement, for exactly the reason a flat works that way.</p>
-
-<p><strong>A place can have a person who comes with it.</strong> Mark who drives, and that person is
-present, which means they hear everything said in the back. That is the point of the feature rather
-than a leak: what they hear is something they then know, and it travels like anything else they
-know. The same field gives you a carriage with a coachman, a boat with a boatman, a lift with an
-operator, a palanquin with bearers, a ship with a pilot. Anything that arrives with somebody
-attached.</p>
-
-<p><strong>It does not have to be useful.</strong> A vehicle with nobody driving it still works as a
-place. It simply never goes anywhere, and the engine refuses to travel in it. That is how you model
-a possession you can be shown, sit in and talk in. The general point is broader: a place does not
-have to take you anywhere to be worth having.</p>
-
-<p><strong>A place can be marked conspicuous.</strong> This is the one to steal. It is the only way
-the world can tell two things that do an identical job apart when one draws eyes and the other does
-not, and it has nothing to do with vehicles. A coat. A horse. A bodyguard walking two steps behind.
-A signet ring. The question "does this get me looked at" is separate from the question "does this
-get me there", and most worlds need somewhere to put the first one.</p>
-
-<p>Then the part that makes it a mechanic rather than a detail. If somebody has more than one, the
-one they take is a decision, and the decision is a tell. The loud one. The one nobody looks at
-twice. The one they drive themselves, so that there is no witness at all.</p>
-
-<p>Anybody who learns to read that choice knows something before a word is said. That only means
-anything in a world that was already counting who else was in the room, which is the argument for
-all of this: the depth is cheap because the machinery underneath it was already there.</p>
+<p>Anything said to one person is said in confidence by default, which switches on the machinery
+that decides whether the listener passes it on. That is <a href="gossip.html">Rumour</a>.</p>
 
 <h2>Arriving somewhere</h2>
 
-<p>When your own message says where you are going, the narrator is told about it before you get
-there: how far it is, whether it will still be open, who will be there by their own timetable, and
-who will be audible in the next room.</p>
+<p>When your message says where you are going, the narrator is told about the destination before
+you arrive: how far it is, whether it will be open, who will be there by their own timetable, and
+who will be audible in the next room. Without that, a narrator invents the staff, and an invented
+receptionist is somebody the world has never heard of.</p>
 
-<p>Without that, a narrator arriving somewhere it knew nothing about invents the staff, and an
-invented receptionist is somebody the world has never heard of. Name a place that does not exist and
-the world says so rather than letting one be invented. Name two that match and it refuses to pick for
-you, and lets the scene make you say which.</p>
+<p>Name a place that does not exist and the world says so. Name two that match and it refuses to
+pick, and asks the scene to say which.</p>
+
+<h2>Places you ride inside</h2>
+
+<p>A place can be marked as a vehicle. That marker is the whole of the feature: the vehicle is an
+ordinary room with its own door, and everything above applies to it unchanged. While you are in
+it, your location is the vehicle. What is said inside is heard by the people inside and by nobody
+on the pavement.</p>
+
+<p>A vehicle can name a driver. That person is present, hears everything said in the back, and
+knows it afterwards like anything else they know. The same field gives you a carriage with a
+coachman or a boat with a boatman. A vehicle with no driver still works as a place to sit in and
+talk; the engine simply refuses to travel in it.</p>
+
+<p>A place can also be marked <strong>conspicuous</strong>, from 0 to 1. This is separate from
+whether it gets you anywhere. It is how much it draws eyes, and it is what lets the world tell a
+loud car from a quiet one, or a signet ring from a plain one. If somebody has more than one, the
+one they take is a decision the world can see.</p>
+
+<div class="note">
+  <p class="note-title">Under the hood</p>
+  <p>There is no "witnessed" link in the data model. An early draft had one, and nothing ever
+  created it, because who saw a thing is answerable from co-location at the moment it happened.
+  A stored copy of that query would be a second source of truth kept in step by hand. Firsthand
+  knowledge is instead marked on the belief itself, as its provenance. See
+  <a href="knowledge.html">What people know</a>.</p>
+</div>

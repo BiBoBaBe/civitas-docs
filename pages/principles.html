@@ -1,0 +1,111 @@
+<!-- meta
+title: Principles
+description: The seven rules the engine is built on, what each one means for play, and how the code enforces it.
+-->
+
+<p class="lede">Civitas is ordinary engineering applied to a problem usually solved by asking a
+model to try harder. Seven rules run through the whole codebase. Each is listed here with what it
+means at the table and how it is enforced rather than hoped for.</p>
+
+<h2>1. State is structured, never prose</h2>
+
+<p>If something has to stay consistent, it is a record in the world, never a sentence in a
+summary. A debt is a number on a link between two people. A feeling is a number on an axis. A
+promise is a plan with a time on it.</p>
+
+<p><strong>At the table:</strong> a debt survives a week because it is a number, not because the
+model was careful.</p>
+
+<p><strong>Enforced by:</strong> the world has no free-text state. The only prose the engine holds
+is what it shows you back, such as a person's activity or a situation's one-line summary, and
+nothing is computed from it.</p>
+
+<h2>2. Most input never reaches a model</h2>
+
+<p>Walking somewhere, waiting, paying, checking the time, reading a phone thread: these are rules,
+resolved instantly and for free. The model is used for drama, not for lookups.</p>
+
+<p><strong>At the table:</strong> "Go to the bar" is a route over the map with a walking time, and
+you arrive without anybody having to write a paragraph about it.</p>
+
+<p><strong>Enforced by:</strong> the player's own actions have their own routes into the service,
+separate from narration, and the model is never asked to perform them.</p>
+
+<h2>3. The simulation is pure and seeded</h2>
+
+<p>The step that moves the world forward reads a world and returns the events that would happen,
+writing nothing. Every random choice draws from a generator seeded from the world, the branch and
+the sequence number. The same log always replays the same city.</p>
+
+<p><strong>At the table:</strong> a reroll cannot change the weather, and the same evening replays
+identically after a restart.</p>
+
+<p><strong>Enforced by:</strong> fictional time is a separate type, so the real clock cannot leak in
+without a compile error. Event identifiers are derived from position in the log rather than
+generated at random. Tests plan the same day twice and assert the results are identical.</p>
+
+<h2>4. The model proposes, the simulation adjudicates</h2>
+
+<p>Every change the model asks for is checked against the world before it is written. A change
+that fails is refused with a reason and never persisted.</p>
+
+<p><strong>At the table:</strong> a narrator that has somebody hand over a secret they have not
+earned gets a note back and a second try, and the secret stays kept.</p>
+
+<p><strong>Enforced by:</strong> every verb declares preconditions. The adjudicator runs them
+against a scratch copy of the world and returns accepted, rejected and failed lists. A fuzz test
+feeds it random tags and asserts that rejected verbs leave no trace.</p>
+
+<h2>5. Context is a query with a budget, not a dump</h2>
+
+<p>The world is never sent to the model. Each turn is a query for what this scene needs, ranked by
+relevance, cut to a token budget, with the things that cannot be dropped pinned first.</p>
+
+<p><strong>At the table:</strong> a world with forty people and a hundred facts still costs a few
+hundred tokens a turn, and the person in front of you is never left out to make room.</p>
+
+<p><strong>Enforced by:</strong> the brief assembler takes a budget and a floor. A test passes it a
+budget of one token and checks the scene still names the room and everybody in it.</p>
+
+<h2>6. Everything is branchable</h2>
+
+<p>Swipes are branches. Branches are worlds. Rewinding to before a reply is a fork, not an edit,
+and the abandoned branch keeps existing.</p>
+
+<p><strong>At the table:</strong> swipe a reply away and the clock goes back, the people go back,
+and the rumour that started in the abandoned version never started.</p>
+
+<p><strong>Enforced by:</strong> the store is append-only. A fork writes one row and shares
+everything before it with its parent. Branch names are derived from where they forked, so replaying
+a session produces the same branches.</p>
+
+<h2>7. Level of detail everywhere</h2>
+
+<p>How much thought the world spends on somebody scales with how close they are to you, measured
+in the web of relationships rather than in metres. Somebody who owes you money across town is one
+hop away. A stranger in the next room is three.</p>
+
+<p><strong>At the table:</strong> forty people keep their timetables and their appointments every
+tick, but only the handful who matter to you right now reconsider their plans every step.</p>
+
+<p><strong>Enforced by:</strong> the tier is computed fresh each tick from the graph and never
+stored, because a stored tier is a cache nobody remembers to invalidate.</p>
+
+<h2>Two rules that follow from the seven</h2>
+
+<p><strong>The player is inviolable.</strong> The narrator may not move you, spend your money,
+undress you, decide what you feel, decide what you believe, or claim you agreed to something. The
+simulation will not walk you on your timetable and will not pass you gossip. You learn things by
+being told, in the fiction, like a person. This is a property of the player's record rather than a
+check scattered across call sites, because it was once three separate checks and all three leaked.</p>
+
+<p><strong>No route returns the world.</strong> The bridge to Marinara can ask for a brief, a
+view, or a phone screen. It cannot fetch the graph. A bridge that can reach into the world is a
+bridge that eventually will, and then two programs own the truth instead of one.</p>
+
+<div class="note">
+  <p class="note-title">Where these come from</p>
+  <p>The seven rules are the second section of the engine's design document, and each of the
+  enforcement notes above points at a real module or test. <a href="architecture.html">The
+  engine</a> walks through the modules in order.</p>
+</div>

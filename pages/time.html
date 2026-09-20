@@ -1,105 +1,122 @@
 <!-- meta
-title: Time
-description: The world clock, how a turn advances it, what happens while you skip ahead, and what the world simulates in full.
+title: Time and routines
+description: The fictional clock, how each turn advances it, what a tick does, skipping ahead, and how much of the world is simulated in full.
 -->
 
-<p class="lede">The clock is fictional minutes since the world began, and it never looks at the real
-one.</p>
-
-<p>Say you sleep until morning. The clock does not jump to seven. The world runs its ordinary tick
-in half-hour chunks all the way there, so the rota still turns over, two people keep an arrangement,
-somebody stands somebody else up, a rumour moves one more hop and an older one decays, and you get a
-text at one in the morning from somebody who could not sleep either.</p>
-
-<p>Then you wake up and read what you missed, as a few lines out of your own journal.</p>
+<p class="lede">The world has its own clock, counted in fictional minutes since the world began.
+It never reads the real time of day. It moves only when something in the story moves it.</p>
 
 <h2>The clock</h2>
 
-<p>Time moves because something said it should: a walk cost eleven minutes, a scene took three, the
-narrator said an hour passed, you asked to skip to Friday. It never advances because time passed for
-you.</p>
+<p>Time advances for three reasons: a walk cost some minutes, a scene took some, or you asked to
+skip ahead. It never advances because time passed for you at your keyboard. Midnight is a number
+crossing a multiple of 1,440, not an event.</p>
 
-<p>A world can name its days so that the fiction and the clock agree. The example world opens on
-Day 8, a Tuesday, a week after the player signed for his flat. Every timestamp on screen is printed
-on that calendar, because a narrator whose header disagrees with the world's clock learns very
-quickly to ignore the clock.</p>
-
-<p>Midnight is not an event. It is a number crossing a multiple of 1,440.</p>
+<p>A world can name its days so that the fiction and the clock agree. Tremont opens on day 8, a
+Tuesday, and every timestamp on screen and in the brief is printed on that calendar. This matters
+because a narrator whose header disagrees with the world's clock learns to ignore the clock.</p>
 
 <h2>How a turn advances time</h2>
 
-<p>Three things can decide, in order. If the app states how long the turn took, that is it, including
-zero, where the clock does not move. Otherwise, if the narrator wrote that an hour passed, an hour
-passes. Otherwise the world uses a default beat, which is ten minutes generally and three in
-Tremont, because a bar conversation is not ten minutes long.</p>
+<p>Three things can decide how long a turn took, in this order:</p>
 
-<p>One extra rule. If you set off walking this turn, the turn ends when you arrive, so the next scene
-is the room you walked into and not a street you are halfway down.</p>
+<ol>
+  <li>Marinara states a duration. Zero is allowed, and the clock does not move.</li>
+  <li>The narrator tagged that time passed, such as an hour.</li>
+  <li>Neither did, and the world uses its default beat.</li>
+</ol>
 
-<p>Time the narrator says has passed is lived, not jumped. An hour tagged in a reply runs as an hour
-of world: people walk, shifts end, gossip moves. The alternative was tried, and because a tagged jump
-also replaced the beat, a narrator that tagged time every turn froze the whole street where it
-stood.</p>
+<table>
+  <thead><tr><th>Setting</th><th>Default</th><th>Where it is set</th></tr></thead>
+  <tbody>
+    <tr><td>Beat per turn</td><td>10 minutes</td><td>Engine default; a world can override it. Tremont uses 3.</td></tr>
+    <tr><td>Longest skip</td><td>14 days</td><td>Engine constant</td></tr>
+    <tr><td>Skip step</td><td>30 minutes</td><td>Engine constant</td></tr>
+    <tr><td>"Morning"</td><td>07:00</td><td>Engine constant</td></tr>
+  </tbody>
+</table>
+
+<p>Time the narrator says has passed is lived, not jumped. An hour tagged in a reply runs as an
+hour of world: people walk, shifts end, gossip moves. If your own message says you set off
+somewhere, the turn ends when you arrive, so the next scene is the room you walked into rather than
+a street you are halfway down.</p>
 
 <h2>What a tick is</h2>
 
-<p>A tick is the world taking one breath. Standing arrangements turn into tonight's meetings, people
-decide where to be and start walking, bodies tire, whatever you are not watching resolves itself,
-gossip moves, the clock advances. Then the world asks what the hour has settled: which plans were
-kept, which were stood up, which agreements have lapsed, which tasks are due, which situations have
-quietly become true.</p>
+<p>A tick is one step of the simulation. Long stretches are chopped into ten-minute steps with the
+remainder run as one short step, so a three-minute exchange still moves the world by three minutes.
+In one step the world:</p>
 
-<p>Long stretches are chopped into ten-minute steps with the remainder run as one short step. Without
-that remainder a three-minute exchange rounded down to nothing, and a world driven in short exchanges
-stood still at the minute it opened.</p>
+<ul>
+  <li>turns standing arrangements into tonight's concrete meetings;</li>
+  <li>lets each person decide where to be, and starts them walking;</li>
+  <li>tires bodies, and settles anything unwatched that was due;</li>
+  <li>moves rumours one hop and lets old ones fade;</li>
+  <li>advances the clock;</li>
+  <li>then asks what the hour settled: which plans were kept or broken, which agreements lapsed,
+  which tasks came due, and which situations quietly became true.</li>
+</ul>
 
-<p>Travel does not move the clock. A journey is a departure time and an arrival time, so one person's
-walk across town cannot drag the city forward with them.</p>
+<p>Travel does not move the clock. A journey is a departure time and an arrival time, so one
+person's walk across town cannot drag the whole city forward.</p>
 
 <h2>Skipping ahead</h2>
 
 <p>You can skip by a duration, until morning, until your next arrangement, or to a phrase like
-"friday 19:30" read against the world's own calendar. It stops early if something needs you:</p>
+<code>friday 19:30</code> read against the world's own calendar. The skip runs the ordinary tick in
+half-hour chunks and stops early when something needs you:</p>
 
 <ul>
-  <li>An arrangement you are part of is about to start. It stops at the moment you would have to
-  leave, not at the hour itself.</li>
-  <li>Somebody walks into the room you are in.</li>
-  <li>Somebody who is fond of you texts.</li>
+  <li>an arrangement you are part of is about to start, at the moment you would have to leave
+  for it rather than at the hour itself;</li>
+  <li>somebody walks into the room you are in;</li>
+  <li>somebody who is fond of you sends a text.</li>
 </ul>
 
-<p>A skip can run at most a fortnight, and it can be asked where it would land without living any of
-it. What you missed comes back as up to a dozen journal lines, read off the log rather than
-summarised by a model, or honestly as "nothing that concerned him".</p>
+<p>A phrase the world cannot read is refused rather than guessed at. The refusals are plain:
+"say how long, or until when", "that is not ahead of now", "more than a fortnight". A skip can also
+be asked where it would land without living any of it.</p>
+
+<p>What you missed comes back as up to a dozen lines from your own journal, read off the log
+rather than summarised by a model, or honestly as "nothing that concerned him".</p>
 
 <h2>What gets simulated in full</h2>
 
-<p>Everyone keeps their timetable and everyone keeps their appointments, always. What varies is how
-much thought the world spends on them.</p>
+<p>Everybody keeps their timetable and their appointments every tick. What varies is how much
+thought the world spends on them. People near you weigh their options every step. People further
+away are reconsidered every third step and otherwise keep to their day.</p>
 
-<p>People near you get a full sweep every step: they weigh their options, chase what they want,
-change their minds. People far away are reconsidered every third step and otherwise keep to their
-day, which is most of what the sweep would have produced anyway.</p>
+<p><strong>Near</strong> is measured in the web of relationships, not the street. Being in the
+room with you is a hop. So is owing you money, being in a situation with you, or having an
+arrangement with you that still stands. A creditor plotting against you from across the city is one
+hop away and is simulated in full. A stallholder in the next room, whom you have never met, is
+three hops away and is not.</p>
 
-<p>Near means near in the web of relationships, not near in the street.</p>
+<table>
+  <thead><tr><th>Tier</th><th>Hops from you</th><th>Reconsidered</th></tr></thead>
+  <tbody>
+    <tr><td>Near</td><td>0 or 1</td><td>Every step</td></tr>
+    <tr><td>Mid</td><td>2</td><td>Every third step</td></tr>
+    <tr><td>Far</td><td>Unreached</td><td>Keeps to the timetable</td></tr>
+  </tbody>
+</table>
 
-<blockquote>
-  <p>A creditor plotting against you from across the city is one hop away and deserves full
-  simulation, while the stallholder in the next room is three hops away and does not.</p>
-</blockquote>
-
-<p>Being in the room with you is itself a hop, so standing next to somebody still counts. So does
-owing them money, being in a situation with them, or having an arrangement with them that still
-stands. An arrangement kept last week is not a reason to go on simulating somebody in full.</p>
-
-<p>None of this is written down. A stored tier is a cache nobody remembers to invalidate.</p>
+<p>None of this is stored. The tier is computed from the graph each tick, because a stored tier is
+a cache nobody remembers to invalidate.</p>
 
 <h2>Weather</h2>
 
-<p>Weather is not stored either. It is worked out from the world's seed and the minute, so the same
-minute is always the same rain, a reroll cannot change it, and a thousand turns of it cost nothing.
-It drifts over five-hour blocks rather than flickering turn to turn: a handful of changes a day, not
-one a reply.</p>
+<p>Weather is not stored either. It is worked out from the world's seed and the minute, so the
+same minute is always the same rain, a reroll cannot change it, and a thousand turns of it cost
+nothing. It drifts over five-hour blocks rather than turn to turn.</p>
 
-<p>A world declares a climate, meaning a typical day and night temperature and how wet it is. Tremont
-is set to a cold wet autumn, which is the entire reason a dead boiler is a story.</p>
+<p>A world declares a climate: a typical day and night temperature and how wet it is. Tremont's
+is a cold wet autumn, at 11°C by day and 5°C by night.</p>
+
+<div class="note">
+  <p class="note-title">Under the hood</p>
+  <p>Fictional time is its own branded type, so a real timestamp cannot be passed where world time
+  is expected without a compile error. The tick is a pure function from a world to a list of
+  events, which is what lets a test run ten thousand ticks without a database and lets the
+  adjudicator veto before anything is written.</p>
+</div>

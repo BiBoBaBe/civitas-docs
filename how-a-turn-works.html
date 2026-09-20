@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How a turn works · Civitas</title>
+<meta name="description" content="One reply, followed from the brief the model receives to the events the world records: brief, narration, tags, checks, commit.">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="How a turn works · Civitas">
+<meta property="og:description" content="One reply, followed from the brief the model receives to the events the world records: brief, narration, tags, checks, commit.">
+<meta property="og:type" content="article">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%2318140f'/%3E%3Cpath%20d='M6%2024V14l10-6%2010%206v10'%20fill='none'%20stroke='%23d79a4e'%20stroke-width='2'%20stroke-linejoin='round'/%3E%3Crect%20x='13'%20y='17'%20width='6'%20height='7'%20fill='%23d79a4e'/%3E%3C/svg%3E">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Civitas</a>
+  <details class="menu">
+    <summary>Contents</summary>
+    <nav class="nav" id="nav-mobile" aria-label="Documentation"><p class="nav-heading">Start here</p>
+<ul><li><a href="index.html">What Civitas is</a></li><li><a href="how-a-turn-works.html" aria-current="page">How a turn works</a></li><li><a href="principles.html">Principles</a></li></ul>
+<p class="nav-heading">The simulation</p>
+<ul><li><a href="time.html">Time and routines</a></li><li><a href="places.html">Places and doors</a></li><li><a href="people.html">People and feelings</a></li><li><a href="knowledge.html">What people know</a></li><li><a href="gossip.html">Rumour</a></li><li><a href="motives.html">Wants and situations</a></li><li><a href="plans.html">Plans, tasks and trips</a></li><li><a href="terms.html">Agreements and couples</a></li><li><a href="records.html">What gets written down</a></li></ul>
+<p class="nav-heading">Under the hood</p>
+<ul><li><a href="architecture.html">The engine</a></li><li><a href="bridge.html">The Marinara bridge</a></li></ul>
+<p class="nav-heading">Playing</p>
+<ul><li><a href="setup.html">Trying it</a></li><li><a href="screens.html">The World screen</a></li><li><a href="pictures.html">Pictures</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
+<p class="nav-heading">Worlds</p>
+<ul><li><a href="tremont.html">Tremont</a></li><li><a href="other-worlds.html">Other settings</a></li></ul>
+<p class="nav-heading">Building your own</p>
+<ul><li><a href="your-own-world.html">Writing a world card</a></li><li><a href="extending.html">Extending the engine</a></li><li><a href="how-a-world-gets-built.html">The authoring pipeline</a></li><li><a href="limits.html">Limits</a></li></ul></nav>
+  </details>
+</header>
+
+<div class="shell">
+  <aside class="sidebar">
+    <a class="brand brand-desk" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Civitas<em>documentation</em></a>
+    <nav class="nav" id="nav-desktop" aria-label="Documentation"><p class="nav-heading">Start here</p>
+<ul><li><a href="index.html">What Civitas is</a></li><li><a href="how-a-turn-works.html" aria-current="page">How a turn works</a></li><li><a href="principles.html">Principles</a></li></ul>
+<p class="nav-heading">The simulation</p>
+<ul><li><a href="time.html">Time and routines</a></li><li><a href="places.html">Places and doors</a></li><li><a href="people.html">People and feelings</a></li><li><a href="knowledge.html">What people know</a></li><li><a href="gossip.html">Rumour</a></li><li><a href="motives.html">Wants and situations</a></li><li><a href="plans.html">Plans, tasks and trips</a></li><li><a href="terms.html">Agreements and couples</a></li><li><a href="records.html">What gets written down</a></li></ul>
+<p class="nav-heading">Under the hood</p>
+<ul><li><a href="architecture.html">The engine</a></li><li><a href="bridge.html">The Marinara bridge</a></li></ul>
+<p class="nav-heading">Playing</p>
+<ul><li><a href="setup.html">Trying it</a></li><li><a href="screens.html">The World screen</a></li><li><a href="pictures.html">Pictures</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
+<p class="nav-heading">Worlds</p>
+<ul><li><a href="tremont.html">Tremont</a></li><li><a href="other-worlds.html">Other settings</a></li></ul>
+<p class="nav-heading">Building your own</p>
+<ul><li><a href="your-own-world.html">Writing a world card</a></li><li><a href="extending.html">Extending the engine</a></li><li><a href="how-a-world-gets-built.html">The authoring pipeline</a></li><li><a href="limits.html">Limits</a></li></ul></nav>
+  </aside>
+
+  <main id="main" class="content">
+    <article class="prose">
+      <h1>How a turn works</h1>
+      <p class="lede">Every turn follows the same five steps. The world writes a brief. The model writes
+the scene and tags what changed. The simulation checks every tag against the world. What survives
+is written to the log. Then the clock moves.</p>
+
+<h2 id="1-the-world-writes-a-brief">1. The world writes a brief</h2>
+
+<p>The brief is a query, not a dump. The world is never serialised and sent to the model. Instead
+the simulation asks, for this player at this minute in this room, what the model needs to know,
+and renders that as plain text inside a token budget.</p>
+
+<p>Some lines are <strong>pinned</strong>: the time, the place, you, and everybody standing in the
+room with you. They survive any budget, because the model can never be allowed to forget somebody
+your character can see. Everything else competes for the space that is left, ranked by how much it
+bears on this moment. A debt due tomorrow outranks one due next month. A rumour about the person in
+front of you outranks one about somebody across town.</p>
+
+<p>The sections, in the order they appear:</p>
+
+<dl class="terms">
+  <dt>TIME, PLACE, YOU</dt>
+  <dd>The clock on the world's own calendar, the room and its one-line description, and whether
+  the door is shut or locked. Then your name and what you are doing.</dd>
+  <dt>PRESENT</dt>
+  <dd>Everybody in the room, named the way you know them, with what they are doing and, where it
+  matters, what they believe.</dd>
+  <dt>NEARBY</dt>
+  <dd>People in another room of the same building. The brief spells out the rule: they hear a raised
+  voice and you hear them, but nobody sees through a door.</dd>
+  <dt>JUST ARRIVED, JUST LEFT, AWAY, VISITING</dt>
+  <dd>Movement since the last turn, so the model shows people coming and going instead of having
+  them appear.</dd>
+  <dt>PLANS, TERMS, COUPLES, COLLAR</dt>
+  <dd>Arrangements that stand, agreements the world is holding people to, couples as a unit, and
+  open tasks.</dd>
+  <dt>OPEN, RECENT, UNRESOLVED</dt>
+  <dd>Unfinished situations with their stakes and deadlines, the last few things that happened,
+  and threads that are waiting on somebody.</dd>
+</dl>
+
+<p>The same world at the same minute always produces the same brief. That is what makes it
+possible to write a test for context assembly at all.</p>
+
+<h2 id="2-the-model-writes-the-scene">2. The model writes the scene</h2>
+
+<p>The model receives three things: a <strong>voice contract</strong> supplied by the world, which
+says how the prose should read; the brief; and your message. The voice contract carries nothing
+about what is true. Everything true arrives only through the brief, and a test asserts that the
+world appears nowhere else in the prompt.</p>
+
+<p>Along with the prose, the model is required to emit short <strong>tags</strong> for anything that
+changed in the world. They sit on their own lines at the end of the reply and you never see them.
+The instruction is phrased as an obligation, because a scene the simulation never hears about is a
+scene that did not happen:</p>
+
+<pre><code>STATE CHANGES MUST BE TAGGED.
+If anything in the world changed during your reply — somebody moved, time passed, a debt was
+made or paid, a feeling shifted, a situation opened, advanced or ended, somebody learned
+something — you MUST record it by putting the matching tag on its own line at the very end.
+The player never sees these lines; they are how the world finds out what you did.</code></pre>
+
+<p>A tag looks like this. Double angle brackets, because square brackets are common in prose and
+in players' own asides:</p>
+
+<pre><code>&lt;&lt;move person="the clerk" place="The Anchor"&gt;&gt;
+&lt;&lt;pay person="Anna Reed" target="the clerk" amount="20"&gt;&gt;
+&lt;&lt;plan person="Anna Reed" place="The Anchor" when="tomorrow 20:00" what="settling up"&gt;&gt;
+&lt;&lt;door place="the back room" state="locked"&gt;&gt;
+&lt;&lt;advance_time minutes="20"&gt;&gt;</code></pre>
+
+<p>There are thirty-three built-in tags, and a world can add its own. The full table is on
+<a href="records.html">What gets written down</a>.</p>
+
+<h2 id="3-a-second-pass-reads-the-prose">3. A second pass reads the prose</h2>
+
+<p>The model tags what it meant to do. A separate, cheaper pass, the <strong>scene reader</strong>,
+reads the finished prose for what the narrator did not bother to tag: what somebody is doing now,
+what came off, who has had a drink, whether a door was shut, whether somebody said one of the things
+they keep. It answers with the same tags, from a fixed list of names, so it cannot invent a person
+who is not in the room.</p>
+
+<h2 id="4-every-tag-is-checked">4. Every tag is checked</h2>
+
+<p>Nothing commits unchecked. Each tag is parsed, its names are resolved against the world, and its
+preconditions are tested against the world as it will be when that tag runs. Tags in one reply are
+applied in order to a scratch copy, so opening a situation and then advancing it works, while
+advancing one that was never opened does not.</p>
+
+<p>A tag that fails is reported with a reason and a repair hint, and never reaches the log. The
+reasons are written for a writer rather than a programmer:</p>
+
+<pre><code>&lt;&lt;move person="Sam Vale" place="The Anchor"&gt;&gt;
+  — the narrator cannot move the player. let the player move himself
+
+&lt;&lt;confide person="the cook" secret="why she left the city"&gt;&gt;
+  — they do not trust him enough to tell him that yet (0.12 of 0.45).
+    let them keep it for now; it comes out when something between them has earned it
+
+&lt;&lt;term person="Jade" mode="counter" ...&gt;&gt;
+  — that is already signed. void it and draw up new terms instead of
+    rewriting what somebody agreed to</code></pre>
+
+<p>When any tag is rejected, the engine asks the model once for a repair, keeping the prose and
+fixing only the listed tags:</p>
+
+<pre><code>Some of your tags did not work. Keep the prose, fix only these:
+  &lt;&lt;move person="Sam Vale" place="The Anchor"&gt;&gt; — the narrator cannot move the player. let the player move himself</code></pre>
+
+<p>After the repair pass the turn stands with whatever survived. Nothing is half-applied and nothing
+is silently dropped. Rejection is a normal case, not an error: every model gets a real share of tags
+refused, and the design expects it.</p>
+
+<h2 id="5-the-clock-moves-and-the-world-catches-up">5. The clock moves and the world catches up</h2>
+
+<p>Time advances by what the turn cost. If Marinara says how long the turn took, that is used. If
+the model tagged that an hour passed, an hour passes. Otherwise the world uses a default beat, ten
+minutes by default and three in Tremont, because a bar conversation is short. The time is lived, not
+jumped: people walk, shifts end, gossip moves one step. <a href="time.html">Time and routines</a>
+has the details.</p>
+
+<p>Then the next turn starts with a fresh brief, rebuilt from the log.</p>
+
+<div class="note">
+  <p class="note-title">Under the hood</p>
+  <p>The five steps map onto five modules: brief assembly, the narrator prompt, the verb parser,
+  the adjudicator, and the tick. The adjudicator's contract is that a verb either applies cleanly
+  or is refused with a reason, and a fuzz test throws thousands of random tags at it to check that
+  refused verbs leave no trace and accepted ones leave the world satisfying every invariant. See
+  <a href="architecture.html">The engine</a>.</p>
+</div>
+
+<h2 id="rerolls-and-swipes">Rerolls and swipes</h2>
+
+<p>Deleting or swiping a reply does not edit the world. It rewinds it. The world forks at the
+moment before that reply was folded in, the clock goes back with it, and the abandoned version
+still exists on its own branch. A reroll is a different evening, not a corrected one.</p>
+    </article>
+    <nav class="pager" aria-label="Neighbouring pages"><a class="pager-link pager-prev" href="index.html"><span>Previous</span><strong>What Civitas is</strong></a><a class="pager-link pager-next" href="principles.html"><span>Next</span><strong>Principles</strong></a></nav>
+    <footer class="foot">
+      <p>Civitas is a personal project, documented as it actually behaves. The example world is
+      fiction and every character in it is an adult.</p>
+    </footer>
+  </main>
+
+  <aside class="toc" aria-label="On this page"><p class="toc-heading">On this page</p><ul><li><a href="#1-the-world-writes-a-brief">1. The world writes a brief</a></li><li><a href="#2-the-model-writes-the-scene">2. The model writes the scene</a></li><li><a href="#3-a-second-pass-reads-the-prose">3. A second pass reads the prose</a></li><li><a href="#4-every-tag-is-checked">4. Every tag is checked</a></li><li><a href="#5-the-clock-moves-and-the-world-catches-up">5. The clock moves and the world catches up</a></li><li><a href="#rerolls-and-swipes">Rerolls and swipes</a></li></ul></aside>
+</div>
+</body>
+</html>

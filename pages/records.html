@@ -1,115 +1,116 @@
 <!-- meta
-title: What the world records
-description: Deeds, what you said about yourself, what people told you, plans and texts: the different things a turn can leave behind.
+title: What gets written down
+description: The tags a reply can carry, what the narrator may never do, the kinds of record the world keeps, and how the journal and repairs work.
 -->
 
-<p class="lede">A scene the world never heard about is a scene that did not happen.</p>
+<p class="lede">The world is an append-only list of events. Everything you can see on screen or in
+a brief is read off that list. Nothing is a summary, nothing is a paraphrase, and nothing is a note
+a model left for itself.</p>
 
-<p>Say you tip a bartender a hundred in front of a full room. Five things follow. A fact is written
-that you did it. Everybody standing there gets a firsthand belief in that fact, at full confidence.
-From that moment they can repeat it, and some of them will. If the amount was large enough to be an
-answer to a question nobody asked, it also tells the room something about you. And none of it
-happened because a model remembered to be consistent.</p>
+<h2>The tags</h2>
 
-<h2>How a turn is read</h2>
+<p>A reply changes the world only through tags. These are the thirty-three built in. A world can
+add its own; see <a href="extending.html">Extending the engine</a>.</p>
 
-<p>Two passes read every reply. The narrator tags what it did, such as she moved here, this situation
-escalated, he paid her forty. A second pass reads the finished prose for what the narrator did not
-bother to say: what came off, what each person is doing, who had been drinking.</p>
+<table>
+  <thead><tr><th>Tag</th><th>What it records</th></tr></thead>
+  <tbody>
+    <tr><td><code>move</code></td><td>Somebody goes to a place they can walk to. Never the player.</td></tr>
+    <tr><td><code>went</code></td><td>The player went somewhere, because his own message said so.</td></tr>
+    <tr><td><code>did</code></td><td>The player did something the room will remember.</td></tr>
+    <tr><td><code>said</code></td><td>The player told somebody something about himself.</td></tr>
+    <tr><td><code>shared</code></td><td>Somebody told the player an ordinary detail of their life.</td></tr>
+    <tr><td><code>told</code></td><td>Somebody said one of the things they keep, and to whom. Written by the scene reader.</td></tr>
+    <tr><td><code>confide</code></td><td>Somebody tells the player something they had been keeping. Gated on trust.</td></tr>
+    <tr><td><code>reveal</code></td><td>Somebody learns something they could plausibly have heard. Never the player.</td></tr>
+    <tr><td><code>record_fact</code></td><td>Something happened that can travel later.</td></tr>
+    <tr><td><code>appearance</code></td><td>What came off, went on, is showing, or was changed into.</td></tr>
+    <tr><td><code>doing</code></td><td>What somebody is doing right now, and where in the place.</td></tr>
+    <tr><td><code>loosened</code></td><td>Somebody's guard came down, or came back up.</td></tr>
+    <tr><td><code>door</code></td><td>A door was shut, locked or opened.</td></tr>
+    <tr><td><code>feel</code></td><td>One person's feeling towards another shifts on one axis. Never the player's.</td></tr>
+    <tr><td><code>give</code>, <code>take</code></td><td>An item changes hands. Never from the player without his word.</td></tr>
+    <tr><td><code>owe</code>, <code>settle</code>, <code>pay</code></td><td>A debt is made, forgiven, or paid in coin. Never the player's money.</td></tr>
+    <tr><td><code>open_thread</code>, <code>advance_thread</code>, <code>close_thread</code></td><td>A situation starts, moves along, or ends, well or badly.</td></tr>
+    <tr><td><code>plan</code>, <code>trip</code>, <code>task</code></td><td>An arrangement, a journey, or a task. Only from the player's own message.</td></tr>
+    <tr><td><code>term</code>, <code>pair</code></td><td>An agreement through its whole life, and a couple's standing with each other.</td></tr>
+    <tr><td><code>text</code></td><td>A message actually sent, word for word.</td></tr>
+    <tr><td><code>watch</code>, <code>recognise</code></td><td>The player was in somebody's audience, or worked out who a handle is.</td></tr>
+    <tr><td><code>advance_time</code></td><td>Time passed inside the reply.</td></tr>
+    <tr><td><code>retract</code>, <code>merge_thread</code></td><td>Repairs only: undo a telling that never happened, or fold a duplicate situation.</td></tr>
+  </tbody>
+</table>
 
-<p>Then everything is checked. A tag that does not survive is rejected with a reason and a
-suggestion, never half-applied and never silently dropped. There is one more try, keeping the prose
-and fixing only the rejected tags, and then the turn stands.</p>
+<h2>What the narrator may never do</h2>
+
+<p>The narrator has no authority over the player. It may not move you, spend your money, undress
+you, decide what you feel, decide what you believe, take something off you, or claim you said or
+agreed to something. Each is refused unless your own message warrants it. The refusals are
+written as notes to a writer:</p>
+
+<pre><code>the narrator cannot move the player — let the player move himself
+the narrator cannot spend the player's money — let him pay for himself
+the narrator cannot decide what the player feels
+the narrator cannot decide what the player believes — tell him in the prose and let him decide
+only the player's own message can make a plan with him</code></pre>
 
 <h2>The kinds of record</h2>
 
 <dl class="terms">
-  <dt>Deeds, meaning what you did</dt>
-  <dd>Something the room will remember: you tipped somebody a hundred, stood up for somebody, made a
-  scene. You know what you did. What is worth recording is who else now does.</dd>
-
+  <dt>Deeds</dt>
+  <dd>Something you did that the room will remember. You know what you did. What is recorded is
+  who else now does.</dd>
   <dt>What you said about yourself</dt>
-  <dd>You told somebody something about your own life. Filed separately from a deed because it is
-  hearsay about you rather than something witnessed. They may bring it up, repeat it, or hold it
-  against you. It carries a volume, and by default it goes to the person in front of you rather than
-  to the hall.</dd>
-
+  <dd>Filed separately from a deed, because it is hearsay about you rather than something
+  witnessed. It carries a volume, and by default it goes to the person in front of you.</dd>
   <dt>What people told you</dt>
-  <dd>Ordinary life details somebody shared, and separately, things they had been keeping. Both
-  become permanently true of that person. Notice what this is not: it is never the world deciding
-  what you believe. Somebody telling you a thing is their act, gated on their trust in you rather
-  than on a narrator's sense that it is probably about time.</dd>
-
-  <dt>Plans</dt>
-  <dd>An arrangement made out loud, which the world then keeps. See <a href="plans.html">Plans</a>.</dd>
-
+  <dd>Ordinary details, and separately, things they had been keeping. Somebody telling you a thing
+  is their act, gated on their trust in you.</dd>
+  <dt>Plans and terms</dt>
+  <dd>Arrangements and agreements, which the world then keeps.</dd>
   <dt>Texts</dt>
-  <dd>Messages actually sent, word for word, so the phone thread has them. A text is witnessed by the
-  two ends and by nobody standing in the room, because people do not read over your shoulder. But
-  reading a message in company is a thing other people see you do, so the room gets the moment and
-  never the words.</dd>
+  <dd>Messages sent, word for word. A text is witnessed by the two ends and by nobody in the room.
+  Reading one in company is something people see you do, so the room gets the moment and never
+  the words.</dd>
 </dl>
 
-<h2>The world decides who reaches for their phone</h2>
+<h2>Who reaches for their phone</h2>
 
-<p>Unprompted texts are a good illustration of the general split. The world decides that somebody is
-thinking about you and why. The narrator writes the words.</p>
+<p>Unprompted texts show the general split. The world decides that somebody is thinking about
+you and why. The narrator writes the words. A model asked "does anybody text him?" says yes every
+turn, and one never told that somebody is thinking about him never has her text at all.</p>
 
-<blockquote>
-  <p>A model asked "does anybody text him?" says yes every turn, and one never told that Jade is
-  thinking about him never has her text at all.</p>
-</blockquote>
-
-<p>Only people who have your number, who are not in the room with you, who are awake at a civil hour,
-and who have an actual reason: something from their day, warmth after a day apart, desire late at
-night. Each person at most once in twenty hours, and the whole street at most once every ninety
-minutes, so a phone is an occasional buzz and not a group chat.</p>
-
-<p>A buzz nobody gets round to writing within six hours simply never happened. It appears on no phone
-and in no diary, because a checking-in text from six hours ago is not sent at three in the morning.
-It is just never sent.</p>
-
-<h2>What the narrator may never do</h2>
-
-<p>However the prose reads, the narrator cannot move you, spend your money, decide what you feel,
-decide what you believe, take something off you, or claim you said or agreed to something. Each is
-refused unless your own message warrants it.</p>
-
-<p>The refusals are written like notes to a writer rather than error codes. "That is the player's to
-decide." "Tell him in the prose and let him decide." "They have to be face to face."</p>
-
-<h2>Situations, and why they are not just facts</h2>
-
-<p>Three things are easy to confuse, and the engine keeps them apart. A condition is a plain fact of
-the world: she owes him forty. A belief is what one person holds about that, and it does not update
-when the condition does. A situation is the thing that is unfinished, with stakes and sides, pulling
-people across the map towards each other.</p>
-
-<p>The rule that makes it click: conditions are conditions, and situations are conditions somebody
-has decided to do something about. She can owe him forty for years and it means nothing. The
-situation opens the day he stops being patient. The fact did not change. The situation did.</p>
-
-<p>So a debt can be paid, the situation closed, and half the district still believe she owes eighty,
-because news of the payment has to reach each of them separately. A debt settled quietly that
-silently corrected everybody's beliefs across town would be exactly backwards.</p>
-
-<p>Situations also end by themselves when they have quietly become true. What counts as an ending is
-declared as a condition rather than a list of solutions.</p>
-
-<blockquote>
-  <p>Rent her the basement, give her the bar's back room, move her into the penthouse, or something
-  neither of us thought of, and the same check notices. Enumerating routes is what makes a world feel
-  like a menu.</p>
-</blockquote>
+<p>Only people who have your number, are not in the room, are awake at a civil hour, and have a
+reason: something from their day, warmth after a day apart, desire late at night. Each person at
+most once in twenty hours, and everybody together at most once every ninety minutes. A text nobody
+gets round to writing within six hours is never sent, because a checking-in message from six hours
+ago is not sent at three in the morning.</p>
 
 <h2>The journal</h2>
 
-<p>What happened so far is a query over the log, not a summary written by a model. Every event carries
-a significance from zero to one. Background noise is dropped, the most significant dozen are kept,
-and then they are put back into chronological order, because a recap is a story and not a
-leaderboard.</p>
+<p>What happened so far is a query over the log, not a summary written by a model. Every event
+carries a significance from 0 to 1. Background noise is dropped, the most significant dozen are
+kept, and they are put back into chronological order.</p>
 
-<p>It is filtered to what you actually witnessed and rendered with the names you had at the time, so
-a journal of last week does not use a name you only learned yesterday, or report a door you were not
-in the room to see. It is recomputed from the log each time, so it cannot drift, and it costs
-nothing.</p>
+<p>It is filtered to what you witnessed and rendered with the names you had at the time. It is
+recomputed from the log each time, so it cannot drift, and it costs nothing.</p>
+
+<h2>Repairing something recorded wrongly</h2>
+
+<p>Scene reading is not perfect. A throwaway line gets read as a confession. A situation gets
+opened twice. The answer is never to edit the history. It is a small set of repair tags,
+adjudicated like anything else, so a bad repair is refused too. A telling can be taken back only
+if the person actually holds that belief and came by it by being told. A duplicate situation can
+be folded into the one that stands.</p>
+
+<p>A correction is an event, not an edit, so the log stays honest about having been corrected.
+Undo proper is different: deleting a reply rewinds the world to before it and forks. See
+<a href="how-a-turn-works.html">How a turn works</a>.</p>
+
+<div class="note">
+  <p class="note-title">Under the hood</p>
+  <p>Every event carries who could perceive it and a significance. Both are set by the verb that
+  produced it. Witness lists seed beliefs; significance feeds the journal and the brief's
+  ranking. The event alphabet itself is five primitives, listed on
+  <a href="architecture.html">The engine</a>.</p>
+</div>

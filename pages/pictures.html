@@ -1,145 +1,95 @@
 <!-- meta
 title: Pictures
-description: How a still is composed from the state of the world (who is there, where, and what they are wearing) rather than from the prose alone.
+description: How a picture is composed from world state rather than from a paragraph: who is in frame, what they wear, one seed per scene, and the checks a frame has to pass.
 -->
 
-<p class="lede">The prose contributes the action. Everything else comes from the world.</p>
+<p class="lede">A picture is composed from the state of the world, not from the paragraph that
+was just written. The prose contributes the action. Who is present, where they are, and what they
+are wearing all come from the simulation.</p>
 
-<p>Take a concrete failure. A scene puts her glasses on the coffee table, and three beats later the
-picture draws her wearing them, because the paragraph the picture was made from did not happen to
-mention glasses. An image generator asked to illustrate a paragraph draws whatever that paragraph
-mentions. If it does not mention the room, the room is invented.</p>
-
-<p>Civitas composes a picture from the state instead, and asks the model only the question it can
-actually answer.</p>
+<p>An image generator asked to illustrate a paragraph draws whatever the paragraph mentions and
+invents the rest. If the paragraph does not mention the room, the room is made up. If somebody
+took their glasses off three beats ago and the paragraph does not say so, the glasses are back.
+Civitas avoids both by asking the model only the question it can answer.</p>
 
 <h2>Two separate questions</h2>
 
-<p>After a reply, one pass reads the prose for what changed in the world. A second, entirely separate
-pass decides what a picture would show. They are separate because they are different questions, and
-the answers are better when each is asked on its own.</p>
+<p>After a reply, one pass reads the prose for what changed in the world. A second pass, the
+<strong>director</strong>, decides what a picture would show: who is in frame, where the camera
+is, how close, the angle, one line about how the bodies are arranged, and where in the room. It
+is told plainly that it does not decide what anybody looks like, and anything it says about hair,
+skin, age, clothes or build is discarded.</p>
 
-<p>The second pass, call it the director, decides who is in frame, where the camera is, how close the
-shot is, the angle, one line about how the bodies are arranged, and where in the room it is happening.
-It is told in as many words that it does not decide what anybody looks like, and that anything it says
-about hair, skin, age, clothes or build is thrown away.</p>
-
-<p>Each half used to fail in an opposite way, which is how the split was arrived at. Reading the prose
-gave one pose for one person and everybody else fell out of the picture, so a moment with two people
-in it came out as a standing portrait of one of them. A generic illustrator gets the moment right and
-then invents the people, because all it has is the prose.</p>
+<p>The two are separate because they are different questions. Asked together, one pose came back
+for one person and everybody else fell out of the picture.</p>
 
 <h2>Who is in the frame</h2>
 
-<p>Whoever the scene was about. Failing that, the last person you were dealing with, but only if they
-are still in the room, because a live session once drew a picture of somebody who was in another flat
-entirely.</p>
+<p>Whoever the scene was about. Failing that, the last person you were dealing with, but only if
+they are still in the room. A group picture takes everybody where you are, up to four. Four is
+measured rather than chosen: the canvas is divided into a vertical band per person, and below a
+certain width a band no longer holds a standing figure. The person the turn was about is never the
+one dropped. You are never in your own frame when the camera is your own eyes.</p>
 
-<p>A group picture takes everybody standing where you are, four at most. Four is measured rather than
-chosen: the canvas is divided into a vertical band per person, and below a certain width a band no
-longer holds a standing figure. Asked for five, the model drew four and merged the leftmost two. The
-person the turn was about is never the one dropped.</p>
+<h2>What they are wearing</h2>
 
-<p>And you are never in your own frame when the camera is your own eyes, however firmly a model tries
-to put you there.</p>
+<p>Every person has a pinned <strong>look</strong>: a base that never changes, and a small wardrobe
+by situation such as home, work, a night out, casual, the gym. Which outfit a picture uses is
+decided from what they are doing and, above that, where they are standing. A gym is a gym for as
+long as somebody is in it, whatever the last paragraph said.</p>
 
-<h2>Where they are</h2>
-
-<p>The room comes from the world's place, looked up in a table of tags installed alongside the art. A
-kitchen is described as a kitchen with pots on the stove and warm lamps, because that is what that
-place is. The director may pick a spot inside it, since a bedroom at the end of the hall is not the
-same room as the workroom, whatever the flat is called.</p>
-
-<h2>What they are wearing, and what came off</h2>
-
-<p>This is the part that only works because the world is keeping state.</p>
-
-<p>Everybody has a pinned look and a small wardrobe by situation: home, work, a night out, casual, the
-gym. Which one is chosen comes from what they are actually doing. Clothes are a fact about the day and
-not a roll of the dice, so the woman working the taps is in her work clothes every single time.</p>
-
-<p>Where somebody is outranks what they are doing. A live failure: somebody in a locked gym studio came
-out in a denim skirt, because the words for the moment had stopped saying gym the second the workout
-stopped. A gym is a gym for as long as she is standing in it.</p>
-
-<p>What the world watched somebody change into beats what their card would guess from the hour. And
-what has come off is remembered, turn to turn and across the rooms of a flat, so a picture no longer
-depends on the one turn that happened to mention it.</p>
-
-<p>A removed item has to be removed twice: taken out of the description, and stated as something that
-must not appear. Leaving a tag out only makes it absent, and the reference face and the model's own
-habits will cheerfully put glasses back on somebody who always wears them.</p>
-
-<p>Shoes are dropped from any frame too close to contain them. A shoe in a close frame does not stay
-out of the picture, it finds somewhere else to go. It once put a pair of shoes in somebody's hands.</p>
+<p>What the world watched somebody change into beats what their card would guess from the hour.
+What has come off is remembered, turn to turn and across the rooms of a flat, so a picture does
+not depend on the one turn that mentioned it. A removed item is removed twice: taken out of the
+description, and stated as something that must not appear, because leaving a tag out only makes
+it absent and the model's habits will put it back.</p>
 
 <h2>Keeping the same face</h2>
 
-<p>Every person has one neutral head-and-shoulders reference image, made once. At render time it steers
-the face and hair while the prompt still controls the outfit, the pose, the room and the framing. That
-is the whole reason she is the same woman in every picture.</p>
-
-<p>It is a head crop rather than a whole portrait, because the technique copies whatever is in the
-crop, props and all. Its influence is held in a narrow band, since turned up further it starts
-choosing the outfit and the room as well. And if the portrait and the tags disagree you get a blend,
-because the technique cannot resolve a contradiction. Fix one or the other.</p>
-
-<p>In a group picture each person's reference is masked to their own band. Asking for three people in
-one description gets you three people wearing a shuffled mix of three wardrobes.</p>
+<p>Every person has one neutral head-and-shoulders reference image, made once. At render time it
+steers the face and hair while the prompt controls the outfit, pose, room and framing. It is a
+head crop rather than a portrait, because the technique copies whatever is in the crop. Its
+influence is held in a narrow band, since turned up further it starts choosing the outfit and the
+room too. In a group picture each person's reference is masked to their own band.</p>
 
 <h2>One seed per scene</h2>
 
-<p>Rather than a new random seed per picture, the seed comes from who, where and which day. This was
-measured over six consecutive beats drawn twice. With free seeds the room changed wall by wall, the
-floor changed colour, and in one frame a pair of leggings came out as shorts. With one seed the room,
-the light and the clothes stayed put while the poses still read as six different moments.</p>
-
-<p>Change the room, the person or the day and the picture starts afresh. A picture you asked for
-yourself gets a free seed, because pressing draw again and getting the same frame back is not
-drawing.</p>
+<p>The random seed comes from who, where and which day, rather than being fresh per picture.
+Measured over six consecutive beats drawn twice: with free seeds the room changed wall by wall
+and clothes changed between frames; with one seed the room, the light and the clothes stayed put
+while the poses still read as six moments. Change the room, the person or the day and the picture
+starts afresh. A picture you ask for yourself gets a free seed.</p>
 
 <h2>The rule about who is in a picture</h2>
 
-<p>An image contains exactly the people it is meant to contain. Three layers enforce that, and the
-third is the interesting one.</p>
+<p>An image contains exactly the people it is meant to contain. Three layers enforce it.</p>
 
-<p>The description says so, and the canvas is never much taller than the subject, because a tall canvas
-is where a model stacks a second torso. A standing list of things that must not appear covers every
-phrasing that invites a bystander into frame. And then a detector runs after the picture is made, on
-its own graphics worker, counting faces, bodies and where it can, poses. Too many bodies is a stranger.
-Too few is usually two people merged. One face short is a body with no head on it, which is the failure
-nobody ships.</p>
+<ol>
+  <li>The description says so, and the canvas is never much taller than the subject, because a
+  tall canvas is where a model stacks a second torso.</li>
+  <li>A standing list of things that must not appear covers every phrasing that invites a
+  bystander into frame.</li>
+  <li>A detector runs after the picture is made, on its own worker, counting faces and bodies.
+  Too many bodies is a stranger. Too few is two people merged. One face short is a body with no
+  head.</li>
+</ol>
 
 <p>A frame that fails is deleted and drawn again with a new seed, three times, and then it fails
-closed. A wrong body count means no picture rather than a wrong picture.</p>
-
-<p>Even the checks have a known hole, and it is written down rather than papered over: a second torso
-fused to the first gives the counter nothing to count, and is defended only by the description.</p>
-
-<div class="note">
-  <p class="note-title">Pictures are best-effort</p>
-  <p>No graphics card, no pictures, and nothing else breaks. Only one picture is drawn per conversation
-  at a time and the queue holds exactly one waiting job, because by the time the card is free the
-  moment worth painting is the latest one and not the four before it. During a fast exchange, most
-  turns simply get no picture.</p>
-</div>
+closed. No picture rather than a wrong picture. The check has a known hole, written on
+<a href="limits.html">Limits</a>: a second torso fused to the first gives the counter nothing to
+count.</p>
 
 <h2>Rooms are painted once, in advance</h2>
 
-<p>Every place in Tremont is painted twice, offline, and kept as files: an isometric cutaway like a
-dollhouse, and an eye-level backdrop with an empty band of floor along the bottom. Each exists at three
-times of day, and the day and dusk versions are relit from the night one rather than redrawn, so the
-geometry stays put and only the light changes.</p>
-
-<p>The isometric ones illustrate this site. Two lessons from making them are worth passing on. Describe
-a room wall by wall rather than as a mood. And describe absent people positively, as in "an empty
-bartender's aisle with nobody in it", which is what finally stopped a stray bartender turning up in
-most of the frames.</p>
+<p>Every place in a world is painted offline and kept as files: an isometric cutaway and an
+eye-level backdrop, each at three times of day, with day and dusk relit from the night version so
+the geometry stays put. The isometric ones illustrate this site.</p>
 
 <div class="note">
-  <p class="note-title">Two kinds of picture</p>
-  <p>A character's portrait is one drawing, made once. A picture drawn in play is made fresh from their
-  pinned look, what they would be wearing for what they are doing, and the room they are standing in.
-  They are not meant to match, which is why every one drawn in play is captioned with who, where and
-  when, and marked as drawn by the world.</p>
+  <p class="note-title">Pictures are best-effort</p>
+  <p>No graphics card means no pictures, and nothing else breaks. One picture is drawn per
+  conversation at a time and the queue holds exactly one waiting job, because by the time the
+  card is free the moment worth painting is the latest one. During a fast exchange most turns get
+  no picture. Every picture drawn in play is captioned with who, where and when, and marked as
+  drawn by the world, because it is not meant to match a character's portrait.</p>
 </div>

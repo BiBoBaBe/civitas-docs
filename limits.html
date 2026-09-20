@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Honest limits · Civitas</title>
-<meta name="description" content="What is not built, what is half-built, what fails quietly, and where the design knows it is wrong.">
+<title>Limits · Civitas</title>
+<meta name="description" content="What is not built, what is half-built or unmeasured, what fails quietly, where the design knows it is rough, and what is deliberately never going to change.">
 <meta name="color-scheme" content="light dark">
-<meta property="og:title" content="Honest limits · Civitas">
-<meta property="og:description" content="What is not built, what is half-built, what fails quietly, and where the design knows it is wrong.">
+<meta property="og:title" content="Limits · Civitas">
+<meta property="og:description" content="What is not built, what is half-built or unmeasured, what fails quietly, where the design knows it is rough, and what is deliberately never going to change.">
 <meta property="og:type" content="article">
 <link rel="stylesheet" href="assets/styles.css">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%2318140f'/%3E%3Cpath%20d='M6%2024V14l10-6%2010%206v10'%20fill='none'%20stroke='%23d79a4e'%20stroke-width='2'%20stroke-linejoin='round'/%3E%3Crect%20x='13'%20y='17'%20width='6'%20height='7'%20fill='%23d79a4e'/%3E%3C/svg%3E">
@@ -20,15 +20,17 @@
   <details class="menu">
     <summary>Contents</summary>
     <nav class="nav" id="nav-mobile" aria-label="Documentation"><p class="nav-heading">Start here</p>
-<ul><li><a href="index.html">What Civitas is</a></li><li><a href="the-idea.html">The idea in five minutes</a></li><li><a href="why.html">Why it works this way</a></li></ul>
-<p class="nav-heading">How the world works</p>
-<ul><li><a href="people.html">People</a></li><li><a href="motives.html">Wants and motives</a></li><li><a href="time.html">Time</a></li><li><a href="places.html">Places, doors and walls</a></li><li><a href="records.html">What the world records</a></li><li><a href="gossip.html">Gossip</a></li><li><a href="plans.html">Plans, arrangements and trips</a></li><li><a href="terms.html">Terms and couples</a></li><li><a href="pictures.html">Pictures</a></li></ul>
+<ul><li><a href="index.html">What Civitas is</a></li><li><a href="how-a-turn-works.html">How a turn works</a></li><li><a href="principles.html">Principles</a></li></ul>
+<p class="nav-heading">The simulation</p>
+<ul><li><a href="time.html">Time and routines</a></li><li><a href="places.html">Places and doors</a></li><li><a href="people.html">People and feelings</a></li><li><a href="knowledge.html">What people know</a></li><li><a href="gossip.html">Rumour</a></li><li><a href="motives.html">Wants and situations</a></li><li><a href="plans.html">Plans, tasks and trips</a></li><li><a href="terms.html">Agreements and couples</a></li><li><a href="records.html">What gets written down</a></li></ul>
+<p class="nav-heading">Under the hood</p>
+<ul><li><a href="architecture.html">The engine</a></li><li><a href="bridge.html">The Marinara bridge</a></li></ul>
 <p class="nav-heading">Playing</p>
-<ul><li><a href="screens.html">The screens</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
-<p class="nav-heading">Example worlds</p>
-<ul><li><a href="tremont.html">Tremont</a></li><li><a href="tremont-phone.html">The phone and its apps</a></li><li><a href="isekai.html">Trapped in the game</a></li><li><a href="other-worlds.html">Three more worlds</a></li></ul>
+<ul><li><a href="setup.html">Trying it</a></li><li><a href="screens.html">The World screen</a></li><li><a href="pictures.html">Pictures</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
+<p class="nav-heading">Worlds</p>
+<ul><li><a href="tremont.html">Tremont</a></li><li><a href="other-worlds.html">Other settings</a></li></ul>
 <p class="nav-heading">Building your own</p>
-<ul><li><a href="your-own-world.html">Making your own world</a></li><li><a href="how-a-world-gets-built.html">How a world gets built</a></li><li><a href="limits.html" aria-current="page">Honest limits</a></li></ul></nav>
+<ul><li><a href="your-own-world.html">Writing a world card</a></li><li><a href="extending.html">Extending the engine</a></li><li><a href="how-a-world-gets-built.html">The authoring pipeline</a></li><li><a href="limits.html" aria-current="page">Limits</a></li></ul></nav>
   </details>
 </header>
 
@@ -36,128 +38,113 @@
   <aside class="sidebar">
     <a class="brand brand-desk" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Civitas<em>documentation</em></a>
     <nav class="nav" id="nav-desktop" aria-label="Documentation"><p class="nav-heading">Start here</p>
-<ul><li><a href="index.html">What Civitas is</a></li><li><a href="the-idea.html">The idea in five minutes</a></li><li><a href="why.html">Why it works this way</a></li></ul>
-<p class="nav-heading">How the world works</p>
-<ul><li><a href="people.html">People</a></li><li><a href="motives.html">Wants and motives</a></li><li><a href="time.html">Time</a></li><li><a href="places.html">Places, doors and walls</a></li><li><a href="records.html">What the world records</a></li><li><a href="gossip.html">Gossip</a></li><li><a href="plans.html">Plans, arrangements and trips</a></li><li><a href="terms.html">Terms and couples</a></li><li><a href="pictures.html">Pictures</a></li></ul>
+<ul><li><a href="index.html">What Civitas is</a></li><li><a href="how-a-turn-works.html">How a turn works</a></li><li><a href="principles.html">Principles</a></li></ul>
+<p class="nav-heading">The simulation</p>
+<ul><li><a href="time.html">Time and routines</a></li><li><a href="places.html">Places and doors</a></li><li><a href="people.html">People and feelings</a></li><li><a href="knowledge.html">What people know</a></li><li><a href="gossip.html">Rumour</a></li><li><a href="motives.html">Wants and situations</a></li><li><a href="plans.html">Plans, tasks and trips</a></li><li><a href="terms.html">Agreements and couples</a></li><li><a href="records.html">What gets written down</a></li></ul>
+<p class="nav-heading">Under the hood</p>
+<ul><li><a href="architecture.html">The engine</a></li><li><a href="bridge.html">The Marinara bridge</a></li></ul>
 <p class="nav-heading">Playing</p>
-<ul><li><a href="screens.html">The screens</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
-<p class="nav-heading">Example worlds</p>
-<ul><li><a href="tremont.html">Tremont</a></li><li><a href="tremont-phone.html">The phone and its apps</a></li><li><a href="isekai.html">Trapped in the game</a></li><li><a href="other-worlds.html">Three more worlds</a></li></ul>
+<ul><li><a href="setup.html">Trying it</a></li><li><a href="screens.html">The World screen</a></li><li><a href="pictures.html">Pictures</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
+<p class="nav-heading">Worlds</p>
+<ul><li><a href="tremont.html">Tremont</a></li><li><a href="other-worlds.html">Other settings</a></li></ul>
 <p class="nav-heading">Building your own</p>
-<ul><li><a href="your-own-world.html">Making your own world</a></li><li><a href="how-a-world-gets-built.html">How a world gets built</a></li><li><a href="limits.html" aria-current="page">Honest limits</a></li></ul></nav>
+<ul><li><a href="your-own-world.html">Writing a world card</a></li><li><a href="extending.html">Extending the engine</a></li><li><a href="how-a-world-gets-built.html">The authoring pipeline</a></li><li><a href="limits.html" aria-current="page">Limits</a></li></ul></nav>
   </aside>
 
   <main id="main" class="content">
     <article class="prose">
-      <h1>Honest limits</h1>
-      <p class="lede">Everything on this page is true as of writing, and I would rather you heard it here
-than found it on a Tuesday.</p>
+      <h1>Limits</h1>
+      <p class="lede">Everything on this page is true as of writing. It is here so that you read it
+before you find it.</p>
 
 <h2 id="not-built">Not built</h2>
 
-<p><strong>You cannot make a world from inside the app.</strong> You can import one, store one and pick
-one. Writing a new one is a file and a command. See
-<a href="how-a-world-gets-built.html">how a world gets built</a> for the full list of which steps are
-buttons and which are not.</p>
-
-<p><strong>The world card format cannot express most of what Tremont is.</strong> No secrets with trust
-thresholds, no ladders of wants, no disclosure rules, no conditions for what would count as a situation
-being over, no rooms inside buildings and therefore no doors, no weekday patterns in a schedule, no
-calendar or climate, no apps, couples or signed terms. This is the gap I most want to close.</p>
-
-<p><strong>Re-importing a card makes a new world, it does not migrate an old one.</strong> A card is a
-starting state and not a second source of truth. Once it has run, the card has no further say, and the
-only route into a live save is the graft tool.</p>
+<ul>
+  <li><strong>Making a world from inside the app.</strong> You can import one, store one and pick
+  one. Writing a new one is a file and a command.</li>
+  <li><strong>Most of Tremont in a card.</strong> The card format has no secrets with trust
+  gates, no ladders, no disclosure rules, no ending conditions, no rooms inside buildings and so
+  no doors, no weekday patterns, no calendar or climate, no apps, couples or terms. This is the
+  gap most worth closing.</li>
+  <li><strong>Migrating a world.</strong> Re-importing a card makes a new world. The only route
+  into a live save is the graft tool.</li>
+  <li><strong>Schema versioning.</strong> There is no migration machinery for saves. The one
+  version field in the codebase is on the card extension block. Snapshots tolerate a missing
+  field where it has been needed once, and nothing more general exists.</li>
+</ul>
 
 <h2 id="half-built-or-unmeasured">Half-built or unmeasured</h2>
 
-<p><strong>The picture gate has a hole, and it is written down rather than papered over.</strong> A
-second torso fused to the first gives the body counter nothing to count. It is defended by the
-description alone. A second person cut off at the frame edge has also passed the check in testing.</p>
-
-<p><strong>Group pictures are honest at four people and no better.</strong> Identity separation holds.
-Named garments are wrong about three times in five at three people, which is the most common fault, and
-the room drifts about as often. At best a group frame reads as a group portrait rather than an
-establishing shot.</p>
-
-<p><strong>Two-person pictures including the player are behind a switch that is off.</strong> Measured
-at two clean frames in nine on a live scene. Only three positions have been measured to a standard worth
-shipping; everything else is drawn another way, which is a worse picture of the moment and a correct
-picture of the people.</p>
-
-<p><strong>The scene reader is only as good as the model behind it.</strong> A schema stops a model
-naming somebody who is not in the room. It does not stop it naming the wrong person who is. The list
-made the answer possible, not true. Give that pass a model that follows a schema, or leave it off.</p>
-
-<p><strong>Resource regeneration exists, is tested, and is not wired in.</strong> It is a seam rather
-than half a feature. Coin does not regenerate anyway, but if your world counts stamina, note that it is
-opt-in and currently opted out.</p>
+<ul>
+  <li><strong>The picture gate has a hole.</strong> A second torso fused to the first gives the
+  body counter nothing to count. It is defended by the description alone. A second person cut off
+  at the frame edge has also passed the check in testing.</li>
+  <li><strong>Group pictures are honest at four people and no better.</strong> Identity
+  separation holds. Named garments are wrong about three times in five at three people, and the
+  room drifts about as often.</li>
+  <li><strong>Two-person pictures including the player are behind a switch that is off.</strong>
+  Measured at two clean frames in nine on a live scene. Three positions have been measured to a
+  standard worth shipping; everything else is drawn another way.</li>
+  <li><strong>The scene reader is only as good as the model behind it.</strong> A schema stops
+  it naming somebody who is not in the room. It does not stop it naming the wrong person who is.
+  Give that pass a model that follows a schema, or leave it off.</li>
+  <li><strong>Resource regeneration exists, is tested, and is not wired in.</strong> Coin does not
+  regenerate anyway. If your world counts stamina, it is opt-in and currently opted out.</li>
+</ul>
 
 <h2 id="things-that-fail-quietly">Things that fail quietly</h2>
 
-<p>These are the ones worth knowing about, because nothing tells you at the time.</p>
+<ul>
+  <li><strong>No graphics card means no pictures, and no error.</strong> Everything else carries
+  on.</li>
+  <li><strong>The world can be a turn behind the prose.</strong> Waiting for it would cost the
+  narrator its whole brief, so the world lands a turn late rather than never.</li>
+  <li><strong>There is a two-second budget for assembling the brief.</strong> If it overruns, the
+  turn goes out with no world information and the model improvises. A turn that silently loses its
+  world reads as the model going vague.</li>
+  <li><strong>If no model will read a scene, the prose commits and nothing else does.</strong>
+  The reason goes to a log file.</li>
+  <li><strong>Only the last few hundred replies are tracked.</strong> Editing or deleting an
+  older one will not rewind the world. Only a handful of owed replies are caught up at once.</li>
+</ul>
 
-<p><strong>No graphics card means no pictures, and no error.</strong> Everything else carries on.</p>
+<h2 id="where-the-design-knows-it-is-rough">Where the design knows it is rough</h2>
 
-<p><strong>The world can be a turn behind the prose.</strong> Waiting for it would cost the narrator its
-whole brief, so the world lands a turn late rather than never.</p>
-
-<p><strong>There is a two-second budget for assembling the brief.</strong> If it overruns, the turn goes
-out with no world information at all and the model improvises. A turn that silently loses its world
-reads as the model going vague.</p>
-
-<p><strong>If no model will read a scene, the prose commits and nothing else does.</strong> The reason
-goes to a log file. This happened for two consecutive replies in a live session before the fallback
-existed, and both turns were lost.</p>
-
-<p><strong>Only the last few hundred replies are tracked.</strong> Editing or deleting one older than
-that will not rewind the world. Only a handful of owed replies are caught up at once; a longer gap
-loses the oldest.</p>
-
-<h2 id="places-the-design-knows-it-is-rough">Places the design knows it is rough</h2>
-
-<p><strong>Some of a world's interlocking lives in comments rather than in the graph.</strong> When the
-content says a gym owes its receptionist wages, that may be reasoning written for whoever reads the
-file, not an obligation the simulation can act on. The condition for a situation being over is the only
-thing the engine checks. The routes to it are authored guidance for the narrator.</p>
-
-<p><strong>There is one clock and no time zones.</strong> Palma time is world time. The narrator is left
-to do the arithmetic.</p>
-
-<p><strong>Cross-district acquaintance is hand-wired.</strong> There is no generator for who plausibly
-knows whom across a river. Every one of those ties was written by hand with a line of justification next
-to it.</p>
-
-<p><strong>Off-screen resolution is opt-in, and Tremont does not use it.</strong> Nothing resolves
-behind your back in the example world.</p>
-
-<p><strong>Names must be unique across the world.</strong> A reader answers with names, and "the
-bedroom" is five places.</p>
+<ul>
+  <li><strong>Some of a world's wiring lives in comments rather than in the graph.</strong> When
+  the content says a gym owes its receptionist wages, that may be reasoning for whoever reads the
+  file, not an obligation the simulation can act on. The ending condition is the only thing the
+  engine checks; the routes to it are authored guidance.</li>
+  <li><strong>One clock and no time zones.</strong> Somebody two hours away is on world time,
+  and the narrator does the arithmetic.</li>
+  <li><strong>Cross-district acquaintance is hand-wired.</strong> There is no generator for who
+  plausibly knows whom across a river.</li>
+  <li><strong>Off-screen resolution is opt-in, and Tremont does not use it.</strong></li>
+  <li><strong>Names must be unique across a world.</strong> The scene reader answers with names,
+  and "the bedroom" is five places.</li>
+  <li><strong>The debt invariant checks creation, not payment.</strong> It reads the graph and
+  cannot see the coins that moved, so it proves nothing was invented but not that the right amount
+  was paid. The rule's own comment says so.</li>
+</ul>
 
 <h2 id="what-is-deliberately-not-going-to-change">What is deliberately not going to change</h2>
 
-<p>Some things read like limitations and are decisions.</p>
-
-<p>The bridge between the chat app and the simulation has no route that returns the world. A bridge that
-can reach into the graph is a bridge that eventually will, and then two processes own the truth instead
-of one.</p>
-
-<p>The narrator will never move you, spend your money, or decide what you feel or believe. Not with a
-better model, and not with a better prompt.</p>
-
-<p>Drives are capped at six. Forty axes produce an argument with noise.</p>
-
-<p>And the player receives no gossip at all, ever. You learn things by being told, in the fiction, like
-a person.</p>
+<ul>
+  <li>The bridge has no route that returns the world.</li>
+  <li>The narrator will never move you, spend your money, or decide what you feel or believe.
+  Not with a better model, and not with a better prompt.</li>
+  <li>Feelings have five axes. More produce an argument with noise.</li>
+  <li>The player receives no gossip, ever. You learn things by being told, in the fiction.</li>
+</ul>
     </article>
-    <nav class="pager" aria-label="Neighbouring pages"><a class="pager-link pager-prev" href="how-a-world-gets-built.html"><span>Previous</span><strong>How a world gets built</strong></a><span class="pager-link pager-empty"></span></nav>
+    <nav class="pager" aria-label="Neighbouring pages"><a class="pager-link pager-prev" href="how-a-world-gets-built.html"><span>Previous</span><strong>The authoring pipeline</strong></a><span class="pager-link pager-empty"></span></nav>
     <footer class="foot">
       <p>Civitas is a personal project, documented as it actually behaves. The example world is
       fiction and every character in it is an adult.</p>
     </footer>
   </main>
 
-  <aside class="toc" aria-label="On this page"><p class="toc-heading">On this page</p><ul><li><a href="#not-built">Not built</a></li><li><a href="#half-built-or-unmeasured">Half-built or unmeasured</a></li><li><a href="#things-that-fail-quietly">Things that fail quietly</a></li><li><a href="#places-the-design-knows-it-is-rough">Places the design knows it is rough</a></li><li><a href="#what-is-deliberately-not-going-to-change">What is deliberately not going to change</a></li></ul></aside>
+  <aside class="toc" aria-label="On this page"><p class="toc-heading">On this page</p><ul><li><a href="#not-built">Not built</a></li><li><a href="#half-built-or-unmeasured">Half-built or unmeasured</a></li><li><a href="#things-that-fail-quietly">Things that fail quietly</a></li><li><a href="#where-the-design-knows-it-is-rough">Where the design knows it is rough</a></li><li><a href="#what-is-deliberately-not-going-to-change">What is deliberately not going to change</a></li></ul></aside>
 </div>
 </body>
 </html>

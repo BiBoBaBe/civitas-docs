@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The engine · Civitas</title>
+<meta name="description" content="The log, the fold, the temporal graph, determinism, branches, snapshots, the invariant harness and the test suite, in one page.">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="The engine · Civitas">
+<meta property="og:description" content="The log, the fold, the temporal graph, determinism, branches, snapshots, the invariant harness and the test suite, in one page.">
+<meta property="og:type" content="article">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%2318140f'/%3E%3Cpath%20d='M6%2024V14l10-6%2010%206v10'%20fill='none'%20stroke='%23d79a4e'%20stroke-width='2'%20stroke-linejoin='round'/%3E%3Crect%20x='13'%20y='17'%20width='6'%20height='7'%20fill='%23d79a4e'/%3E%3C/svg%3E">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Civitas</a>
+  <details class="menu">
+    <summary>Contents</summary>
+    <nav class="nav" id="nav-mobile" aria-label="Documentation"><p class="nav-heading">Start here</p>
+<ul><li><a href="index.html">What Civitas is</a></li><li><a href="how-a-turn-works.html">How a turn works</a></li><li><a href="principles.html">Principles</a></li></ul>
+<p class="nav-heading">The simulation</p>
+<ul><li><a href="time.html">Time and routines</a></li><li><a href="places.html">Places and doors</a></li><li><a href="people.html">People and feelings</a></li><li><a href="knowledge.html">What people know</a></li><li><a href="gossip.html">Rumour</a></li><li><a href="motives.html">Wants and situations</a></li><li><a href="plans.html">Plans, tasks and trips</a></li><li><a href="terms.html">Agreements and couples</a></li><li><a href="records.html">What gets written down</a></li></ul>
+<p class="nav-heading">Under the hood</p>
+<ul><li><a href="architecture.html" aria-current="page">The engine</a></li><li><a href="bridge.html">The Marinara bridge</a></li></ul>
+<p class="nav-heading">Playing</p>
+<ul><li><a href="setup.html">Trying it</a></li><li><a href="screens.html">The World screen</a></li><li><a href="pictures.html">Pictures</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
+<p class="nav-heading">Worlds</p>
+<ul><li><a href="tremont.html">Tremont</a></li><li><a href="other-worlds.html">Other settings</a></li></ul>
+<p class="nav-heading">Building your own</p>
+<ul><li><a href="your-own-world.html">Writing a world card</a></li><li><a href="extending.html">Extending the engine</a></li><li><a href="how-a-world-gets-built.html">The authoring pipeline</a></li><li><a href="limits.html">Limits</a></li></ul></nav>
+  </details>
+</header>
+
+<div class="shell">
+  <aside class="sidebar">
+    <a class="brand brand-desk" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Civitas<em>documentation</em></a>
+    <nav class="nav" id="nav-desktop" aria-label="Documentation"><p class="nav-heading">Start here</p>
+<ul><li><a href="index.html">What Civitas is</a></li><li><a href="how-a-turn-works.html">How a turn works</a></li><li><a href="principles.html">Principles</a></li></ul>
+<p class="nav-heading">The simulation</p>
+<ul><li><a href="time.html">Time and routines</a></li><li><a href="places.html">Places and doors</a></li><li><a href="people.html">People and feelings</a></li><li><a href="knowledge.html">What people know</a></li><li><a href="gossip.html">Rumour</a></li><li><a href="motives.html">Wants and situations</a></li><li><a href="plans.html">Plans, tasks and trips</a></li><li><a href="terms.html">Agreements and couples</a></li><li><a href="records.html">What gets written down</a></li></ul>
+<p class="nav-heading">Under the hood</p>
+<ul><li><a href="architecture.html" aria-current="page">The engine</a></li><li><a href="bridge.html">The Marinara bridge</a></li></ul>
+<p class="nav-heading">Playing</p>
+<ul><li><a href="setup.html">Trying it</a></li><li><a href="screens.html">The World screen</a></li><li><a href="pictures.html">Pictures</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
+<p class="nav-heading">Worlds</p>
+<ul><li><a href="tremont.html">Tremont</a></li><li><a href="other-worlds.html">Other settings</a></li></ul>
+<p class="nav-heading">Building your own</p>
+<ul><li><a href="your-own-world.html">Writing a world card</a></li><li><a href="extending.html">Extending the engine</a></li><li><a href="how-a-world-gets-built.html">The authoring pipeline</a></li><li><a href="limits.html">Limits</a></li></ul></nav>
+  </aside>
+
+  <main id="main" class="content">
+    <article class="prose">
+      <h1>The engine</h1>
+      <p class="lede">Civitas is about thirty thousand lines of TypeScript on Bun, with no runtime
+dependencies. This page is for anybody who wants to know how the promises on the rest of the site
+are kept. It assumes no more than curiosity.</p>
+
+<h2 id="the-log-is-the-only-thing-that-is-written">The log is the only thing that is written</h2>
+
+<p>The world is an append-only log of events. World state is a <strong>fold</strong> over that
+log: start from nothing, apply every event in order, and you have the world as it stands. Nothing
+else is ever written. A view, a brief, a journal, a person's current feelings: all of them are
+computed from the log when asked.</p>
+
+<p>The event alphabet is five primitives. Everything reduces to them:</p>
+
+<pre><code>node_added      a person, place, fact, situation, plan, term... came into existence
+edge_added      a link between two nodes opened: AT, KNOWS, FEELS, BELIEVES, OWES...
+edge_closed     a link ended
+node_patched    a node's own fields changed
+time_advanced   the clock moved</code></pre>
+
+<p>On top of them sit derived events, which compose primitives in one named step so the log reads
+like a history rather than a diff: <code>moved</code>, <code>granted</code>,
+<code>transferred</code>, <code>spent</code>, <code>texted</code>, <code>watched</code>,
+<code>appearance_changed</code>, <code>activity_set</code>, <code>loosened</code>, and the two
+declarations a world makes about what it counts and what kinds of situation it has.</p>
+
+<p>Every event carries when it happened in world time, why it exists, who could perceive it, and
+a significance from 0 to 1:</p>
+
+<pre><code>interface WorldEvent {
+  id: EventId;          // derived from branch and position, never random
+  at: WorldTime;        // fictional minutes
+  type: EventType;
+  payload: ...;
+  causedBy: { kind: "authored" } | { kind: "verb"; verb; messageId } | { kind: "tick"; seed } | { kind: "event"; event };
+  witnesses: PersonId[];
+  salience: number;     // 0..1
+}</code></pre>
+
+<h2 id="the-graph-is-temporal">The graph is temporal</h2>
+
+<p>The folded state is a typed graph. Twelve kinds of node: person, place, faction, item, fact,
+thread, plan, alias, task, offer, term, pair. Links between them carry a type and, always, a
+<code>since</code> and an <code>until</code>. A link with no <code>until</code> is still true.</p>
+
+<p>Links are closed, never deleted, so history stays walkable. "Where was she at eight last
+Thursday" is a query over links that were open at that minute. Every link also carries a
+provenance: authored, witnessed, told, or inferred. See <a href="knowledge.html">What people
+know</a>.</p>
+
+<p>The data model deliberately holds less than it could. A person has no stored drives, no stored
+level-of-detail tier, no stored list of what they witnessed. Each of those is derivable from the
+graph, and a stored copy would be a second source of truth kept in step by hand.</p>
+
+<h2 id="determinism">Determinism</h2>
+
+<p>The same log always replays the same city. Four things make that true.</p>
+
+<ol>
+  <li><strong>Fictional time is its own type.</strong> The real clock cannot be passed where world
+  time is expected without a compile error.</li>
+  <li><strong>Event ids are derived</strong> from the branch and the sequence number, never
+  generated at random.</li>
+  <li><strong>Randomness is seeded.</strong> Every stochastic decision draws from a generator
+  seeded from the world seed, the branch and the sequence, so a rumour roll on turn forty is the
+  same roll on every replay.</li>
+  <li><strong>The tick is pure.</strong> Planning a step reads a world and returns the events that
+  would happen, writing nothing. Committing is a separate step.</li>
+</ol>
+
+<p>Weather, drives, level of detail and belief decay are all functions of the graph and the
+clock, so they never need to be written down to be stable.</p>
+
+<h2 id="branches-and-snapshots">Branches and snapshots</h2>
+
+<p>Storage is SQLite, four tables: branches, events, snapshots and session metadata. A branch is
+a line of events. Forking writes one row and shares everything before the fork with the parent,
+so a swipe costs nothing. Branch names are derived from where they forked, which keeps snapshots
+and tests stable across replays.</p>
+
+<p>Folding from zero every time would be slow, so the store snapshots the world every two hundred
+events and folds forward from the newest snapshot valid for the branch. A snapshot holds the
+graph, the declared resources and their ledgers, and the declared situation kinds.</p>
+
+<p>A session is one SQLite file. On restart the service reopens every file it finds, and a test
+asserts that a world comes back with its clock, its people, what happened, and which reply a
+swipe would take back.</p>
+
+<h2 id="the-invariants">The invariants</h2>
+
+<p>Because the simulation is pure and seeded, it can be run for ten thousand ticks in a test and
+checked against a list of properties that must never break. There are seventeen:</p>
+
+<pre><code>no-dangling-edges        every link points at nodes that exist
+edge-time-order          nothing closes before it opened
+single-heading           nobody is walking to two places
+single-location          nobody is in two places at once
+no-future-knowledge      nobody believes a fact before it happened
+belief-bounds            confidence and distortion stay in 0..1
+non-negative-debt        a debt is positive or closed
+debt-conserved           settling a debt neither invents nor duplicates value
+schedules-satisfiable    nobody's routine sends them somewhere unreachable or shut
+plan-is-coherent         no plan without parties; none both one-off and standing
+alias-is-coherent        no handle without a person, no two people on one handle
+task-is-coherent         no task nobody set or nobody can do
+offer-is-coherent        no offer nobody asked
+thread-has-participants  no open situation with nobody in it
+thread-stakes-bounds     stakes stay in 0..1
+resources-conserved      the books balance for every declared quantity
+resource-bounds          nobody holds more than the ceiling or less than the floor</code></pre>
+
+<p>Each rule's comment says what it does not catch. The debt rule, for instance, reads the graph
+and cannot see the coins that moved, so it checks that nothing was invented but not that the right
+amount was paid. Writing the gap down is the point: a rule that is read as stronger than it is
+hides bugs behind a green tick.</p>
+
+<h2 id="the-model-boundary">The model boundary</h2>
+
+<p>Only five files know a language model exists. The model interface is deliberately tiny, so the
+engine never depends on one provider's shape. There are exactly three system prompts in the
+codebase: the narrator, the narrator's structured-output variant, and the offline world generator.
+The world appears in the narrator's prompt only inside the brief, and a test asserts that.</p>
+
+<p>Output comes back as prose plus tags. Tags are parsed by a small, strict parser: forgiving
+about quoting and whitespace, strict about shape, and a malformed tag is reported rather than
+guessed at. The adjudicator then resolves names, checks preconditions on a scratch world, and
+returns four lists: accepted, rejected, failures, events. Only the events are written.</p>
+
+<h2 id="tests">Tests</h2>
+
+<table>
+  <thead><tr><th>Measure</th><th>Value</th></tr></thead>
+  <tbody>
+    <tr><td>Test files</td><td>75</td></tr>
+    <tr><td>Tests</td><td>794</td></tr>
+    <tr><td>Assertions</td><td>44,696</td></tr>
+    <tr><td>Runtime</td><td>About 100 seconds</td></tr>
+  </tbody>
+</table>
+
+<p>The files map onto subsystems almost one to one. Two kinds of test are worth pointing at. The
+invariant suite runs a seeded city for a long stretch and asserts nothing in the list above ever
+breaks, and separately proves each rule can catch its bug: a person in two places, a belief before
+its fact, a settlement that invents coins. The fuzz suite generates random tags from a seeded
+generator, throws them at the adjudicator, and asserts only properties: the adjudicator returned,
+rejected verbs left no trace, accepted verbs applied cleanly, and the world still satisfies every
+invariant. A failure prints the seed that reproduces it.</p>
+
+<p>Determinism is asserted directly in over a dozen places: the same day planned twice, the same
+day gossiped twice, the same fact id on replay.</p>
+
+<h2 id="running-it">Running it</h2>
+
+<pre><code>bun install
+bun test           # 794 tests
+bun run day        # watch a day in the Docks
+bun run brief      # the brief a narrator would get
+bun run rumour     # watch one story travel the district and mutate
+bun run play       # the whole loop; offline scripted narrator unless OPENROUTER_API_KEY is set
+bun run serve      # the simulation as a service, for Marinara</code></pre>
+
+<p>Runs on Bun 1.4 or later, using its built-in SQLite, test runner and hashing. No runtime
+dependencies.</p>
+    </article>
+    <nav class="pager" aria-label="Neighbouring pages"><a class="pager-link pager-prev" href="records.html"><span>Previous</span><strong>What gets written down</strong></a><a class="pager-link pager-next" href="bridge.html"><span>Next</span><strong>The Marinara bridge</strong></a></nav>
+    <footer class="foot">
+      <p>Civitas is a personal project, documented as it actually behaves. The example world is
+      fiction and every character in it is an adult.</p>
+    </footer>
+  </main>
+
+  <aside class="toc" aria-label="On this page"><p class="toc-heading">On this page</p><ul><li><a href="#the-log-is-the-only-thing-that-is-written">The log is the only thing that is written</a></li><li><a href="#the-graph-is-temporal">The graph is temporal</a></li><li><a href="#determinism">Determinism</a></li><li><a href="#branches-and-snapshots">Branches and snapshots</a></li><li><a href="#the-invariants">The invariants</a></li><li><a href="#the-model-boundary">The model boundary</a></li><li><a href="#tests">Tests</a></li><li><a href="#running-it">Running it</a></li></ul></aside>
+</div>
+</body>
+</html>

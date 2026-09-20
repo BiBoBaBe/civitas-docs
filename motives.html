@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Wants and motives · Civitas</title>
-<meta name="description" content="What somebody wants, how a want turns into something they do, and how a blocked want becomes a situation with stakes.">
+<title>Wants and situations · Civitas</title>
+<meta name="description" content="The four pressures the world computes for every person, how they become actions, and how an unresolved situation pulls people across the map.">
 <meta name="color-scheme" content="light dark">
-<meta property="og:title" content="Wants and motives · Civitas">
-<meta property="og:description" content="What somebody wants, how a want turns into something they do, and how a blocked want becomes a situation with stakes.">
+<meta property="og:title" content="Wants and situations · Civitas">
+<meta property="og:description" content="The four pressures the world computes for every person, how they become actions, and how an unresolved situation pulls people across the map.">
 <meta property="og:type" content="article">
 <link rel="stylesheet" href="assets/styles.css">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%2318140f'/%3E%3Cpath%20d='M6%2024V14l10-6%2010%206v10'%20fill='none'%20stroke='%23d79a4e'%20stroke-width='2'%20stroke-linejoin='round'/%3E%3Crect%20x='13'%20y='17'%20width='6'%20height='7'%20fill='%23d79a4e'/%3E%3C/svg%3E">
@@ -20,15 +20,17 @@
   <details class="menu">
     <summary>Contents</summary>
     <nav class="nav" id="nav-mobile" aria-label="Documentation"><p class="nav-heading">Start here</p>
-<ul><li><a href="index.html">What Civitas is</a></li><li><a href="the-idea.html">The idea in five minutes</a></li><li><a href="why.html">Why it works this way</a></li></ul>
-<p class="nav-heading">How the world works</p>
-<ul><li><a href="people.html">People</a></li><li><a href="motives.html" aria-current="page">Wants and motives</a></li><li><a href="time.html">Time</a></li><li><a href="places.html">Places, doors and walls</a></li><li><a href="records.html">What the world records</a></li><li><a href="gossip.html">Gossip</a></li><li><a href="plans.html">Plans, arrangements and trips</a></li><li><a href="terms.html">Terms and couples</a></li><li><a href="pictures.html">Pictures</a></li></ul>
+<ul><li><a href="index.html">What Civitas is</a></li><li><a href="how-a-turn-works.html">How a turn works</a></li><li><a href="principles.html">Principles</a></li></ul>
+<p class="nav-heading">The simulation</p>
+<ul><li><a href="time.html">Time and routines</a></li><li><a href="places.html">Places and doors</a></li><li><a href="people.html">People and feelings</a></li><li><a href="knowledge.html">What people know</a></li><li><a href="gossip.html">Rumour</a></li><li><a href="motives.html" aria-current="page">Wants and situations</a></li><li><a href="plans.html">Plans, tasks and trips</a></li><li><a href="terms.html">Agreements and couples</a></li><li><a href="records.html">What gets written down</a></li></ul>
+<p class="nav-heading">Under the hood</p>
+<ul><li><a href="architecture.html">The engine</a></li><li><a href="bridge.html">The Marinara bridge</a></li></ul>
 <p class="nav-heading">Playing</p>
-<ul><li><a href="screens.html">The screens</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
-<p class="nav-heading">Example worlds</p>
-<ul><li><a href="tremont.html">Tremont</a></li><li><a href="tremont-phone.html">The phone and its apps</a></li><li><a href="isekai.html">Trapped in the game</a></li><li><a href="other-worlds.html">Three more worlds</a></li></ul>
+<ul><li><a href="setup.html">Trying it</a></li><li><a href="screens.html">The World screen</a></li><li><a href="pictures.html">Pictures</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
+<p class="nav-heading">Worlds</p>
+<ul><li><a href="tremont.html">Tremont</a></li><li><a href="other-worlds.html">Other settings</a></li></ul>
 <p class="nav-heading">Building your own</p>
-<ul><li><a href="your-own-world.html">Making your own world</a></li><li><a href="how-a-world-gets-built.html">How a world gets built</a></li><li><a href="limits.html">Honest limits</a></li></ul></nav>
+<ul><li><a href="your-own-world.html">Writing a world card</a></li><li><a href="extending.html">Extending the engine</a></li><li><a href="how-a-world-gets-built.html">The authoring pipeline</a></li><li><a href="limits.html">Limits</a></li></ul></nav>
   </details>
 </header>
 
@@ -36,158 +38,171 @@
   <aside class="sidebar">
     <a class="brand brand-desk" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Civitas<em>documentation</em></a>
     <nav class="nav" id="nav-desktop" aria-label="Documentation"><p class="nav-heading">Start here</p>
-<ul><li><a href="index.html">What Civitas is</a></li><li><a href="the-idea.html">The idea in five minutes</a></li><li><a href="why.html">Why it works this way</a></li></ul>
-<p class="nav-heading">How the world works</p>
-<ul><li><a href="people.html">People</a></li><li><a href="motives.html" aria-current="page">Wants and motives</a></li><li><a href="time.html">Time</a></li><li><a href="places.html">Places, doors and walls</a></li><li><a href="records.html">What the world records</a></li><li><a href="gossip.html">Gossip</a></li><li><a href="plans.html">Plans, arrangements and trips</a></li><li><a href="terms.html">Terms and couples</a></li><li><a href="pictures.html">Pictures</a></li></ul>
+<ul><li><a href="index.html">What Civitas is</a></li><li><a href="how-a-turn-works.html">How a turn works</a></li><li><a href="principles.html">Principles</a></li></ul>
+<p class="nav-heading">The simulation</p>
+<ul><li><a href="time.html">Time and routines</a></li><li><a href="places.html">Places and doors</a></li><li><a href="people.html">People and feelings</a></li><li><a href="knowledge.html">What people know</a></li><li><a href="gossip.html">Rumour</a></li><li><a href="motives.html" aria-current="page">Wants and situations</a></li><li><a href="plans.html">Plans, tasks and trips</a></li><li><a href="terms.html">Agreements and couples</a></li><li><a href="records.html">What gets written down</a></li></ul>
+<p class="nav-heading">Under the hood</p>
+<ul><li><a href="architecture.html">The engine</a></li><li><a href="bridge.html">The Marinara bridge</a></li></ul>
 <p class="nav-heading">Playing</p>
-<ul><li><a href="screens.html">The screens</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
-<p class="nav-heading">Example worlds</p>
-<ul><li><a href="tremont.html">Tremont</a></li><li><a href="tremont-phone.html">The phone and its apps</a></li><li><a href="isekai.html">Trapped in the game</a></li><li><a href="other-worlds.html">Three more worlds</a></li></ul>
+<ul><li><a href="setup.html">Trying it</a></li><li><a href="screens.html">The World screen</a></li><li><a href="pictures.html">Pictures</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
+<p class="nav-heading">Worlds</p>
+<ul><li><a href="tremont.html">Tremont</a></li><li><a href="other-worlds.html">Other settings</a></li></ul>
 <p class="nav-heading">Building your own</p>
-<ul><li><a href="your-own-world.html">Making your own world</a></li><li><a href="how-a-world-gets-built.html">How a world gets built</a></li><li><a href="limits.html">Honest limits</a></li></ul></nav>
+<ul><li><a href="your-own-world.html">Writing a world card</a></li><li><a href="extending.html">Extending the engine</a></li><li><a href="how-a-world-gets-built.html">The authoring pipeline</a></li><li><a href="limits.html">Limits</a></li></ul></nav>
   </aside>
 
   <main id="main" class="content">
     <article class="prose">
-      <h1>Wants and motives</h1>
-      <p class="lede">A timetable tells you where somebody will be. A want tells you why they are
-somewhere else.</p>
+      <h1>Wants and situations</h1>
+      <p class="lede">A timetable says where somebody will be. A want says why they are somewhere
+else. The world computes four pressures for every person, fresh each time it asks, and each comes
+with the sentence that explains it.</p>
 
-<div class="case">
-  <p class="case-title">A man in a bar who should be at the gate</p>
-  <p>A clerk is owed forty coins. His timetable has him at the gate until six. At eight he walks
-  into the bar where the woman who owes him is drinking, and sits down.</p>
-  <p>Nothing scripted that. His pressure to settle unfinished business rises as the deadline
-  approaches, until it outweighs his own working day, and the bar is where she is. The world can
-  say why in a sentence: he wants money because forty coins are outstanding.</p>
-</div>
+<h2 id="four-pressures-computed-not-stored">Four pressures, computed not stored</h2>
 
-<h2 id="wants-are-worked-out-not-stored">Wants are worked out, not stored</h2>
+<pre><code>type DriveId = "rest" | "money" | "duty" | "company";
 
-<p>Four pressures, computed fresh from the world every time they are asked for. Rest, money, duty
-and company.</p>
+interface DriveReading {
+  id: DriveId;
+  value: number;     // 0..1 pressure
+  because: string;   // why it is that high, in words a person could say
+}</code></pre>
 
-<p>The obvious design is a number on each person that decays every tick. That means a stream of
-events saying nothing, and a second copy of the truth to keep in step with the first. Computing
-them instead costs a few queries, cannot drift, replays identically, and comes with its own
-explanation attached.</p>
+<dl class="terms">
+  <dt>Rest</dt>
+  <dd>Hours since they were last at their own bed, over 24. Somebody with nowhere to sleep reads
+  zero, because it is not a pressure they can act on.</dd>
+  <dt>Money</dt>
+  <dd>What they owe, over 100.</dd>
+  <dt>Duty</dt>
+  <dd>The worst unfinished thing they are pushing on, scaled by how near its deadline is. This is
+  the one that makes a creditor turn up.</dd>
+  <dt>Company</dt>
+  <dd>Zero if somebody they know is in the room, otherwise 0.5.</dd>
+</dl>
 
-<p>That explanation is the part that earns it. Every reading carries the sentence that justifies
-it, in words a person could say. <em>He has nowhere to sleep.</em> <em>Forty coins are
-outstanding.</em> Which is what makes something that happened off-screen feel caused rather than
-rolled, because the world can always be asked why.</p>
-
-<p>What each one measures:</p>
-
-<ul>
-  <li><strong>Rest</strong> is how long since they were last at their own bed. Somebody with nowhere
-  to sleep reads zero, because it is not a pressure they can act on.</li>
-  <li><strong>Money</strong> is what they owe.</li>
-  <li><strong>Duty</strong> is the worst unfinished thing they are pushing on, scaled by how near
-  its deadline is. This is the one that makes a creditor turn up.</li>
-  <li><strong>Company</strong> is zero if somebody they know is in the room, and otherwise not.</li>
-</ul>
+<p>The obvious design is a number on each person that decays every tick. That produces a stream
+of events saying nothing and a second copy of the truth to keep in step with the first. Computing
+the pressures instead costs a few queries, cannot drift, replays identically, and comes with its
+own explanation. "He wants money because forty coins are outstanding" is a sentence the world can
+produce, and that is what makes something that happened off-screen feel caused rather than
+rolled.</p>
 
 <h2 id="how-a-want-becomes-something-they-do">How a want becomes something they do</h2>
 
-<p>Every so often, a person who is near enough to you to be worth simulating in full weighs their
-options. Keeping to the day is worth a fixed amount. Standing idle is worth less. Going to settle
-unfinished business is worth whatever their duty pressure is, and it targets the place where the
-other party is actually standing.</p>
+<p>Every so often, each person near enough to you to be simulated in full weighs a short list of
+options and takes the best one. Keeping to the day is worth a fixed amount, and everything else has
+to beat it.</p>
 
-<p>The rule that holds it together is one sentence: the routine is the floor, not the law.</p>
+<table>
+  <thead><tr><th>Option</th><th>Worth</th></tr></thead>
+  <tbody>
+    <tr><td>Keep to the timetable</td><td>0.45</td></tr>
+    <tr><td>Stand idle when the timetable has no opinion</td><td>0.15</td></tr>
+    <tr><td>Go home to rest</td><td>rest × 0.6, and only once rest is above 0.8</td></tr>
+    <tr><td>Settle unfinished business</td><td>the duty pressure, aimed at where the other party actually is</td></tr>
+    <tr><td>Chase something wanted</td><td>want × 0.5, aimed at where the thing is</td></tr>
+    <tr><td>Find company</td><td>the company pressure</td></tr>
+    <tr><td>Jitter</td><td>±0.05, so identical people do not move in lockstep</td></tr>
+  </tbody>
+</table>
 
-<p>The weights are set so that ordinary life usually wins, which is the whole point:</p>
+<p>The weights are set so that ordinary life usually wins. People go to work tired. Wanting a thing
+is not a reason to walk out of a shift; it is a reason to drift towards it when the day is slack.
+Somebody in the middle of doing something does not weigh anything at all, because a person who
+wanders off mid-task has not made a decision. And above the whole table sit the things somebody
+actually agreed to: an arrangement outranks a want, and a scene you are standing in outranks
+everything. See <a href="plans.html">Plans, tasks and trips</a>.</p>
+
+<div class="case">
+  <p class="case-title">The smallest example</p>
+  <p>A clerk is owed forty. His timetable has him at the gate until six. As the deadline
+  approaches, his duty pressure rises until it outweighs 0.45, and at eight he walks into the bar
+  where the debtor is drinking. Nothing scripted it. The world can say why in a sentence.</p>
+</div>
+
+<h2 id="situations">Situations</h2>
+
+<p>Three things are easy to confuse, and the engine keeps them apart.</p>
 
 <ul>
-  <li>Exhaustion only overrides a working day once it is genuinely bad. People go to work
-  tired.</li>
-  <li>Wanting a thing is worth less than the day, deliberately. Wanting something is not a reason to
-  walk out of a shift. It is a reason to drift towards it when the day is slack.</li>
-  <li>Chasing a thing goes to where the thing is, not where its owner is, because a purse left on a
-  bench is easier than a purse in a pocket.</li>
-  <li>Somebody mid-task does not weigh anything at all. A person who wanders off halfway through has
-  not made a decision; they have been walked away by a scheduler that did not know better.</li>
-  <li>A small amount of jitter keeps identical people from moving in lockstep.</li>
+  <li>A <strong>condition</strong> is a plain fact: she owes him forty. It can sit there for years
+  meaning nothing.</li>
+  <li>A <strong>belief</strong> is what one person holds about that fact, and it does not update
+  when the fact does. See <a href="knowledge.html">What people know</a>.</li>
+  <li>A <strong>situation</strong> is a condition somebody has decided to do something about. It
+  has stakes from 0 to 1, a deadline, and sides with a stance each. It feeds the duty pressure and
+  pulls people towards each other.</li>
 </ul>
 
-<p>Above all of it sit the things somebody actually agreed to. An arrangement outranks a want. A
-scene you are standing in outranks everything.</p>
+<p>The debt did not change on the day the situation opened. The creditor did.</p>
 
-<h2 id="a-want-somebody-else-can-act-on">A want somebody else can act on</h2>
+<p>Situations open three ways. The narrator opens one in a scene with a tag. One ends badly and
+leaves a grudge behind, which is a rule rather than something anybody has to remember. Or the
+world finds one already sitting in the graph.</p>
 
-<p>Wants are internal. A task is the version you can hand to another person, and it is the first
-thing in the engine that is not symmetric.</p>
+<h2 id="situations-the-world-finds-by-itself">Situations the world finds by itself</h2>
 
-<blockquote>
-  <p>An arrangement is two people agreeing; a task is one person asking and the other answering,
-  and the answer is the point.</p>
-</blockquote>
+<p>Authored situations run out. What does not run out is the graph. With a dozen people, one-way
+feelings, shared rooms and gossip that distorts, certain configurations simply are stories, and
+they keep arriving because every turn moves the links around. The world scans for three shapes:</p>
 
-<p>Whether somebody does what you ask is the world's call rather than yours. She weighs how she
-feels about you, any willingness her character declares, and what it pays, against the size of the
-ask: the evidence demanded, the walk, and how little time she has. A place she cannot reach in time
-makes it impossible rather than merely hard.</p>
+<ol>
+  <li>Two people who know each other and are both drawn to the same third person, where at least
+  one of them wants rather than merely likes.</li>
+  <li>Somebody carrying a badly mangled version of a fact about somebody else, firmly enough to
+  repeat it.</li>
+  <li>Somebody who has learned something about you that you did not tell them.</li>
+</ol>
 
-<p>One rule in there is worth stating on its own. Fear pushes away, not towards. Warmth, trust and
-desire raise willingness and fear lowers it, because a world where fear bought compliance would be
-a world where being frightening is a strategy.</p>
+<p>It is a query, not a guess. A situation found this way exists because two specific links exist,
+so it can always be traced back to them, and it arrives at the moment it became true. At most a
+handful are open at once, so the brief stays a brief. The World screen marks these as found rather
+than authored.</p>
 
-<h2 id="when-a-want-is-blocked-it-becomes-a-situation">When a want is blocked, it becomes a situation</h2>
+<h2 id="how-a-situation-ends">How a situation ends</h2>
 
-<p>This is the step that turns motive into story.</p>
+<p>The narrator can close one with a tag. A situation can also end by itself when it has quietly
+become true, and what counts as the ending is declared as a condition rather than as a list of
+solutions. A trainer who shoots in her bedroom needs somewhere to work that is neither her bedroom
+nor her gym. Rent her a basement, lend her a back room, or do something nobody thought of, and the
+same check notices. Enumerating routes is what makes a world feel like a menu.</p>
 
-<p>A condition is an ordinary fact: she owes him forty. It can sit there for years meaning nothing.
-A <strong>situation</strong> is a condition somebody has decided to do something about. It has
-stakes, it has sides with a stance each, and it pulls people across the map towards one another.
-The debt did not change on the day the situation opened. He did.</p>
+<h2 id="what-somebody-wants-next">What somebody wants next</h2>
 
-<p>Situations open three ways. The narrator opens one in a scene. One ends badly and leaves a
-grudge behind, which is a rule rather than something anybody has to remember. Or the world finds
-one already sitting in the graph.</p>
+<p>A world can give a person a <strong>ladder</strong>: when one situation of theirs resolves, the
+next rung becomes live, usually the thing the first one was in the way of. Give somebody a room and
+they want an audience. Two rungs later they want to not need you. Nothing opens until the rung
+below it closed, and only if it resolved rather than collapsed. Somebody whose bar closed is not
+now worrying about its licence.</p>
 
-<p>That last one is worth explaining, because nothing invents it:</p>
+<h2 id="tasks-a-want-somebody-else-can-act-on">Tasks: a want somebody else can act on</h2>
 
-<blockquote>
-  <p>Authored situations run out and ladders are finite. What does not run out is the graph: with a
-  dozen people, asymmetric feelings, shared rooms and gossip that distorts, certain configurations
-  simply are stories, and they keep arriving because every turn moves edges around.</p>
-</blockquote>
+<p>A task is one person asking and the other answering. Whether somebody does what you ask is the
+world's call, not yours. They weigh how they feel about you, any willingness their character
+declares, and what it pays, against the size of the ask: the evidence demanded, the walk, and how
+little time they have. Somewhere they cannot reach in time makes it impossible rather than
+hard.</p>
 
-<p>The world scans for three shapes. Two people who know each other and are both drawn to the same
-third, where at least one of them wants rather than merely likes. Somebody carrying a badly mangled
-version of a fact about somebody else, firmly enough to repeat it. And somebody who has learned
-something about you that you did not tell them.</p>
-
-<p>It is a query, not a guess. A situation exists because two specific links exist, so it can always
-be traced back to them, and it arrives at the moment it became true. At most a handful are open at
-once, so the brief stays a brief.</p>
-
-<h2 id="and-what-somebody-wants-next">And what somebody wants next</h2>
-
-<p>Solve somebody's problem and the next thing they are after becomes live, usually the thing the
-first one was in the way of. A trainer with nowhere to work wants a room; give her one and she
-wants an audience; two rungs later she wants to not need you.</p>
-
-<p>The next rung only opens if the one below it <em>resolved</em>. A situation that collapsed did
-not deliver the thing the next rung stands on, and somebody whose bar closed is not now worrying
-about its licence.</p>
+<p>One rule in that calculation is worth stating on its own. Willingness is built from warmth,
+trust and desire, minus fear. Fear pushes away, not towards, because a world where fear bought
+compliance would be a world where being frightening is a strategy.</p>
 
 <div class="note">
   <p class="note-title">Optional depth</p>
-  <p>A world with people, places and timetables already works, and people will already be somewhere
-  for a reason. Wants are what you add when you want the world to push back: somebody turning up
-  where you did not ask them to, because something they needed outgrew their own afternoon.</p>
+  <p>A world with people, places and timetables already works, and people will already be
+  somewhere for a reason. Wants, ladders and the situation scanner are what you add when you want
+  the world to push back.</p>
 </div>
     </article>
-    <nav class="pager" aria-label="Neighbouring pages"><a class="pager-link pager-prev" href="people.html"><span>Previous</span><strong>People</strong></a><a class="pager-link pager-next" href="time.html"><span>Next</span><strong>Time</strong></a></nav>
+    <nav class="pager" aria-label="Neighbouring pages"><a class="pager-link pager-prev" href="gossip.html"><span>Previous</span><strong>Rumour</strong></a><a class="pager-link pager-next" href="plans.html"><span>Next</span><strong>Plans, tasks and trips</strong></a></nav>
     <footer class="foot">
       <p>Civitas is a personal project, documented as it actually behaves. The example world is
       fiction and every character in it is an adult.</p>
     </footer>
   </main>
 
-  <aside class="toc" aria-label="On this page"><p class="toc-heading">On this page</p><ul><li><a href="#wants-are-worked-out-not-stored">Wants are worked out, not stored</a></li><li><a href="#how-a-want-becomes-something-they-do">How a want becomes something they do</a></li><li><a href="#a-want-somebody-else-can-act-on">A want somebody else can act on</a></li><li><a href="#when-a-want-is-blocked-it-becomes-a-situation">When a want is blocked, it becomes a situation</a></li><li><a href="#and-what-somebody-wants-next">And what somebody wants next</a></li></ul></aside>
+  <aside class="toc" aria-label="On this page"><p class="toc-heading">On this page</p><ul><li><a href="#four-pressures-computed-not-stored">Four pressures, computed not stored</a></li><li><a href="#how-a-want-becomes-something-they-do">How a want becomes something they do</a></li><li><a href="#situations">Situations</a></li><li><a href="#situations-the-world-finds-by-itself">Situations the world finds by itself</a></li><li><a href="#how-a-situation-ends">How a situation ends</a></li><li><a href="#what-somebody-wants-next">What somebody wants next</a></li><li><a href="#tasks-a-want-somebody-else-can-act-on">Tasks: a want somebody else can act on</a></li></ul></aside>
 </div>
 </body>
 </html>
