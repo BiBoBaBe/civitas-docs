@@ -28,7 +28,7 @@
 <p class="nav-heading">Playing</p>
 <ul><li><a href="setup.html">Trying it</a></li><li><a href="screens.html">The World screen</a></li><li><a href="pictures.html">Pictures</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
 <p class="nav-heading">Worlds</p>
-<ul><li><a href="tremont.html">Tremont</a></li><li><a href="other-worlds.html">Other settings</a></li></ul>
+<ul><li><a href="sao.html">SAO, a sketch</a></li></ul>
 <p class="nav-heading">Building your own</p>
 <ul><li><a href="your-own-world.html">Writing a world card</a></li><li><a href="extending.html">Extending the engine</a></li><li><a href="how-a-world-gets-built.html">The authoring pipeline</a></li><li><a href="limits.html">Limits</a></li></ul></nav>
   </details>
@@ -46,7 +46,7 @@
 <p class="nav-heading">Playing</p>
 <ul><li><a href="setup.html">Trying it</a></li><li><a href="screens.html">The World screen</a></li><li><a href="pictures.html">Pictures</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
 <p class="nav-heading">Worlds</p>
-<ul><li><a href="tremont.html">Tremont</a></li><li><a href="other-worlds.html">Other settings</a></li></ul>
+<ul><li><a href="sao.html">SAO, a sketch</a></li></ul>
 <p class="nav-heading">Building your own</p>
 <ul><li><a href="your-own-world.html">Writing a world card</a></li><li><a href="extending.html">Extending the engine</a></li><li><a href="how-a-world-gets-built.html">The authoring pipeline</a></li><li><a href="limits.html">Limits</a></li></ul></nav>
   </aside>
@@ -62,11 +62,12 @@ prose, and most of it can only change at a rate the world sets.</p>
 
 <p>Everybody has a <strong>schedule</strong>: where they are meant to be, between which hours, on
 which days, and what they are doing there. This is what a schedule looks like in a world written
-in code, for a nurse on nights:</p>
+in code, for somebody who works nights:</p>
 
 <pre><code>schedule: [
-  scheduleEntry(ST_JUDES, hm(18, 30), hm(7, 30), { activity: "on a night shift in the ER" }),
-  scheduleEntry(FLAT_2B,  hm(7, 30),  hm(18, 30), { activity: "sleeping off a night shift, badly" }),
+  scheduleEntry(THE_GATE, hm(22), hm(6),  { activity: "on the night gate" }),
+  scheduleEntry(HOME,     hm(6),  hm(14), { activity: "asleep after a night shift" }),
+  scheduleEntry(ANCHOR,   hm(19), hm(22), { activity: "a drink before the shift" }),
 ],</code></pre>
 
 <p>An entry that crosses midnight belongs to the day it started on, so nobody teleports home at
@@ -192,13 +193,6 @@ shown what sits just past the lowered gate, marked as something the person canno
 pushed confession has something true to come out as. When something does come out early, the
 world records that it did and why. The belief carries the reason, such as "drunk" or "he asked
 her to close her eyes", which is what makes the morning after possible.</p>
-
-<div class="case">
-  <p class="case-title">In Tremont</p>
-  <p>One character carries twenty items under a single progression, things she has written about
-  for years and never done. She never hands anybody a list and never says there are twenty. Item
-  four arrives when item four has been earned. The last line is marked unwritten.</p>
-</div>
     </article>
     <nav class="pager" aria-label="Neighbouring pages"><a class="pager-link pager-prev" href="places.html"><span>Previous</span><strong>Places and doors</strong></a><a class="pager-link pager-next" href="knowledge.html"><span>Next</span><strong>What people know</strong></a></nav>
     <footer class="foot">

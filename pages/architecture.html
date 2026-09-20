@@ -3,8 +3,7 @@ title: The engine
 description: The log, the fold, the temporal graph, determinism, branches, snapshots, the invariant harness and the test suite, in one page.
 -->
 
-<p class="lede">Civitas is about thirty thousand lines of TypeScript on Bun, with no runtime
-dependencies. This page is for anybody who wants to know how the promises on the rest of the site
+<p class="lede">Civitas is written in TypeScript on Bun, with no runtime dependencies. This page is for anybody who wants to know how the promises on the rest of the site
 are kept. It assumes no more than curiosity.</p>
 
 <h2>The log is the only thing that is written</h2>
@@ -137,18 +136,8 @@ returns four lists: accepted, rejected, failures, events. Only the events are wr
   <tbody>
     <tr><td>Test files</td><td>75</td></tr>
     <tr><td>Tests</td><td>794</td></tr>
-    <tr><td>Assertions</td><td>44,696</td></tr>
-    <tr><td>Runtime</td><td>About 100 seconds</td></tr>
   </tbody>
 </table>
-
-<p>The files map onto subsystems almost one to one. Two kinds of test are worth pointing at. The
-invariant suite runs a seeded city for a long stretch and asserts nothing in the list above ever
-breaks, and separately proves each rule can catch its bug: a person in two places, a belief before
-its fact, a settlement that invents coins. The fuzz suite generates random tags from a seeded
-generator, throws them at the adjudicator, and asserts only properties: the adjudicator returned,
-rejected verbs left no trace, accepted verbs applied cleanly, and the world still satisfies every
-invariant. A failure prints the seed that reproduces it.</p>
 
 <p>Determinism is asserted directly in over a dozen places: the same day planned twice, the same
 day gossiped twice, the same fact id on replay.</p>

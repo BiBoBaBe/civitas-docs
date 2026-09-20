@@ -28,7 +28,7 @@
 <p class="nav-heading">Playing</p>
 <ul><li><a href="setup.html">Trying it</a></li><li><a href="screens.html">The World screen</a></li><li><a href="pictures.html">Pictures</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
 <p class="nav-heading">Worlds</p>
-<ul><li><a href="tremont.html">Tremont</a></li><li><a href="other-worlds.html">Other settings</a></li></ul>
+<ul><li><a href="sao.html">SAO, a sketch</a></li></ul>
 <p class="nav-heading">Building your own</p>
 <ul><li><a href="your-own-world.html">Writing a world card</a></li><li><a href="extending.html">Extending the engine</a></li><li><a href="how-a-world-gets-built.html">The authoring pipeline</a></li><li><a href="limits.html">Limits</a></li></ul></nav>
   </details>
@@ -46,7 +46,7 @@
 <p class="nav-heading">Playing</p>
 <ul><li><a href="setup.html">Trying it</a></li><li><a href="screens.html">The World screen</a></li><li><a href="pictures.html">Pictures</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
 <p class="nav-heading">Worlds</p>
-<ul><li><a href="tremont.html">Tremont</a></li><li><a href="other-worlds.html">Other settings</a></li></ul>
+<ul><li><a href="sao.html">SAO, a sketch</a></li></ul>
 <p class="nav-heading">Building your own</p>
 <ul><li><a href="your-own-world.html">Writing a world card</a></li><li><a href="extending.html">Extending the engine</a></li><li><a href="how-a-world-gets-built.html">The authoring pipeline</a></li><li><a href="limits.html">Limits</a></li></ul></nav>
   </aside>
@@ -54,8 +54,7 @@
   <main id="main" class="content">
     <article class="prose">
       <h1>The engine</h1>
-      <p class="lede">Civitas is about thirty thousand lines of TypeScript on Bun, with no runtime
-dependencies. This page is for anybody who wants to know how the promises on the rest of the site
+      <p class="lede">Civitas is written in TypeScript on Bun, with no runtime dependencies. This page is for anybody who wants to know how the promises on the rest of the site
 are kept. It assumes no more than curiosity.</p>
 
 <h2 id="the-log-is-the-only-thing-that-is-written">The log is the only thing that is written</h2>
@@ -188,18 +187,8 @@ returns four lists: accepted, rejected, failures, events. Only the events are wr
   <tbody>
     <tr><td>Test files</td><td>75</td></tr>
     <tr><td>Tests</td><td>794</td></tr>
-    <tr><td>Assertions</td><td>44,696</td></tr>
-    <tr><td>Runtime</td><td>About 100 seconds</td></tr>
   </tbody>
 </table>
-
-<p>The files map onto subsystems almost one to one. Two kinds of test are worth pointing at. The
-invariant suite runs a seeded city for a long stretch and asserts nothing in the list above ever
-breaks, and separately proves each rule can catch its bug: a person in two places, a belief before
-its fact, a settlement that invents coins. The fuzz suite generates random tags from a seeded
-generator, throws them at the adjudicator, and asserts only properties: the adjudicator returned,
-rejected verbs left no trace, accepted verbs applied cleanly, and the world still satisfies every
-invariant. A failure prints the seed that reproduces it.</p>
 
 <p>Determinism is asserted directly in over a dozen places: the same day planned twice, the same
 day gossiped twice, the same fact id on replay.</p>

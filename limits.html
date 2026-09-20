@@ -28,7 +28,7 @@
 <p class="nav-heading">Playing</p>
 <ul><li><a href="setup.html">Trying it</a></li><li><a href="screens.html">The World screen</a></li><li><a href="pictures.html">Pictures</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
 <p class="nav-heading">Worlds</p>
-<ul><li><a href="tremont.html">Tremont</a></li><li><a href="other-worlds.html">Other settings</a></li></ul>
+<ul><li><a href="sao.html">SAO, a sketch</a></li></ul>
 <p class="nav-heading">Building your own</p>
 <ul><li><a href="your-own-world.html">Writing a world card</a></li><li><a href="extending.html">Extending the engine</a></li><li><a href="how-a-world-gets-built.html">The authoring pipeline</a></li><li><a href="limits.html" aria-current="page">Limits</a></li></ul></nav>
   </details>
@@ -46,7 +46,7 @@
 <p class="nav-heading">Playing</p>
 <ul><li><a href="setup.html">Trying it</a></li><li><a href="screens.html">The World screen</a></li><li><a href="pictures.html">Pictures</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
 <p class="nav-heading">Worlds</p>
-<ul><li><a href="tremont.html">Tremont</a></li><li><a href="other-worlds.html">Other settings</a></li></ul>
+<ul><li><a href="sao.html">SAO, a sketch</a></li></ul>
 <p class="nav-heading">Building your own</p>
 <ul><li><a href="your-own-world.html">Writing a world card</a></li><li><a href="extending.html">Extending the engine</a></li><li><a href="how-a-world-gets-built.html">The authoring pipeline</a></li><li><a href="limits.html" aria-current="page">Limits</a></li></ul></nav>
   </aside>
@@ -62,10 +62,11 @@ before you find it.</p>
 <ul>
   <li><strong>Making a world from inside the app.</strong> You can import one, store one and pick
   one. Writing a new one is a file and a command.</li>
-  <li><strong>Most of Tremont in a card.</strong> The card format has no secrets with trust
-  gates, no ladders, no disclosure rules, no ending conditions, no rooms inside buildings and so
-  no doors, no weekday patterns, no calendar or climate, no apps, couples or terms. This is the
-  gap most worth closing.</li>
+  <li><strong>Fuller world cards.</strong> A card covers places, people, debts and who has
+  misheard what. A scripted world can also declare secrets with trust gates, ladders, disclosure
+  rules, ending conditions, rooms inside buildings and doors, weekday patterns, a calendar and
+  climate, apps, couples and terms. Bringing those to the card format is the gap most worth
+  closing.</li>
   <li><strong>Migrating a world.</strong> Re-importing a card makes a new world. The only route
   into a live save is the graft tool.</li>
   <li><strong>Schema versioning.</strong> There is no migration machinery for saves. The one
@@ -111,15 +112,10 @@ before you find it.</p>
 <h2 id="where-the-design-knows-it-is-rough">Where the design knows it is rough</h2>
 
 <ul>
-  <li><strong>Some of a world's wiring lives in comments rather than in the graph.</strong> When
-  the content says a gym owes its receptionist wages, that may be reasoning for whoever reads the
-  file, not an obligation the simulation can act on. The ending condition is the only thing the
-  engine checks; the routes to it are authored guidance.</li>
   <li><strong>One clock and no time zones.</strong> Somebody two hours away is on world time,
   and the narrator does the arithmetic.</li>
-  <li><strong>Cross-district acquaintance is hand-wired.</strong> There is no generator for who
-  plausibly knows whom across a river.</li>
-  <li><strong>Off-screen resolution is opt-in, and Tremont does not use it.</strong></li>
+  <li><strong>Cross-district acquaintance is currently still hand-wired.</strong> There is no
+  generator yet for who plausibly knows whom across a river.</li>
   <li><strong>Names must be unique across a world.</strong> The scene reader answers with names,
   and "the bedroom" is five places.</li>
   <li><strong>The debt invariant checks creation, not payment.</strong> It reads the graph and

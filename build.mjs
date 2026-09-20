@@ -56,10 +56,7 @@ const SECTIONS = [
   },
   {
     title: "Worlds",
-    pages: [
-      ["tremont", "Tremont"],
-      ["other-worlds", "Other settings"],
-    ],
+    pages: [["sao", "SAO, a sketch"]],
   },
   {
     title: "Building your own",

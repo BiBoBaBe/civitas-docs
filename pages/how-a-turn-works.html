@@ -9,7 +9,7 @@ is written to the log. Then the clock moves.</p>
 
 <h2>1. The world writes a brief</h2>
 
-<p>The brief is a query, not a dump. The world is never serialised and sent to the model. Instead
+<p>The brief is a query, not a dump. The world is never sent to the model verbatim. Instead
 the simulation asks, for this player at this minute in this room, what the model needs to know,
 and renders that as plain text inside a token budget.</p>
 
@@ -100,7 +100,7 @@ reasons are written for a writer rather than a programmer:</p>
   — they do not trust him enough to tell him that yet (0.12 of 0.45).
     let them keep it for now; it comes out when something between them has earned it
 
-&lt;&lt;term person="Jade" mode="counter" ...&gt;&gt;
+&lt;&lt;term person="Anna Reed" how="counter" ...&gt;&gt;
   — that is already signed. void it and draw up new terms instead of
     rewriting what somebody agreed to</code></pre>
 
@@ -118,7 +118,7 @@ refused, and the design expects it.</p>
 
 <p>Time advances by what the turn cost. If Marinara says how long the turn took, that is used. If
 the model tagged that an hour passed, an hour passes. Otherwise the world uses a default beat, ten
-minutes by default and three in Tremont, because a bar conversation is short. The time is lived, not
+minutes by default, and a world can set its own, because a bar conversation is not ten minutes long. The time is lived, not
 jumped: people walk, shifts end, gossip moves one step. <a href="time.html">Time and routines</a>
 has the details.</p>
 

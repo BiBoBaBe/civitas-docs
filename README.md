@@ -67,7 +67,7 @@ under Settings → Pages. Nothing in the site needs changing, because no link is
 | `404.html` | Served by GitHub Pages for unknown paths. |
 | `pages/` | The source fragments. Edit these. |
 | `assets/styles.css` | The whole stylesheet. Light and dark, no framework. |
-| `assets/img/` | Isometric room art used on the pages. |
+
 | `build.mjs` | The generator. |
 | `.nojekyll` | Tells GitHub Pages not to run Jekyll. |
 
@@ -80,7 +80,7 @@ under Settings → Pages. Nothing in the site needs changing, because no link is
 - Written for roleplayers first and engineers second. Lead with what a thing is and the rule that
   governs it, then show a real artefact (a brief, a tag, a refusal, a card) rather than describing
   one. Numbers go in a table with their default and where they are set.
-- Tremont is the worked example, not the subject. At most one short "In Tremont" box per page,
-  after the rule it illustrates, never as the opener.
+- The author's private world is never mentioned. The Docks demo that ships with the engine (Anna
+  Reed, the clerk, forty coins) is the running example, and any other example is generic.
 - No maxims as openers, no war stories, no anecdotes standing in for a definition.
 - Say plainly when something is not built.
