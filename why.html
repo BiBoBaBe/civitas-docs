@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why it works this way · Civitas</title>
+<meta name="description" content="The engineering primitives behind Civitas, and why most roleplay tooling skips them.">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="Why it works this way · Civitas">
+<meta property="og:description" content="The engineering primitives behind Civitas, and why most roleplay tooling skips them.">
+<meta property="og:type" content="article">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%2318140f'/%3E%3Cpath%20d='M6%2024V14l10-6%2010%206v10'%20fill='none'%20stroke='%23d79a4e'%20stroke-width='2'%20stroke-linejoin='round'/%3E%3Crect%20x='13'%20y='17'%20width='6'%20height='7'%20fill='%23d79a4e'/%3E%3C/svg%3E">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Civitas</a>
+  <details class="menu">
+    <summary>Contents</summary>
+    <nav class="nav" id="nav-mobile" aria-label="Documentation"><p class="nav-heading">Start here</p>
+<ul><li><a href="index.html">What Civitas is</a></li><li><a href="the-idea.html">The idea in five minutes</a></li><li><a href="why.html" aria-current="page">Why it works this way</a></li></ul>
+<p class="nav-heading">How the world works</p>
+<ul><li><a href="people.html">People</a></li><li><a href="motives.html">Wants and motives</a></li><li><a href="time.html">Time</a></li><li><a href="places.html">Places, doors and walls</a></li><li><a href="records.html">What the world records</a></li><li><a href="gossip.html">Gossip</a></li><li><a href="plans.html">Plans, arrangements and trips</a></li><li><a href="terms.html">Terms and couples</a></li><li><a href="pictures.html">Pictures</a></li></ul>
+<p class="nav-heading">Playing</p>
+<ul><li><a href="screens.html">The screens</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
+<p class="nav-heading">Example worlds</p>
+<ul><li><a href="tremont.html">Tremont</a></li><li><a href="tremont-phone.html">The phone and its apps</a></li><li><a href="isekai.html">Trapped in the game</a></li><li><a href="other-worlds.html">Three more worlds</a></li></ul>
+<p class="nav-heading">Building your own</p>
+<ul><li><a href="your-own-world.html">Making your own world</a></li><li><a href="how-a-world-gets-built.html">How a world gets built</a></li><li><a href="limits.html">Honest limits</a></li></ul></nav>
+  </details>
+</header>
+
+<div class="shell">
+  <aside class="sidebar">
+    <a class="brand brand-desk" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Civitas<em>documentation</em></a>
+    <nav class="nav" id="nav-desktop" aria-label="Documentation"><p class="nav-heading">Start here</p>
+<ul><li><a href="index.html">What Civitas is</a></li><li><a href="the-idea.html">The idea in five minutes</a></li><li><a href="why.html" aria-current="page">Why it works this way</a></li></ul>
+<p class="nav-heading">How the world works</p>
+<ul><li><a href="people.html">People</a></li><li><a href="motives.html">Wants and motives</a></li><li><a href="time.html">Time</a></li><li><a href="places.html">Places, doors and walls</a></li><li><a href="records.html">What the world records</a></li><li><a href="gossip.html">Gossip</a></li><li><a href="plans.html">Plans, arrangements and trips</a></li><li><a href="terms.html">Terms and couples</a></li><li><a href="pictures.html">Pictures</a></li></ul>
+<p class="nav-heading">Playing</p>
+<ul><li><a href="screens.html">The screens</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
+<p class="nav-heading">Example worlds</p>
+<ul><li><a href="tremont.html">Tremont</a></li><li><a href="tremont-phone.html">The phone and its apps</a></li><li><a href="isekai.html">Trapped in the game</a></li><li><a href="other-worlds.html">Three more worlds</a></li></ul>
+<p class="nav-heading">Building your own</p>
+<ul><li><a href="your-own-world.html">Making your own world</a></li><li><a href="how-a-world-gets-built.html">How a world gets built</a></li><li><a href="limits.html">Honest limits</a></li></ul></nav>
+  </aside>
+
+  <main id="main" class="content">
+    <article class="prose">
+      <h1>Why it works this way</h1>
+      <p class="lede">None of this is a new idea. It is ordinary engineering, applied to a problem that is
+usually solved by asking a model to try harder.</p>
+
+<p>Civitas was written by somebody who builds production software for a living, and the shape of it
+comes straight from that work: state is explicit; events are the source of truth; behaviour is
+derived from data rather than restated in prose. An append-only log you can replay. One place where
+truth lives, with views computed from it instead of copied out of it. Invariants that are checked
+rather than hoped for. Tests written from real failures rather than from imagined ones. Small
+composable operations with preconditions, which either apply or are refused.</p>
+
+<p>Most roleplay tooling skips all of it and asks the model to be its own database. A model asked
+to do that drifts. It loses track of who was in the room. It has somebody give up the same secret
+twice. And it cannot separate <em>what is true</em> from <em>what a particular person believes</em>,
+because a transcript has nowhere to put the difference.</p>
+
+<p>That difference is a worked example. In Civitas, a debt is a fact and knowing about it is a link
+from a person to that fact, carrying their version of it. Pay the debt and the fact changes; the
+woman across town who was never told still says you owe eighty, and she says it in good faith.
+Nothing had to remember to be inconsistent. It is inconsistent because two different things are
+being recorded.</p>
+
+<p>The same thinking runs through the rest. A verb that tries to spend the player's money is not
+discouraged in a system prompt, it is refused, because the precondition says so. Fixing something
+recorded wrongly is a new event rather than an edit, so the history stays honest about having been
+corrected.</p>
+
+<p>The result is that continuity is a property of the system instead of a thing you keep asking a
+model to do.</p>
+    </article>
+    <nav class="pager" aria-label="Neighbouring pages"><a class="pager-link pager-prev" href="the-idea.html"><span>Previous</span><strong>The idea in five minutes</strong></a><a class="pager-link pager-next" href="people.html"><span>Next</span><strong>People</strong></a></nav>
+    <footer class="foot">
+      <p>Civitas is a personal project, documented as it actually behaves. The example world is
+      fiction and every character in it is an adult.</p>
+    </footer>
+  </main>
+
+  
+</div>
+</body>
+</html>

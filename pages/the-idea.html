@@ -1,0 +1,101 @@
+<!-- meta
+title: The idea in five minutes
+description: How a simulated world becomes a short brief for the narrator, and how the narrator's prose becomes world again.
+-->
+
+<p class="lede">The world is a list of things that happened. Everything else is read off it.</p>
+
+<p>Here is the whole brief for a small example world, exactly as it is handed to the model:</p>
+
+<pre><code>TIME: day 0, 19:00
+PLACE: The Anchor, the Docks
+  A low bar with long benches and a scarred counter.
+YOU: Sam Vale
+PRESENT:
+  Anna Reed (mechanic)
+    doing: keeping to the day
+  the cook, works here
+    doing: keeping to the day
+  the broker
+    doing: nothing in particular to do
+  the welder
+    doing: keeping to the day
+    believes: Anna Reed owes the clerk 200
+  the clerk
+    doing: keeping to the day
+    believes: Anna Reed owes the clerk 40
+OPEN:
+  [debt/escalating] Anna owes the clerk forty coins for the delivery job;
+    he has stopped being patient. (29 days left)
+  [secret/open] the welder has the wrong idea about Anna Reed, and believes
+    it firmly enough to repeat it.
+
+— 171/400 tokens (pinned floor 92)</code></pre>
+
+<p>Three things there are worth your attention. Anna is called Anna Reed and the clerk is called
+the clerk, because you have been introduced to one of them and not the other. The welder thinks the
+debt is two hundred; the clerk, who is owed it, knows it is forty. And the whole thing fits in 171
+tokens, which is why it can be rebuilt from scratch every turn rather than carried forward and
+slowly corrupted.</p>
+
+<h2>Nothing is stored as a summary</h2>
+
+<p>Civitas keeps an append-only log. She walked in. He handed over four hundred. The door shut. She
+told him about her sister. The state of the world is worked out from that log every time it is
+asked. Nothing is a paraphrase of anything, and nothing is a note a model left for itself.</p>
+
+<p>You will feel the consequence of that on your second evening. Swipe a reply away and the world
+rewinds with it: the fork happens at the moment before that reply was folded in, and the clock goes
+back too. The version you abandoned still exists on its own branch. A reroll is not an edit. It is a
+different Tuesday.</p>
+
+<h2>People, places and time are real</h2>
+
+<p>Everybody has a timetable, a home, a job, and things they want. They move on their own. The clock
+only advances because something said it should: a walk took eleven minutes, a scene took three, you
+asked to skip to Friday. It is never the real time of day.</p>
+
+<p>Walk into a bar at seven and whoever is there is there for a reason you could trace. Her shift
+started at five. He is there because you owe him money and he has stopped being patient. Nobody was
+placed for your benefit.</p>
+
+<h2>The brief is a query, not a dump</h2>
+
+<p>The world is never sent to the model. Each turn it is queried against a token budget. Things that
+cannot be dropped are pinned first, so nobody standing in front of you is ever left out, and the rest
+competes for what is left over by how much it bears on this moment.</p>
+
+<p>The same world at the same minute always produces the same brief, which is what makes it possible
+to test context assembly at all.</p>
+
+<h2>Then the prose is read back in</h2>
+
+<p>The model writes the scene. It also emits short tags the player never sees: she moved here, this
+situation escalated, he paid her forty, she told him the thing about her sister. A second pass reads
+the finished prose for what the narrator did not bother to tag, such as what came off, what each
+person is doing, and who had been drinking.</p>
+
+<p>Every one of those is checked against the world before anything is written down.</p>
+
+<blockquote>
+  <p>The model proposes; the simulation adjudicates.</p>
+</blockquote>
+
+<p>Tags that do not survive are rejected with a reason, and the engine can ask for one repair pass:
+keep the prose, fix only these. Nothing is half-applied. A verb that tries to spend your money, move
+your feet or decide what you feel is refused outright, always, because those are yours.</p>
+
+<h2>Why the split is that way round</h2>
+
+<p>Consistency over a thousand turns is bookkeeping, and a context window is not a ledger. Writing a
+room is imagination, and a ledger cannot do that. Each side gets the job it is good at.</p>
+
+<p>When you notice that somebody's debt survived a week, that is not a model being careful. It is a
+number.</p>
+
+<div class="note">
+  <p class="note-title">What this rules out</p>
+  <p>The simulation never writes prose, and it never decides what happened in a scene you were
+  present for. It refuses things, records things, and moves people who are not you. Everything that
+  reads like writing was written by the model.</p>
+</div>

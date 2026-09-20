@@ -1,0 +1,104 @@
+<!-- meta
+title: Honest limits
+description: What is not built, what is half-built, what fails quietly, and where the design knows it is wrong.
+-->
+
+<p class="lede">Everything on this page is true as of writing, and I would rather you heard it here
+than found it on a Tuesday.</p>
+
+<h2>Not built</h2>
+
+<p><strong>You cannot make a world from inside the app.</strong> You can import one, store one and pick
+one. Writing a new one is a file and a command. See
+<a href="how-a-world-gets-built.html">how a world gets built</a> for the full list of which steps are
+buttons and which are not.</p>
+
+<p><strong>The world card format cannot express most of what Tremont is.</strong> No secrets with trust
+thresholds, no ladders of wants, no disclosure rules, no conditions for what would count as a situation
+being over, no rooms inside buildings and therefore no doors, no weekday patterns in a schedule, no
+calendar or climate, no apps, couples or signed terms. This is the gap I most want to close.</p>
+
+<p><strong>Re-importing a card makes a new world, it does not migrate an old one.</strong> A card is a
+starting state and not a second source of truth. Once it has run, the card has no further say, and the
+only route into a live save is the graft tool.</p>
+
+<h2>Half-built or unmeasured</h2>
+
+<p><strong>The picture gate has a hole, and it is written down rather than papered over.</strong> A
+second torso fused to the first gives the body counter nothing to count. It is defended by the
+description alone. A second person cut off at the frame edge has also passed the check in testing.</p>
+
+<p><strong>Group pictures are honest at four people and no better.</strong> Identity separation holds.
+Named garments are wrong about three times in five at three people, which is the most common fault, and
+the room drifts about as often. At best a group frame reads as a group portrait rather than an
+establishing shot.</p>
+
+<p><strong>Two-person pictures including the player are behind a switch that is off.</strong> Measured
+at two clean frames in nine on a live scene. Only three positions have been measured to a standard worth
+shipping; everything else is drawn another way, which is a worse picture of the moment and a correct
+picture of the people.</p>
+
+<p><strong>The scene reader is only as good as the model behind it.</strong> A schema stops a model
+naming somebody who is not in the room. It does not stop it naming the wrong person who is. The list
+made the answer possible, not true. Give that pass a model that follows a schema, or leave it off.</p>
+
+<p><strong>Resource regeneration exists, is tested, and is not wired in.</strong> It is a seam rather
+than half a feature. Coin does not regenerate anyway, but if your world counts stamina, note that it is
+opt-in and currently opted out.</p>
+
+<h2>Things that fail quietly</h2>
+
+<p>These are the ones worth knowing about, because nothing tells you at the time.</p>
+
+<p><strong>No graphics card means no pictures, and no error.</strong> Everything else carries on.</p>
+
+<p><strong>The world can be a turn behind the prose.</strong> Waiting for it would cost the narrator its
+whole brief, so the world lands a turn late rather than never.</p>
+
+<p><strong>There is a two-second budget for assembling the brief.</strong> If it overruns, the turn goes
+out with no world information at all and the model improvises. A turn that silently loses its world
+reads as the model going vague.</p>
+
+<p><strong>If no model will read a scene, the prose commits and nothing else does.</strong> The reason
+goes to a log file. This happened for two consecutive replies in a live session before the fallback
+existed, and both turns were lost.</p>
+
+<p><strong>Only the last few hundred replies are tracked.</strong> Editing or deleting one older than
+that will not rewind the world. Only a handful of owed replies are caught up at once; a longer gap
+loses the oldest.</p>
+
+<h2>Places the design knows it is rough</h2>
+
+<p><strong>Some of a world's interlocking lives in comments rather than in the graph.</strong> When the
+content says a gym owes its receptionist wages, that may be reasoning written for whoever reads the
+file, not an obligation the simulation can act on. The condition for a situation being over is the only
+thing the engine checks. The routes to it are authored guidance for the narrator.</p>
+
+<p><strong>There is one clock and no time zones.</strong> Palma time is world time. The narrator is left
+to do the arithmetic.</p>
+
+<p><strong>Cross-district acquaintance is hand-wired.</strong> There is no generator for who plausibly
+knows whom across a river. Every one of those ties was written by hand with a line of justification next
+to it.</p>
+
+<p><strong>Off-screen resolution is opt-in, and Tremont does not use it.</strong> Nothing resolves
+behind your back in the example world.</p>
+
+<p><strong>Names must be unique across the world.</strong> A reader answers with names, and "the
+bedroom" is five places.</p>
+
+<h2>What is deliberately not going to change</h2>
+
+<p>Some things read like limitations and are decisions.</p>
+
+<p>The bridge between the chat app and the simulation has no route that returns the world. A bridge that
+can reach into the graph is a bridge that eventually will, and then two processes own the truth instead
+of one.</p>
+
+<p>The narrator will never move you, spend your money, or decide what you feel or believe. Not with a
+better model, and not with a better prompt.</p>
+
+<p>Drives are capped at six. Forty axes produce an argument with noise.</p>
+
+<p>And the player receives no gossip at all, ever. You learn things by being told, in the fiction, like
+a person.</p>

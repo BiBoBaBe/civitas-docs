@@ -1,0 +1,33 @@
+<!-- meta
+title: Why it works this way
+description: The engineering primitives behind Civitas, and why most roleplay tooling skips them.
+-->
+
+<p class="lede">None of this is a new idea. It is ordinary engineering, applied to a problem that is
+usually solved by asking a model to try harder.</p>
+
+<p>Civitas was written by somebody who builds production software for a living, and the shape of it
+comes straight from that work: state is explicit; events are the source of truth; behaviour is
+derived from data rather than restated in prose. An append-only log you can replay. One place where
+truth lives, with views computed from it instead of copied out of it. Invariants that are checked
+rather than hoped for. Tests written from real failures rather than from imagined ones. Small
+composable operations with preconditions, which either apply or are refused.</p>
+
+<p>Most roleplay tooling skips all of it and asks the model to be its own database. A model asked
+to do that drifts. It loses track of who was in the room. It has somebody give up the same secret
+twice. And it cannot separate <em>what is true</em> from <em>what a particular person believes</em>,
+because a transcript has nowhere to put the difference.</p>
+
+<p>That difference is a worked example. In Civitas, a debt is a fact and knowing about it is a link
+from a person to that fact, carrying their version of it. Pay the debt and the fact changes; the
+woman across town who was never told still says you owe eighty, and she says it in good faith.
+Nothing had to remember to be inconsistent. It is inconsistent because two different things are
+being recorded.</p>
+
+<p>The same thinking runs through the rest. A verb that tries to spend the player's money is not
+discouraged in a system prompt, it is refused, because the precondition says so. Fixing something
+recorded wrongly is a new event rather than an edit, so the history stays honest about having been
+corrected.</p>
+
+<p>The result is that continuity is a property of the system instead of a thing you keep asking a
+model to do.</p>
