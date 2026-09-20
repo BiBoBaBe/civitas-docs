@@ -182,6 +182,30 @@ is:</p>
   </tbody>
 </table>
 
+<h2 id="a-second-world-on-the-same-points">A second world on the same points</h2>
+
+<p>Tenrai is a fantasy world in design, with a magic system, a mountain city and a weather cycle
+that runs the economy. None of it needs engine code. Each part of it lands on one of the
+declarations above, which is the test of whether the extension points are the right ones.</p>
+
+<table>
+  <thead><tr><th>Tenrai wants</th><th>Declared as</th></tr></thead>
+  <tbody>
+    <tr><td>Charge, measured in lamps: never made, only moved from the ground through a chain of hands until somebody spends it. Each person has a capacity and a passive daily intake that scales with it.</td><td>A conserved quantity with a per-person ceiling and a regeneration rate. Same shape as coin and stamina.</td></tr>
+    <tr><td>A cast that runs in two to five stages, each of which the room sees and reacts to before the next. The caster cannot wander off mid-working. Being interrupted at each stage goes wrong differently.</td><td>A kind of situation with <code>holdsInPlace</code> set on the channelling stance and an <code>onBroken</code> aftermath, plus a small family of verbs: declare, interrupt, release, shed.</td></tr>
+    <tr><td>An interruption that is legal only if the cast was declared, that costs the caster and the interrupter different amounts, and that names how it was done: a touch, a shout, a body in the way.</td><td>A verb whose <code>check</code> reads world state and whose <code>effects</code> write to two people.</td></tr>
+    <tr><td>Every nine to thirteen days a storm shuts the mines and the bars, and two or three fat days follow.</td><td>The calendar and climate, driving opening hours and prices through the ordinary schedule and resource machinery.</td></tr>
+    <tr><td>A companion who cannot enter the city, because she draws so hard that lamps go out along a street, and who can carry the player faster than anything else in the world.</td><td>A person node, and a place marked as a vehicle with <code>conspicuous</code> at maximum.</td></tr>
+    <tr><td>A public ledger that ranks people by what they have spent, not what they hold, and credits whoever was standing at the end.</td><td>A derived view over the ledger events, with the blind spot written into the rule rather than patched around.</td></tr>
+    <tr><td>Nobody says "spell", "aether" or "mayhap". Plain modern English.</td><td>The voice contract.</td></tr>
+  </tbody>
+</table>
+
+<p>The design notes also list what the engine cannot yet do for it: per-stage witness reactions
+inside one turn, off-screen resolution rules per institution, and negotiation with hidden
+reservation prices. Those are engine work, and they are on <a href="limits.html">Limits</a> when
+they ship rather than before.</p>
+
 <h2 id="what-stays-closed">What stays closed</h2>
 
 <p>Event sourcing, temporal links, the fold, branching, rumour diffusion, brief assembly and the
@@ -196,7 +220,7 @@ meaningful for every world at once.</p>
     </footer>
   </main>
 
-  <aside class="toc" aria-label="On this page"><p class="toc-heading">On this page</p><ul><li><a href="#a-world-in-code">A world in code</a></li><li><a href="#quantities">Quantities</a></li><li><a href="#kinds-of-situation">Kinds of situation</a></li><li><a href="#verbs">Verbs</a></li><li><a href="#voice">Voice</a></li><li><a href="#place-markers">Place markers</a></li><li><a href="#what-stays-closed">What stays closed</a></li></ul></aside>
+  <aside class="toc" aria-label="On this page"><p class="toc-heading">On this page</p><ul><li><a href="#a-world-in-code">A world in code</a></li><li><a href="#quantities">Quantities</a></li><li><a href="#kinds-of-situation">Kinds of situation</a></li><li><a href="#verbs">Verbs</a></li><li><a href="#voice">Voice</a></li><li><a href="#place-markers">Place markers</a></li><li><a href="#a-second-world-on-the-same-points">A second world on the same points</a></li><li><a href="#what-stays-closed">What stays closed</a></li></ul></aside>
 </div>
 </body>
 </html>
