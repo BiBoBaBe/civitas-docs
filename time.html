@@ -20,13 +20,13 @@
   <details class="menu">
     <summary>Contents</summary>
     <nav class="nav" id="nav-mobile" aria-label="Documentation"><p class="nav-heading">Start here</p>
-<ul><li><a href="index.html">What Civitas is</a></li><li><a href="how-a-turn-works.html">How a turn works</a></li><li><a href="principles.html">Principles</a></li></ul>
+<ul><li><a href="index.html">What Civitas is</a></li><li><a href="setup.html">Trying it</a></li><li><a href="how-a-turn-works.html">How a turn works</a></li><li><a href="principles.html">Principles</a></li></ul>
 <p class="nav-heading">The simulation</p>
 <ul><li><a href="time.html" aria-current="page">Time and routines</a></li><li><a href="places.html">Places and doors</a></li><li><a href="people.html">People and feelings</a></li><li><a href="knowledge.html">What people know</a></li><li><a href="gossip.html">Rumour</a></li><li><a href="motives.html">Wants and situations</a></li><li><a href="plans.html">Plans, tasks and trips</a></li><li><a href="terms.html">Agreements and couples</a></li><li><a href="records.html">What gets written down</a></li></ul>
 <p class="nav-heading">Under the hood</p>
 <ul><li><a href="architecture.html">The engine</a></li><li><a href="bridge.html">The Marinara bridge</a></li></ul>
 <p class="nav-heading">Playing</p>
-<ul><li><a href="setup.html">Trying it</a></li><li><a href="screens.html">The World screen</a></li><li><a href="pictures.html">Pictures</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
+<ul><li><a href="screens.html">The World screen</a></li><li><a href="pictures.html">Pictures</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
 <p class="nav-heading">Worlds</p>
 <ul><li><a href="sao.html">SAO, a sketch</a></li></ul>
 <p class="nav-heading">Building your own</p>
@@ -38,13 +38,13 @@
   <aside class="sidebar">
     <a class="brand brand-desk" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Civitas<em>documentation</em></a>
     <nav class="nav" id="nav-desktop" aria-label="Documentation"><p class="nav-heading">Start here</p>
-<ul><li><a href="index.html">What Civitas is</a></li><li><a href="how-a-turn-works.html">How a turn works</a></li><li><a href="principles.html">Principles</a></li></ul>
+<ul><li><a href="index.html">What Civitas is</a></li><li><a href="setup.html">Trying it</a></li><li><a href="how-a-turn-works.html">How a turn works</a></li><li><a href="principles.html">Principles</a></li></ul>
 <p class="nav-heading">The simulation</p>
 <ul><li><a href="time.html" aria-current="page">Time and routines</a></li><li><a href="places.html">Places and doors</a></li><li><a href="people.html">People and feelings</a></li><li><a href="knowledge.html">What people know</a></li><li><a href="gossip.html">Rumour</a></li><li><a href="motives.html">Wants and situations</a></li><li><a href="plans.html">Plans, tasks and trips</a></li><li><a href="terms.html">Agreements and couples</a></li><li><a href="records.html">What gets written down</a></li></ul>
 <p class="nav-heading">Under the hood</p>
 <ul><li><a href="architecture.html">The engine</a></li><li><a href="bridge.html">The Marinara bridge</a></li></ul>
 <p class="nav-heading">Playing</p>
-<ul><li><a href="setup.html">Trying it</a></li><li><a href="screens.html">The World screen</a></li><li><a href="pictures.html">Pictures</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
+<ul><li><a href="screens.html">The World screen</a></li><li><a href="pictures.html">Pictures</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
 <p class="nav-heading">Worlds</p>
 <ul><li><a href="sao.html">SAO, a sketch</a></li></ul>
 <p class="nav-heading">Building your own</p>
@@ -60,8 +60,7 @@ It never reads the real time of day. It moves only when something in the story m
 <h2 id="the-clock">The clock</h2>
 
 <p>Time advances for three reasons: a walk cost some minutes, a scene took some, or you asked to
-skip ahead. It never advances because time passed for you at your keyboard. Midnight is a number
-crossing a multiple of 1,440, not an event.</p>
+skip ahead. It never advances because time passed for you at your keyboard.</p>
 
 <p>A world can name its days so that the fiction and the clock agree: it can say that the story
 opens on day 8 and that day 8 is a Tuesday, and every timestamp on screen and in the brief is then
@@ -153,8 +152,8 @@ three hops away and is not.</p>
   </tbody>
 </table>
 
-<p>None of this is stored. The tier is computed from the graph each tick, because a stored tier is
-a cache nobody remembers to invalidate.</p>
+<p>None of this is stored. The tier is computed from the graph each tick, so it cannot fall out of
+step with the graph.</p>
 
 <h2 id="weather">Weather</h2>
 
@@ -162,8 +161,8 @@ a cache nobody remembers to invalidate.</p>
 same minute is always the same rain, a reroll cannot change it, and a thousand turns of it cost
 nothing. It drifts over five-hour blocks rather than turn to turn.</p>
 
-<p>A world declares a climate: a typical day and night temperature and how wet it is. A cold wet
-autumn is three numbers.</p>
+<p>A world declares a climate as three numbers: a typical day temperature, a night temperature,
+and how wet it is.</p>
 
 <div class="note">
   <p class="note-title">Under the hood</p>

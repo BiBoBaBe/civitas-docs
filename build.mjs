@@ -20,6 +20,7 @@ const SECTIONS = [
     title: "Start here",
     pages: [
       ["index", "What Civitas is"],
+      ["setup", "Trying it"],
       ["how-a-turn-works", "How a turn works"],
       ["principles", "Principles"],
     ],
@@ -48,7 +49,6 @@ const SECTIONS = [
   {
     title: "Playing",
     pages: [
-      ["setup", "Trying it"],
       ["screens", "The World screen"],
       ["pictures", "Pictures"],
       ["adult-play", "Adult play"],

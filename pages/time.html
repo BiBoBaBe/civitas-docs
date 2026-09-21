@@ -9,8 +9,7 @@ It never reads the real time of day. It moves only when something in the story m
 <h2>The clock</h2>
 
 <p>Time advances for three reasons: a walk cost some minutes, a scene took some, or you asked to
-skip ahead. It never advances because time passed for you at your keyboard. Midnight is a number
-crossing a multiple of 1,440, not an event.</p>
+skip ahead. It never advances because time passed for you at your keyboard.</p>
 
 <p>A world can name its days so that the fiction and the clock agree: it can say that the story
 opens on day 8 and that day 8 is a Tuesday, and every timestamp on screen and in the brief is then
@@ -102,8 +101,8 @@ three hops away and is not.</p>
   </tbody>
 </table>
 
-<p>None of this is stored. The tier is computed from the graph each tick, because a stored tier is
-a cache nobody remembers to invalidate.</p>
+<p>None of this is stored. The tier is computed from the graph each tick, so it cannot fall out of
+step with the graph.</p>
 
 <h2>Weather</h2>
 
@@ -111,8 +110,8 @@ a cache nobody remembers to invalidate.</p>
 same minute is always the same rain, a reroll cannot change it, and a thousand turns of it cost
 nothing. It drifts over five-hour blocks rather than turn to turn.</p>
 
-<p>A world declares a climate: a typical day and night temperature and how wet it is. A cold wet
-autumn is three numbers.</p>
+<p>A world declares a climate as three numbers: a typical day temperature, a night temperature,
+and how wet it is.</p>
 
 <div class="note">
   <p class="note-title">Under the hood</p>

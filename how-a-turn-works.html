@@ -20,13 +20,13 @@
   <details class="menu">
     <summary>Contents</summary>
     <nav class="nav" id="nav-mobile" aria-label="Documentation"><p class="nav-heading">Start here</p>
-<ul><li><a href="index.html">What Civitas is</a></li><li><a href="how-a-turn-works.html" aria-current="page">How a turn works</a></li><li><a href="principles.html">Principles</a></li></ul>
+<ul><li><a href="index.html">What Civitas is</a></li><li><a href="setup.html">Trying it</a></li><li><a href="how-a-turn-works.html" aria-current="page">How a turn works</a></li><li><a href="principles.html">Principles</a></li></ul>
 <p class="nav-heading">The simulation</p>
 <ul><li><a href="time.html">Time and routines</a></li><li><a href="places.html">Places and doors</a></li><li><a href="people.html">People and feelings</a></li><li><a href="knowledge.html">What people know</a></li><li><a href="gossip.html">Rumour</a></li><li><a href="motives.html">Wants and situations</a></li><li><a href="plans.html">Plans, tasks and trips</a></li><li><a href="terms.html">Agreements and couples</a></li><li><a href="records.html">What gets written down</a></li></ul>
 <p class="nav-heading">Under the hood</p>
 <ul><li><a href="architecture.html">The engine</a></li><li><a href="bridge.html">The Marinara bridge</a></li></ul>
 <p class="nav-heading">Playing</p>
-<ul><li><a href="setup.html">Trying it</a></li><li><a href="screens.html">The World screen</a></li><li><a href="pictures.html">Pictures</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
+<ul><li><a href="screens.html">The World screen</a></li><li><a href="pictures.html">Pictures</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
 <p class="nav-heading">Worlds</p>
 <ul><li><a href="sao.html">SAO, a sketch</a></li></ul>
 <p class="nav-heading">Building your own</p>
@@ -38,13 +38,13 @@
   <aside class="sidebar">
     <a class="brand brand-desk" href="index.html"><span class="brand-mark" aria-hidden="true"></span>Civitas<em>documentation</em></a>
     <nav class="nav" id="nav-desktop" aria-label="Documentation"><p class="nav-heading">Start here</p>
-<ul><li><a href="index.html">What Civitas is</a></li><li><a href="how-a-turn-works.html" aria-current="page">How a turn works</a></li><li><a href="principles.html">Principles</a></li></ul>
+<ul><li><a href="index.html">What Civitas is</a></li><li><a href="setup.html">Trying it</a></li><li><a href="how-a-turn-works.html" aria-current="page">How a turn works</a></li><li><a href="principles.html">Principles</a></li></ul>
 <p class="nav-heading">The simulation</p>
 <ul><li><a href="time.html">Time and routines</a></li><li><a href="places.html">Places and doors</a></li><li><a href="people.html">People and feelings</a></li><li><a href="knowledge.html">What people know</a></li><li><a href="gossip.html">Rumour</a></li><li><a href="motives.html">Wants and situations</a></li><li><a href="plans.html">Plans, tasks and trips</a></li><li><a href="terms.html">Agreements and couples</a></li><li><a href="records.html">What gets written down</a></li></ul>
 <p class="nav-heading">Under the hood</p>
 <ul><li><a href="architecture.html">The engine</a></li><li><a href="bridge.html">The Marinara bridge</a></li></ul>
 <p class="nav-heading">Playing</p>
-<ul><li><a href="setup.html">Trying it</a></li><li><a href="screens.html">The World screen</a></li><li><a href="pictures.html">Pictures</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
+<ul><li><a href="screens.html">The World screen</a></li><li><a href="pictures.html">Pictures</a></li><li><a href="adult-play.html">Adult play</a></li></ul>
 <p class="nav-heading">Worlds</p>
 <ul><li><a href="sao.html">SAO, a sketch</a></li></ul>
 <p class="nav-heading">Building your own</p>
@@ -87,7 +87,8 @@ front of you outranks one about somebody across town.</p>
   them appear.</dd>
   <dt>PLANS, TERMS, COUPLES, COLLAR</dt>
   <dd>Arrangements that stand, agreements the world is holding people to, couples as a unit, and
-  open tasks.</dd>
+  open tasks. Collar is the name of the tasks app in the demo world, and the header takes its
+  name; the section lists tasks people have set or taken on.</dd>
   <dt>OPEN, RECENT, UNRESOLVED</dt>
   <dd>Unfinished situations with their stakes and deadlines, the last few things that happened,
   and threads that are waiting on somebody.</dd>
@@ -155,6 +156,9 @@ reasons are written for a writer rather than a programmer:</p>
   — that is already signed. void it and draw up new terms instead of
     rewriting what somebody agreed to</code></pre>
 
+<p>The notes say "him" because the engine's refusal strings currently assume the player is a he,
+whatever the player's pronouns. That is on <a href="limits.html">Limits</a>.</p>
+
 <p>When any tag is rejected, the engine asks the model once for a repair, keeping the prose and
 fixing only the listed tags:</p>
 
@@ -188,9 +192,9 @@ has the details.</p>
 
 <p>Deleting or swiping a reply does not edit the world. It rewinds it. The world forks at the
 moment before that reply was folded in, the clock goes back with it, and the abandoned version
-still exists on its own branch. A reroll is a different evening, not a corrected one.</p>
+still exists on its own branch.</p>
     </article>
-    <nav class="pager" aria-label="Neighbouring pages"><a class="pager-link pager-prev" href="index.html"><span>Previous</span><strong>What Civitas is</strong></a><a class="pager-link pager-next" href="principles.html"><span>Next</span><strong>Principles</strong></a></nav>
+    <nav class="pager" aria-label="Neighbouring pages"><a class="pager-link pager-prev" href="setup.html"><span>Previous</span><strong>Trying it</strong></a><a class="pager-link pager-next" href="principles.html"><span>Next</span><strong>Principles</strong></a></nav>
     <footer class="foot">
       <p>Civitas is a personal project, documented as it actually behaves. The example world is
       fiction and every character in it is an adult.</p>

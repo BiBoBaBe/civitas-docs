@@ -3,6 +3,11 @@ title: Principles
 description: The seven rules the engine is built on, what each one means for play, and how the code enforces it.
 -->
 
+<div class="note">
+  <p>This page is for readers who want to know how the engine is built. If you just want to
+  play, skip to <a href="setup.html">Trying it</a>; nothing here is needed at the table.</p>
+</div>
+
 <p class="lede">Civitas is ordinary engineering applied to a problem usually solved by asking a
 model to try harder. Seven rules run through the whole codebase. Each is listed here with what it
 means at the table and how it is enforced rather than hoped for.</p>
@@ -89,7 +94,7 @@ hop away. A stranger in the next room is three.</p>
 tick, but only the handful who matter to you right now reconsider their plans every step.</p>
 
 <p><strong>Enforced by:</strong> the tier is computed fresh each tick from the graph and never
-stored, because a stored tier is a cache nobody remembers to invalidate.</p>
+stored, so it cannot go stale.</p>
 
 <h2>Two rules that follow from the seven</h2>
 
